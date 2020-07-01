@@ -6,3 +6,4 @@
 - Add seeds
 - Add models
 - Add routers
+- Work on middleware
