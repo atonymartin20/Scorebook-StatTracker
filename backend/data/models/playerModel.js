@@ -17,8 +17,8 @@ module.exports = {
         return db('players').insert(player, 'id');
     },
 
-    update: (uid, changes) => {
-        return db('players').where('id', uid).update(changes);
+    update: (id, changes) => {
+        return db('players').where('id', id).update(changes);
     },
 
     remove: (id) => {
