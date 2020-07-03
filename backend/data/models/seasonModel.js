@@ -10,15 +10,15 @@ module.exports = {
     },
 
     findSeasonsByUser: (user) => {
-        return db('seasons').where('admin_user_id', user.id).orderBy('id');
+        return db('seasons').where('adminUserId', user.id).orderBy('id');
     },
 
     insert: (season) => {
         return db('seasons').insert(season, 'id');
     },
 
-    update: (uid, changes) => {
-        return db('seasons').where('id', uid).update(changes);
+    update: (id, changes) => {
+        return db('seasons').where('id', id).update(changes);
     },
 
     remove: (id) => {

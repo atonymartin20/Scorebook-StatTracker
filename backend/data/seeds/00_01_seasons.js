@@ -3,17 +3,17 @@ exports.seed = function (knex) {
         {
             id: 1,
             name: 'Spring 2019 A League',
-            admin_user_id: 1,
+            adminUserId: 1,
         },
         {
             id: 2,
             name: 'Summer 2019 B League',
-            admin_user_id: 1,
+            adminUserId: 1,
         },
         {
             id: 3,
             name: 'Fall 2019 C League',
-            admin_user_id: 2,
+            adminUserId: 2,
         },
     ]);
 };
