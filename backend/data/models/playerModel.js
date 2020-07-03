@@ -23,5 +23,5 @@ module.exports = {
 
     remove: (id) => {
         return db('players').where('id', id).del();
-    }
-}
+    },
+};

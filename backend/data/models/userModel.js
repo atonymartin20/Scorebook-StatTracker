@@ -20,8 +20,8 @@ module.exports = {
     insert: (user) => {
         return db('users').insert(user, 'id');
     },
-    
+
     update: (uid, changes) => {
         return db('users').where('id', uid).update(changes);
-    }
-}
+    },
+};
