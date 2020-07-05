@@ -6,11 +6,11 @@ module.exports = {
     },
 
     findByName: (firstName, lastName) => {
-        return db('players').where('first_name', firstName, 'last_name', lastName).orderBy('id');
+        return db('players').where('firstName', firstName, 'lastName', lastName).orderBy('id');
     },
 
     findAllPlayers: () => {
-        return db('players').select('first_name', 'last_name', 'id');
+        return db('players').select('firstName', 'lastName', 'id');
     },
 
     insert: (player) => {

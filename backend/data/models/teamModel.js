@@ -6,11 +6,15 @@ module.exports = {
     },
 
     findTeamsBySeason: (seasonId) => {
-        return db('teams').where('season_id', seasonId).orderBy('id');
+        return db('teams').where('seasonId', seasonId).orderBy('id');
     },
 
     findTeamByName: (name) => {
-        return db('teams').where('team_name', name).orderBy('id');
+        return db('teams').where('teamName', name).orderBy('id');
+    },
+
+    findAllTeams: () => {
+        return db('teams');
     },
 
     insert: (team) => {

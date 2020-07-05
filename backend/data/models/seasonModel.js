@@ -13,6 +13,10 @@ module.exports = {
         return db('seasons').where('adminUserId', user.id).orderBy('id');
     },
 
+    findAllSeasons: () => {
+        return db('seasons');
+    },
+
     insert: (season) => {
         return db('seasons').insert(season, 'id');
     },
