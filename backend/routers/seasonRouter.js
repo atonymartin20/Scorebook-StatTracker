@@ -72,4 +72,69 @@ router.post('/name', (req, res) => {
         });
 });
 
+// Insert
+router.post('/', (req, res) => {
+    const season = req.body;
+    if(!season.name) {
+        res.status(400).json({ error: 'Season does not have a name' });
+    }
+    else if(!season.adminUserId) {
+        res.status(400).json({ error: 'Season does not have an adminUserId '});
+    }
+    else {
+        seasonModel
+            .insert(season)
+            .then(season => {
+                res.json(season);
+            })
+            .catch(err => {
+                res.status(500).json({ error: 'Could not add season', err });
+            });
+    }
+});
+
+// Update
+router.put('/:id', (req, res) => {
+    const { id } = req.params; 
+    const season = req.body;
+    seasonModel
+        .update(id, season)
+        .then(updatedSeason => {
+            if(updatedSeason === 0) {
+                res.status(404).json({ message: 'No season with that id exists' });
+            }
+            else {
+                seasonModel
+                    .findSeasonById(id)
+                    .then(season => {
+                        res.json(season)
+                    })
+                    .catch(err => {
+                        res.status(500).json({ error: 'Could not update season', err });
+                    });
+            }
+        })
+        .catch(err => {
+            res.status(500).json({ error: 'Season cannot be modified', err });
+        });
+})
+
+// Delete
+router.delete('/:id', (req, res) => {
+    const { id } = req.params;
+    seasonModel
+        .remove(id)
+        .then(removedSeason => {
+            if(removedSeason === 0) {
+                res.status(404).json({ message: 'No season with that id exists' });
+            }
+            else {
+                res.json({ message: 'Season has been deleted' });
+            };
+        })
+        .catch(err => {
+            res.status(500).json({ error: 'Season cannot be removed', err });
+        });
+})
+
 module.exports = router;
