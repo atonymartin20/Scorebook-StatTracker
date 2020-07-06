@@ -24,8 +24,8 @@ const PORT = process.env.PORT || '1111';
 // use routers
 // app.use('/api/playerRouter', playerRouter);
 app.use('/api/teamRouter', teamRouter);
-app.use('/api/seasonsRouter', seasonRouter);
-// app.use('/api/usersRouter', userRouter);
+app.use('/api/seasonRouter', seasonRouter);
+// app.use('/api/userRouter', userRouter);
 
 app.get('/', (req, res) => {
   res.status(200).send(`API active on port: ${PORT}`);
