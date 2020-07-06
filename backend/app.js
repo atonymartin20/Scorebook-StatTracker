@@ -7,7 +7,7 @@ const logger = require("morgan");
 const passport = require('passport');
 
 // routers and middleware
-// const playerRouter = require('./routers/playerRouter.js');
+const playerRouter = require('./routers/playerRouter.js');
 const teamRouter = require('./routers/teamRouter.js');
 const seasonRouter = require('./routers/seasonRouter.js');
 // const userRouter = require('./routers/userRouter.js');
@@ -22,7 +22,7 @@ app.use(helmet());
 const PORT = process.env.PORT || '1111';
 
 // use routers
-// app.use('/api/playerRouter', playerRouter);
+app.use('/api/playerRouter', playerRouter);
 app.use('/api/teamRouter', teamRouter);
 app.use('/api/seasonRouter', seasonRouter);
 // app.use('/api/userRouter', userRouter);
