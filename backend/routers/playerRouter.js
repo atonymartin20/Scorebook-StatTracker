@@ -60,4 +60,69 @@ router.post('/name', (req, res) => {
         });
 });
 
+// Insert
+router.post('/', (req, res) => {
+    const player = req.body;
+    if(!player.firstName) {
+        res.status(400).json({ error: 'Player does not have a firstName' });
+    }
+    if(!player.lastName) {
+        res.status(400).json({ error: 'Player does not have a lastName' });
+    }
+    else {
+        playerModel
+            .insert(player)
+            .then(player => {
+                res.json(player);
+            })
+            .catch(err => {
+                res.status(500).json({ error: 'Could not add player', err });
+            });
+    }
+});
+
+// Update
+router.put('/:id', (req, res) => {
+    const { id } = req.params; 
+    const player = req.body;
+    playerModel
+        .update(id, player)
+        .then(updatedPlayer => {
+            if(updatedPlayer === 0) {
+                res.status(404).json({ message: 'No player with that id exists' });
+            }
+            else {
+                playerModel
+                    .findPlayerById(id)
+                    .then(player => {
+                        res.json(player)
+                    })
+                    .catch(err => {
+                        res.status(500).json({ error: 'Could not update player', err });
+                    });
+            }
+        })
+        .catch(err => {
+            res.status(500).json({ error: 'Player cannot be modified', err });
+        });
+})
+
+// Delete
+router.delete('/:id', (req, res) => {
+    const { id } = req.params;
+    playerModel
+        .remove(id)
+        .then(removedPlayer => {
+            if(removedPlayer === 0) {
+                res.status(404).json({ message: 'No player with that id exists' });
+            }
+            else {
+                res.json({ message: 'Player has been deleted' });
+            };
+        })
+        .catch(err => {
+            res.status(500).json({ error: 'Player cannot be removed', err });
+        });
+})
+
 module.exports = router;
