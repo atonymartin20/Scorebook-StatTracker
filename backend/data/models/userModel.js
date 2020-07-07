@@ -1,20 +1,20 @@
 const db = require('../dbConfig.js');
 
 module.exports = {
-    findById: (id) => {
+    findUserById: (id) => {
         return db('users').where('id', id).first();
     },
 
-    findByUsername: (username) => {
+    findUserByUsername: (username) => {
         return db('users').where('username', username).first();
     },
 
-    findByEmail: (email) => {
+    findUserByEmail: (email) => {
         return db('users').where('email', email).first();
     },
 
     findAllUsers: () => {
-        return db('users').select('email', 'id');
+        return db('users').select('id', 'email');
     },
 
     insert: (user) => {
