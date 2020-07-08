@@ -1,16 +1,16 @@
 const db = require('../dbConfig.js');
 
 module.exports = {
-    findById: (id) => {
+    findPlayerById: (id) => {
         return db('players').where('id', id).first();
     },
 
-    findByName: (firstName, lastName) => {
-        return db('players').where('first_name', firstName, 'last_name', lastName).orderBy('id');
+    findPlayerByName: (player) => {
+        return db('players').where('firstName', player.firstName).where('lastName', player.lastName).orderBy('id');
     },
 
     findAllPlayers: () => {
-        return db('players').select('first_name', 'last_name', 'id');
+        return db('players').select( 'id', 'firstName', 'lastName');
     },
 
     insert: (player) => {

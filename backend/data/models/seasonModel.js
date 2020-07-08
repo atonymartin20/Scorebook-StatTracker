@@ -10,7 +10,11 @@ module.exports = {
     },
 
     findSeasonsByUser: (user) => {
-        return db('seasons').where('adminUserId', user.id).orderBy('id');
+        return db('seasons').where('adminUserId', user.adminUserId).orderBy('id');
+    },
+
+    findAllSeasons: () => {
+        return db('seasons');
     },
 
     insert: (season) => {
