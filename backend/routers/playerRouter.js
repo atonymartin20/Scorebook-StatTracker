@@ -1,10 +1,10 @@
 const express = require('express');
 
 const playerModel = require('../data/models/playerModel.js');
-// const authentication = require('../middleware/authentication.js');
+const authentication = require('../middleware/authentication.js');
 const router = express.Router();
 
-// router.use(authentication);
+router.use(authentication);
 
 // Find All Players
 router.get('/', (req, res) => {

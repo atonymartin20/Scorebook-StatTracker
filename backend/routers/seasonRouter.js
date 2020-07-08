@@ -1,10 +1,10 @@
 const express = require('express');
 
 const seasonModel = require('../data/models/seasonModel.js');
-// const authentication = require('../middleware/authentication.js');
+const authentication = require('../middleware/authentication.js');
 const router = express.Router();
 
-// router.use(authentication);
+router.use(authentication);
 
 // Find All Seasons
 router.get('/', (req, res) => {

@@ -1,10 +1,10 @@
 const express = require('express');
 
 const teamModel = require('../data/models/teamModel.js');
-// const authentication = require('../middleware/authentication.js');
+const authentication = require('../middleware/authentication.js');
 const router = express.Router();
 
-// router.use(authentication);
+router.use(authentication);
 
 // Find All Teams
 router.get('/', (req, res) => {
