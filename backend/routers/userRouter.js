@@ -1,10 +1,10 @@
 const express = require('express');
 
 const userModel = require('../data/models/userModel.js');
-// const authentication = require('../middleware/authentication.js');
+const authentication = require('../middleware/authentication.js');
 const router = express.Router();
 
-// router.use(authentication);
+router.use(authentication);
 
 // Find All Users
 router.get('/', (req, res) => {
@@ -76,35 +76,6 @@ router.post('/email', (req, res) => {
         .catch(err => {
             res.status(500).json({ error: 'Could not find user with inputed email', err });
         });
-});
-
-// Insert
-router.post('/', (req, res) => {
-    const user = req.body;
-    if(!user.email) {
-        res.status(400).json({ error: 'User does not have an email address' });
-    }
-    if(!user.username) {
-        res.status(400).json({ error: 'User does not have a username' });
-    }
-    if(!user.password) {
-        res.status(400).json({ error: 'User does not have a password '});
-    }
-    else {
-        userModel
-            .insert(user)
-            .then(user => {
-                res.json(user);
-            })
-            .catch(err => {
-                if(err.code === "SQLITE_CONSTRAINT") {
-                    res.status(500).json({ error: 'Email or username is already being used', err })
-                }
-                else {
-                    res.status(500).json({ error: 'Could not add user', err });
-                }
-            });
-    }
 });
 
 // Update
