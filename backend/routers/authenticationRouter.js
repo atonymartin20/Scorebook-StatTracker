@@ -9,22 +9,16 @@ const router = express.Router();
 
 const FRONTEND_URL = process.env.FRONTEND_URL;
 
-router.get(
-    '/google', 
-    passport.authenticate('google', { scope: ['profile', 'email'], session: false })
-);
+router.get('/google',
+  passport.authenticate('google', { scope: ['profile', 'email'] }));
 
-router.get(
-    '/google/callback',
-    passport.authenticate('google', {
-        failureRedirect: FRONTEND_URL + '/signin',
-    }),
-    (req, res) => {
-        delete req.user['password'];
-        const token = authHelper.generateToken(req.user);
-        res.redirect(FRONTEND_URL + '/authorize?token=' + token);
-    }
-);
+router.get('/google/callback', 
+  passport.authenticate('google', { failureRedirect: FRONTEND_URL + '/login' }),
+  function(req, res) {
+    const token = authHelper.generateToken(req.user);
+    // Successful authentication, redirect home.
+    res.redirect(FRONTEND_URL + '/authorize?token=' + token);
+});
 
 router.post('/login', (req, res) => {
     const creds = req.body;
@@ -45,11 +39,13 @@ router.post('/login', (req, res) => {
 });
 
 router.post('/register', (req, res) => {
+    console.log(req.body)
     const creds = req.body;
     creds.password = bcrypt.hashSync(creds.password, 4);
     userModel
         .insert(creds)
         .then((ids) => {
+            console.log(creds)
             if (ids.length) {
                 res.status(201).json({ message: 'Success' });
             } else {

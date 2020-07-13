@@ -3,12 +3,12 @@ const GoogleStrategy = require('passport-google-oauth20').Strategy;
 
 const userModel = require('../data/models/userModel');
 
-passport.serializeUser(function(user, done) {
-    done(null, user);
+passport.serializeUser(function(user, cb) {
+    cb(null, user);
 });
 
-passport.deserializeUser(function(user, done) {
-    done(null, user);
+passport.deserializeUser(function(obj, cb) {
+    cb(null, obj);
 });
 
 passport.use(
@@ -18,35 +18,41 @@ passport.use(
             clientSecret: process.env.GOOGLE_CLIENT_SECRET,
             callbackURL: process.env.GOOGLE_CALLBACK_URL
         },
-        (profile, done) => {
+
+        function(accessToken, refreshToken, profile, email, cb) {
             let err = null;
-            let user = null;
-            userModel.findByEmail(profile.emails[0].value)
-                .then(u => {
-                    if (u) {
-                        user = u;
-                        if ( user.google_id !== profile.id) {
-                            user.google_id = profile.id;
-                            userModel.update(user).then(count => {
+            let emailValue = email.emails[0].value
+            userModel.findUserByEmail(emailValue)
+                .then(user => {
+                    if (user) {
+                        if ( user.googleId !== email.id) {
+                            user.googleId = email.id;
+                            userModel.update(user.id, user).then(count => {
                                 if (!count) {
-                                    err = {message: 'Unable to update google_id'};
+                                    err = {message: 'Unable to update googleId'};
                                 }
                             })
                         }
-                        return done(err, user);
+                        return cb(err, profile);
                     }
                     else {
-                        user = {email: profile.emails[0].value, google:id = profile.id };
+                        let user = {
+                            email: emailValue,
+                            username: email.displayName,
+                            firstName: email.name.givenName,
+                            lastName: email.name.familyName,
+                            googleId: email.id
+                        };
                         userModel.insert(user).then(ids => {
                             if (!ids.length) {
                                 err = { message: 'Unable to create user.'};
                             }
                         }) 
-                        return done(err, user);
+                        return cb(err, profile);
                     }
                 })
             .catch(err => {
-                return done(err, user);
+                return cb(err, profile);
             })
         }
     )
