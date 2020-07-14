@@ -1,1 +1,9 @@
-<p>login works!</p>
+<div class='login-outside-container'>
+    <div class='login-inside-container'>
+        <p>Login</p>
+        <input type='text' matInput [(ngModel)]='email' placeholder='Email Address' />
+        <input type='password' matInput [(ngModel)]='password' placeholder='Password' />
+        <button type='submit' (click)='login()' class='login-button'>Login</button>
+        <button (click)='loginWithGoogle()' class='google-button'><img class='google-icon' src='../../assets/images/google_icon.png' /><span>Login with Google</span></button>
+    </div>
+</div>
