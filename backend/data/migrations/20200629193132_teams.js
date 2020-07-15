@@ -6,6 +6,8 @@ exports.up = function (knex, Promise) {
         teams.integer('wins').unsigned().defaultTo(0);
         teams.integer('losses').unsigned().defaultTo(0);
         teams.integer('ties').unsigned().defaultTo(0);
+        teams.integer('pointsScored').unsigned().defaultTo(0);
+        teams.integer('pointsAgainst').unsigned().defaultTo(0);
     })
 };
 
