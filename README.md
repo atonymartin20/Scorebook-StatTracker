@@ -12,3 +12,26 @@ This is a project that i built for a few reasons.  First, I wanted to build a la
 * Node.js
 * PostgresQL
 
+# Resources
+* [Front End Site - Hosted on Netlify](https://scorebook-adm.netlify.app/)
+* [Back End Site - Hosted on Heroku](https://scorebook-adm.herokuapp.com/)
+ 
+ # Future Updates
+ - [ ] 
+ - [ ] 
+ - [ ] 
+ - [ ] 
+ - [ ] 
+ - [ ] 
+ - [ ] 
+ - [ ] 
+ - [ ] 
+ - [ ] 
+ - [ ] 
+ - [ ] 
+ - [ ] 
+ - [ ] 
+ - [ ] 
+ - [ ] 
+ - [ ] 
+ - [ ] 
