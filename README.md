@@ -19,7 +19,7 @@ This is a project that i built for a few reasons.  First, I wanted to build a la
  # Future Updates
  - [ ] Fix Register Function in Register Component
  - [ ] Fix Login Function in Login Component
- - [ ] 
+ - [ ] Create Authorization page for tokens
  - [ ] 
  - [ ] 
  - [ ] 
