@@ -17,8 +17,8 @@ This is a project that i built for a few reasons.  First, I wanted to build a la
 * [Back End Site - Hosted on Heroku](https://scorebook-adm.herokuapp.com/)
  
  # Future Updates
- - [ ] Fix Register Function
- - [ ] 
+ - [ ] Fix Register Function in Register Component
+ - [ ] Fix Login Function in Login Component
  - [ ] 
  - [ ] 
  - [ ] 
