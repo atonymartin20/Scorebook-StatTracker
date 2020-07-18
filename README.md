@@ -21,7 +21,7 @@ This is a project that i built for a few reasons.  First, I wanted to build a la
  - [ ] Fix Login Function in Login Component
  - [ ] Create Authorization page for tokens
  - [ ] Create Dashboard Page
- - [ ] 
+ - [ ] Add User Settings
  - [ ] 
  - [ ] 
  - [ ] 
