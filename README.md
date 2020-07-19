@@ -23,7 +23,7 @@ This is a project that i built for a few reasons.  First, I wanted to build a la
  - [ ] Create Dashboard Page
  - [ ] Add User Settings
  - [ ] Add Logout
- - [ ] 
+ - [ ] Add Ability to Create New Season
  - [ ] 
  - [ ] 
  - [ ] 
