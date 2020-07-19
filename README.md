@@ -26,7 +26,7 @@ This is a project that i built for a few reasons.  First, I wanted to build a la
  - [ ] Add Ability to Create New Season
  - [ ] Add Sidebar That Shows Seasons
  - [ ] Add Ability to Set Teams
- - [ ] 
+ - [ ] Add Ability to Add Schedule
  - [ ] 
  - [ ] 
  - [ ] 
