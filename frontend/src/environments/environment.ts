@@ -4,7 +4,9 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'http://localhost:1111'
+  apiUrl: 'http://localhost:1111',
+  userInfo: [],
+  tokenData: null
 };
 
 /*
