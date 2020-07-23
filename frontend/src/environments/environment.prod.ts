@@ -1,6 +1,6 @@
 export const environment = {
     production: true,
-    apiUrl: 'https://scorebook-adm.netlify.app',
+    apiUrl: 'https://scorebook-adm.herokuapp.com',
     userInfo: [],
     tokenData: null
 };
