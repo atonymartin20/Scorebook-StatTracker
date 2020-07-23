@@ -10,6 +10,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
+import { AuthorizeComponent } from './authorize/authorize.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { LandingPageComponent } from './landing-page/landing-page.component';
     DashboardComponent,
     LoginComponent,
     RegisterComponent,
-    LandingPageComponent
+    LandingPageComponent,
+    AuthorizeComponent
   ],
   imports: [
     BrowserModule,
