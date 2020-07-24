@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../user.service';
+import { Router } from '@angular/router';
 
 import { environment } from 'src/environments/environment';
+import { env } from 'process';
 
 @Component({
   selector: 'app-authorize',
@@ -11,7 +13,7 @@ import { environment } from 'src/environments/environment';
 export class AuthorizeComponent implements OnInit {
   token = environment.tokenData;
   
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService, private router: Router) { }
   
   ngOnInit(): void {
     console.log(environment)
@@ -29,7 +31,9 @@ export class AuthorizeComponent implements OnInit {
 
   grabData(token): void {
     this.userService.grabUserData(token).subscribe((userData:any[]) => {
+      environment.userInfo = userData
       console.log(userData)
+      this.router.navigate(['/dashboard'])
     })
   }
 
