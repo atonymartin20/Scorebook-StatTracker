@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable, throwError } from 'rxjs';
-import { catchError, retry, map } from 'rxjs/operators';
+import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
+import { throwError } from 'rxjs';
+import { retry, catchError } from 'rxjs/operators';
 
 import { environment } from 'src/environments/environment';
 
@@ -9,30 +9,51 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class UserService {
-  public userInfo = {};
+  constructor(private httpClient: HttpClient) { }
 
-  constructor(private http: HttpClient) { }
-
-  // login = (credentials) => {
-  //   console.log(credentials)
-  //   console.log(`${environment.apiUrl}/api/authenticationRouter/login`)
-  //   return this.http.post(`${environment.apiUrl}/api/authenticationRouter/login`, credentials).pipe(
-  //     catchError(this.handleError()))
-  // }
-  
-  login(credentials): Observable<any> {
-    console.log(credentials)
-    console.log(`${environment.apiUrl}/api/authenticationRouter/login`)
-    return this.http.post(`${environment.apiUrl}/api/authenticationRouter/login`, credentials).pipe(
-      catchError(this.handleError('login')))
+  public login(credentials) {
+    environment.userInfo = null;
+    environment.userInfo = credentials;
+    return this.httpClient.post(`${environment.apiUrl}/api/authenticationRouter/login`, credentials).pipe(retry(3), catchError(this.handleErrorLogin));
   }
 
-  private handleError<T>(operation = 'operation', result? :T) {
-    return (error: any): Observable<T> => {
-      console.log(error);
-      // return of(result as T)
-      return(error)
+  public grabUserData(token) {
+    let testVar = environment.userInfo;
+    console.log(testVar)
+    let httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json',
+        'authorization': token,
+      })
     }
+    console.log(httpOptions)
+    return this.httpClient.post(`${environment.apiUrl}/api/userRouter/email`, testVar, httpOptions).pipe(retry(0), catchError(this.handleError));
+  }
+
+  handleErrorLogin(error: HttpErrorResponse) {
+    let errorMessage = 'Unknown error!';
+    if (error.error instanceof ErrorEvent) {
+      // Client-side errors
+      errorMessage = `Error: ${error.error.message}`;
+    } else {
+      // Server-side errors
+      errorMessage = `Username or password is incorrect.`;
+    }
+    window.alert(errorMessage);
+    return throwError(errorMessage);
+  }
+
+  handleError(error: HttpErrorResponse) {
+    let errorMessage = 'Unknown error!';
+    if (error.error instanceof ErrorEvent) {
+      // Client-side errors
+      errorMessage = `Error: ${error.error.message}`;
+    } else {
+      // Server-side errors
+      errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
+    }
+    window.alert(errorMessage);
+    return throwError(errorMessage);
   }
 }
 
