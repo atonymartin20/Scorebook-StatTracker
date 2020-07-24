@@ -1,4 +1,4 @@
-<ng-template [ngIf]='login'>
+<ng-template [ngIf]='token'>
     <div class='container'>
         <div class='hamburger-div'>
             <img class='hamburger-icon' src='../../assets/images/hamburger_icon.png' (click)='activateDropdown()' />
@@ -47,7 +47,7 @@
     </ng-template>
 </ng-template>
 
-<ng-template [ngIf]='!login'>
+<ng-template [ngIf]='!token'>
     <div class='container'>
         <div class='hamburger-div'>
             <img class='hamburger-icon' src='../../assets/images/hamburger_icon.png' (click)='activateDropdown()' />
