@@ -1,6 +1,9 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 import { UserService } from '../user.service';
+import { Router } from '@angular/router';
+
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-login',
@@ -11,7 +14,7 @@ export class LoginComponent implements OnInit {
   email = '';
   password = '';
 
-  constructor(@Inject(DOCUMENT) private document: Document, private userService: UserService) { }
+  constructor(@Inject(DOCUMENT) private document: Document, private userService: UserService, private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -22,8 +25,11 @@ export class LoginComponent implements OnInit {
         email: this.email,
         password: this.password
       }
-      this.userService.login(credentials);
-      console.log(this.email, this.password)
+      this.userService.login(credentials).subscribe((userInfo: any[]) => {
+        environment.tokenData = userInfo['token'];
+        this.router.navigate(['/authorize'])
+      });
+
     }
   }
 
