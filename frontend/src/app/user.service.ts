@@ -18,16 +18,14 @@ export class UserService {
   }
 
   public grabUserData(token) {
-    let testVar = environment.userInfo;
-    console.log(testVar)
+    let userInfo = environment.userInfo;
     let httpOptions = {
       headers: new HttpHeaders({
         'Content-Type':  'application/json',
         'authorization': token,
       })
     }
-    console.log(httpOptions)
-    return this.httpClient.post(`${environment.apiUrl}/api/userRouter/email`, testVar, httpOptions).pipe(retry(0), catchError(this.handleError));
+    return this.httpClient.post(`${environment.apiUrl}/api/userRouter/email`, userInfo, httpOptions).pipe(retry(0), catchError(this.handleError));
   }
 
   handleErrorLogin(error: HttpErrorResponse) {
