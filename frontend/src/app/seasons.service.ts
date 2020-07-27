@@ -1,9 +1,37 @@
 import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
+import { throwError } from 'rxjs';
+import { retry, catchError } from 'rxjs/operators';
+
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SeasonsService {
+  constructor(private httpClient: HttpClient) { }
 
-  constructor() { }
+  public grabSeasonData(user, token) {
+    let httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json',
+        'authorization': token,
+      })
+    }
+    return this.httpClient.post(`${environment.apiUrl}/api/seasonRouter/seasonsByUser`, user, httpOptions).pipe(retry(0), catchError(this.handleError));
+  }
+
+  handleError(error: HttpErrorResponse) {
+    console.log(error)
+    let errorMessage = 'Unknown error!';
+    if (error.error instanceof ErrorEvent) {
+      // Client-side errors
+      errorMessage = `Error: ${error.error.message}`;
+    } else {
+      // Server-side errors
+      errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
+    }
+    window.alert(errorMessage);
+    return throwError(errorMessage);
+  }
 }
