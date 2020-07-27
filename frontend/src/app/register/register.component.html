@@ -14,6 +14,11 @@
                 <p class='error-text'>Email Addresses do not match!</p>
             </div>
         </ng-template>
+        <ng-template [ngIf]='emailInUseError'>
+            <div>
+                <p class='error-text'>Email Address has already been registered!</p>
+            </div>
+        </ng-template>
         <input type='password' matInput [(ngModel)]='password' placeholder='Password' />
         <input type='password' matInput [(ngModel)]='password2' placeholder='Confirm Password' />
         <ng-template [ngIf]='passwordBlank'>
@@ -27,6 +32,11 @@
             </div>
         </ng-template>
         <input type='text' matInput [(ngModel)]='username' placeholder='Username' />
+        <ng-template [ngIf]='usernameInUseError'>
+            <div>
+                <p class='error-text'>Username has already been registered.  Please choose a different username!</p>
+            </div>
+        </ng-template>
         <input type='text' matInput [(ngModel)]='firstName' placeholder='First Name' />
         <input type='text' matInput [(ngModel)]='lastName' placeholder='Last Name' />
         <input type='number' matInput [(ngModel)]='phone' placeholder='Phone Number' />
