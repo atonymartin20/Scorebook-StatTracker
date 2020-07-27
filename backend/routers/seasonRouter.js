@@ -43,7 +43,7 @@ router.post('/seasonsByUser', (req, res) => {
         .findSeasonsByUser(user)
         .then(seasons => {
             if(seasons.length === 0) {
-                res.status(404).json({ error: 'No seasons with that adminUserId exists' });
+                res.status(201).json(seasons);
             }
             else {
                 res.json(seasons);
