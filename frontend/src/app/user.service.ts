@@ -17,6 +17,20 @@ export class UserService {
     return this.httpClient.post(`${environment.apiUrl}/api/authenticationRouter/login`, credentials).pipe(retry(3), catchError(this.handleErrorLogin));
   }
 
+  public register(credentials) {
+    environment.userInfo = null;
+    environment.userInfo = credentials;
+    return this.httpClient.post(`${environment.apiUrl}/api/authenticationRouter/register`, credentials).pipe(retry(1), catchError(this.handleError))
+  }
+
+  public testEmail(credentials) {
+    return this.httpClient.post(`${environment.apiUrl}/api/authenticationRouter/email`, credentials).pipe(retry(0), catchError(this.handleError))
+  }
+
+  public testUsername(credentials) {
+    return this.httpClient.post(`${environment.apiUrl}/api/authenticationRouter/username`, credentials).pipe(retry(0), catchError(this.handleError))
+  }
+
   public grabUserData(token) {
     let userInfo = environment.userInfo;
     let httpOptions = {
@@ -43,14 +57,14 @@ export class UserService {
 
   handleError(error: HttpErrorResponse) {
     let errorMessage = 'Unknown error!';
+    console.log(error);
     if (error.error instanceof ErrorEvent) {
       // Client-side errors
       errorMessage = `Error: ${error.error.message}`;
     } else {
       // Server-side errors
-      errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
+      errorMessage = `Error Code: ${error.status}\nMessage: ${error.error.error}`;
     }
-    window.alert(errorMessage);
     return throwError(errorMessage);
   }
 }
