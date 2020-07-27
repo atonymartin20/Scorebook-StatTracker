@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../user.service';
+import { SeasonsService } from '../seasons.service';
 import { Router } from '@angular/router';
 
 import { environment } from 'src/environments/environment';
-import { env } from 'process';
 
 @Component({
   selector: 'app-authorize',
@@ -13,10 +13,9 @@ import { env } from 'process';
 export class AuthorizeComponent implements OnInit {
   token = environment.tokenData;
   
-  constructor(private userService: UserService, private router: Router) { }
+  constructor(private userService: UserService, private router: Router, private seasonService: SeasonsService) { }
   
   ngOnInit(): void {
-    console.log(environment)
     this.grabData(environment.tokenData);
     // console.log(window.location)
     // if(window.location.search !== '') {
@@ -30,9 +29,15 @@ export class AuthorizeComponent implements OnInit {
 
 
   grabData(token): void {
+    console.log(environment)
     this.userService.grabUserData(token).subscribe((userData:any[]) => {
       environment.userInfo = userData
-      console.log(userData)
+      this.seasonService.grabSeasonData(userData, token).subscribe((seasonData: any[]) => {
+        environment.seasonsInfo = seasonData
+      }, (error) => {
+        console.log(error)
+        environment.seasonsInfo = [];
+      })
       this.router.navigate(['/dashboard'])
     })
   }
