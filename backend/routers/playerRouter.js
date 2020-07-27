@@ -25,7 +25,7 @@ router.get('/:id', (req, res) => {
         .findPlayerById(id)
         .then(player => {
             if(player == undefined) {
-                res.status(404).json({ message: 'No player with that id exists' });
+                res.status(404).json({ error: 'No player with that id exists' });
             }
             else {
                 res.json(player);
@@ -49,7 +49,7 @@ router.post('/name', (req, res) => {
         .findPlayerByName(player)
         .then(player => {
             if(player.length === 0) {
-                res.status(404).json({ message: 'No player with that name exists' });
+                res.status(404).json({ error: 'No player with that name exists' });
             }
             else {
                 res.json(player);
@@ -89,7 +89,7 @@ router.put('/:id', (req, res) => {
         .update(id, player)
         .then(updatedPlayer => {
             if(updatedPlayer === 0) {
-                res.status(404).json({ message: 'No player with that id exists' });
+                res.status(404).json({ error: 'No player with that id exists' });
             }
             else {
                 playerModel
@@ -114,10 +114,10 @@ router.delete('/:id', (req, res) => {
         .remove(id)
         .then(removedPlayer => {
             if(removedPlayer === 0) {
-                res.status(404).json({ message: 'No player with that id exists' });
+                res.status(404).json({ error: 'No player with that id exists' });
             }
             else {
-                res.json({ message: 'Player has been deleted' });
+                res.json({ error: 'Player has been deleted' });
             };
         })
         .catch(err => {

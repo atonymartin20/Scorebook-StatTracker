@@ -25,7 +25,7 @@ router.get('/:id', (req, res) => {
         .findSeasonById(id)
         .then(season => {
             if(season == undefined) {
-                res.status(404).json({ message: 'No season with that id exists' });
+                res.status(404).json({ error: 'No season with that id exists' });
             }
             else {
                 res.json(season);
@@ -43,7 +43,7 @@ router.post('/seasonsByUser', (req, res) => {
         .findSeasonsByUser(user)
         .then(seasons => {
             if(seasons.length === 0) {
-                res.status(404).json({ message: 'No seasons with that adminUserId exists' });
+                res.status(404).json({ error: 'No seasons with that adminUserId exists' });
             }
             else {
                 res.json(seasons);
@@ -61,7 +61,7 @@ router.post('/name', (req, res) => {
         .findSeasonsByName(season.name)
         .then(season => {
             if(season.length === 0) {
-                res.status(404).json({ message: 'No season with that name exists' });
+                res.status(404).json({ error: 'No season with that name exists' });
             }
             else {
                 res.json(season);
@@ -101,7 +101,7 @@ router.put('/:id', (req, res) => {
         .update(id, season)
         .then(updatedSeason => {
             if(updatedSeason === 0) {
-                res.status(404).json({ message: 'No season with that id exists' });
+                res.status(404).json({ error: 'No season with that id exists' });
             }
             else {
                 seasonModel
@@ -126,10 +126,10 @@ router.delete('/:id', (req, res) => {
         .remove(id)
         .then(removedSeason => {
             if(removedSeason === 0) {
-                res.status(404).json({ message: 'No season with that id exists' });
+                res.status(404).json({ error: 'No season with that id exists' });
             }
             else {
-                res.json({ message: 'Season has been deleted' });
+                res.json({ error: 'Season has been deleted' });
             };
         })
         .catch(err => {

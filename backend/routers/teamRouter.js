@@ -25,7 +25,7 @@ router.get('/:id', (req, res) => {
         .findTeamById(id)
         .then(team => {
             if(team == undefined) {
-                res.status(404).json({ message: 'No team with that id exists' });
+                res.status(404).json({ error: 'No team with that id exists' });
             }
             else {
                 res.json(team);
@@ -43,7 +43,7 @@ router.post('/season', (req, res) => {
         .findTeamsBySeason(team.seasonId)
         .then(teams => {
             if(teams.length === 0) {
-                res.status(404).json({ message: 'No team with that seasonId exists' });
+                res.status(404).json({ error: 'No team with that seasonId exists' });
             }
             else {
                 res.json(teams);
@@ -61,7 +61,7 @@ router.post('/name', (req, res) => {
         .findTeamByName(team.teamName)
         .then(team => {
             if(team.length === 0) {
-                res.status(404).json({ message: 'No team with that name exists' });
+                res.status(404).json({ error: 'No team with that name exists' });
             }
             else {
                 res.json(team);
@@ -101,7 +101,7 @@ router.put('/:id', (req, res) => {
         .update(id, team)
         .then(updatedTeam => {
             if(updatedTeam === 0) {
-                res.status(404).json({ message: 'No team with that id exists' });
+                res.status(404).json({ error: 'No team with that id exists' });
             }
             else {
                 teamModel
@@ -126,10 +126,10 @@ router.delete('/:id', (req, res) => {
         .remove(id)
         .then(removedTeam => {
             if(removedTeam === 0) {
-                res.status(404).json({ message: 'No team with that id exists' });
+                res.status(404).json({ error: 'No team with that id exists' });
             }
             else {
-                res.json({ message: 'Team has been deleted' });
+                res.json({ error: 'Team has been deleted' });
             };
         })
         .catch(err => {
