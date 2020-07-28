@@ -1,6 +1,6 @@
 :host {
     width: 100%;
-    font-size: 2.0rem;
+    font-size: 2rem;
 }
 
 .landing-page-outside-container {
@@ -28,8 +28,7 @@ header {
     justify-content: center;
     align-items: center;
     padding: 100px 12%;
-    text-shadow: 2px 2px 4px black, 2px 0px 4px black, 0px 2px 4px black,
-    0 0 8px #333;
+    text-shadow: 2px 2px 4px black, 2px 0px 4px black, 0px 2px 4px black, 0 0 8px #333;
     color: white;
 }
 
@@ -37,18 +36,18 @@ header {
     width: 100%;
 }
 
-.smaller-image { 
+.smaller-image {
     width: 48%;
     margin: 1%;
 }
 
 h3 {
-    font-size: 4.0rem;
+    font-size: 4rem;
     margin-bottom: 25px;
 }
 
 button {
-    background-color: #041E42;
+    background-color: #041e42;
     color: white;
     font-size: 1.75rem;
     border-radius: 5px;
@@ -60,9 +59,9 @@ button {
 
 button:hover {
     background-color: white;
-    color: #041E42;
+    color: #041e42;
     font-weight: 600;
-    border: 2px solid #041E42;
+    border: 2px solid #041e42;
 }
 
 .picture-section {
@@ -106,7 +105,7 @@ span {
 }
 
 .number {
-    color: #041E42;
+    color: #041e42;
 }
 
 @media (max-width: 600px) {

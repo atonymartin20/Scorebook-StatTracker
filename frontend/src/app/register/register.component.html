@@ -1,45 +1,45 @@
 <app-navbar></app-navbar>
-<div class='register-outside-container'>
-    <div class='register-inside-container'>
+<div class="register-outside-container">
+    <div class="register-inside-container">
         <p>Register</p>
-        <input type='text' matInput [(ngModel)]='email' placeholder='Email Address' />
-        <input type='text' matInput [(ngModel)]='email2' placeholder='Confirm Email Address' />
-        <ng-template [ngIf]='emailBlank'>
+        <input type="text" matInput [(ngModel)]="email" placeholder="Email Address" />
+        <input type="text" matInput [(ngModel)]="email2" placeholder="Confirm Email Address" />
+        <ng-template [ngIf]="emailBlank">
             <div>
-                <p class='error-text'>Email Addresses can not be blank!</p>
+                <p class="error-text">Email Addresses can not be blank!</p>
             </div>
         </ng-template>
-        <ng-template [ngIf]='emailError'>
+        <ng-template [ngIf]="emailError">
             <div>
-                <p class='error-text'>Email Addresses do not match!</p>
+                <p class="error-text">Email Addresses do not match!</p>
             </div>
         </ng-template>
-        <ng-template [ngIf]='emailInUseError'>
+        <ng-template [ngIf]="emailInUseError">
             <div>
-                <p class='error-text'>Email Address has already been registered!</p>
+                <p class="error-text">Email Address has already been registered!</p>
             </div>
         </ng-template>
-        <input type='password' matInput [(ngModel)]='password' placeholder='Password' />
-        <input type='password' matInput [(ngModel)]='password2' placeholder='Confirm Password' />
-        <ng-template [ngIf]='passwordBlank'>
+        <input type="password" matInput [(ngModel)]="password" placeholder="Password" />
+        <input type="password" matInput [(ngModel)]="password2" placeholder="Confirm Password" />
+        <ng-template [ngIf]="passwordBlank">
             <div>
-                <p class='error-text'>Passwords can not be blank!</p>
+                <p class="error-text">Passwords can not be blank!</p>
             </div>
         </ng-template>
-        <ng-template [ngIf]='passwordError'>
+        <ng-template [ngIf]="passwordError">
             <div>
-                <p class='error-text'>Passwords do not match!</p>
+                <p class="error-text">Passwords do not match!</p>
             </div>
         </ng-template>
-        <input type='text' matInput [(ngModel)]='username' placeholder='Username' />
-        <ng-template [ngIf]='usernameInUseError'>
+        <input type="text" matInput [(ngModel)]="username" placeholder="Username" />
+        <ng-template [ngIf]="usernameInUseError">
             <div>
-                <p class='error-text'>Username has already been registered.  Please choose a different username!</p>
+                <p class="error-text">Username has already been registered. Please choose a different username!</p>
             </div>
         </ng-template>
-        <input type='text' matInput [(ngModel)]='firstName' placeholder='First Name' />
-        <input type='text' matInput [(ngModel)]='lastName' placeholder='Last Name' />
-        <input type='number' matInput [(ngModel)]='phone' placeholder='Phone Number' />
-        <button type='submit' (click)='register()' class='register-button'>Register</button>
+        <input type="text" matInput [(ngModel)]="firstName" placeholder="First Name" />
+        <input type="text" matInput [(ngModel)]="lastName" placeholder="Last Name" />
+        <input type="number" matInput [(ngModel)]="phone" placeholder="Phone Number" />
+        <button type="submit" (click)="register()" class="register-button">Register</button>
     </div>
 </div>
