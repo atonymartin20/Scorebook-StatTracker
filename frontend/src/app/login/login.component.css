@@ -97,3 +97,9 @@ input {
     border-radius: 5px;
     color: #041E42;
 }
+
+.error-text {
+    color: red;
+    margin: 0px 0px 10px 0px;
+    font-size: 1.2rem;
+}
