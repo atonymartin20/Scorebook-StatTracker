@@ -14,7 +14,7 @@ export class UserService {
   public login(credentials) {
     environment.userInfo = null;
     environment.userInfo = credentials;
-    return this.httpClient.post(`${environment.apiUrl}/api/authenticationRouter/login`, credentials).pipe(retry(3), catchError(this.handleErrorLogin));
+    return this.httpClient.post(`${environment.apiUrl}/api/authenticationRouter/login`, credentials).pipe(retry(1), catchError(this.handleError));
   }
 
   public register(credentials) {
@@ -42,19 +42,6 @@ export class UserService {
     return this.httpClient.post(`${environment.apiUrl}/api/userRouter/email`, userInfo, httpOptions).pipe(retry(0), catchError(this.handleError));
   }
 
-  handleErrorLogin(error: HttpErrorResponse) {
-    let errorMessage = 'Unknown error!';
-    if (error.error instanceof ErrorEvent) {
-      // Client-side errors
-      errorMessage = `Error: ${error.error.message}`;
-    } else {
-      // Server-side errors
-      errorMessage = `Username or password is incorrect.`;
-    }
-    window.alert(errorMessage);
-    return throwError(errorMessage);
-  }
-
   handleError(error: HttpErrorResponse) {
     let errorMessage = 'Unknown error!';
     console.log(error);
@@ -68,4 +55,3 @@ export class UserService {
     return throwError(errorMessage);
   }
 }
-

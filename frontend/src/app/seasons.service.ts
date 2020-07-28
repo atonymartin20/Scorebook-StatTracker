@@ -22,16 +22,15 @@ export class SeasonsService {
   }
 
   handleError(error: HttpErrorResponse) {
-    console.log(error)
     let errorMessage = 'Unknown error!';
+    console.log(error)
     if (error.error instanceof ErrorEvent) {
       // Client-side errors
       errorMessage = `Error: ${error.error.message}`;
     } else {
       // Server-side errors
-      errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
+      errorMessage = `Error Code: ${error.status}\nMessage: ${error.error.error}`;
     }
-    window.alert(errorMessage);
     return throwError(errorMessage);
   }
 }
