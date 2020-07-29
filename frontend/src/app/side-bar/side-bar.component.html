@@ -1,0 +1,6 @@
+<div class="side-bar-outside-container">
+    <h4 class="seasons-bar">Your Seasons</h4>
+    <li *ngFor="let season of seasonsInfo" routerLink="/season/{{ season.id }}" class="list-item">
+        {{ season.name }}
+    </li>
+</div>
