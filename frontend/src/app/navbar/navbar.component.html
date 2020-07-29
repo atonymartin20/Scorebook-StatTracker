@@ -1,45 +1,45 @@
-<ng-template [ngIf]='token'>
-    <div class='container'>
-        <div class='hamburger-div'>
-            <img class='hamburger-icon' src='../../assets/images/hamburger_icon.png' (click)='activateDropdown()' />
+<ng-template [ngIf]="token">
+    <div class="container">
+        <div class="hamburger-div">
+            <img class="hamburger-icon" src="../../assets/images/hamburger_icon.png" (click)="activateDropdown()" />
         </div>
-    
-        <div class='logo'>
-            <p>{{title}}</p>
+
+        <div class="logo">
+            <p>{{ title }}</p>
         </div>
-    
+
         <nav>
-            <button class='nav-button' routerLink='/dashboard' >
+            <button class="nav-button" routerLink="/dashboard">
                 Home
             </button>
-            <button class='nav-button' routerLink='/heroes'>
-                Heroes
+            <button class="nav-button" routerLink="/button1">
+                Button 1
             </button>
-            <button class='nav-button' routerLink='/battle'>
-                Battle
+            <button class="nav-button" routerLink="/userSettings">
+                Settings
             </button>
         </nav>
     </div>
-    
-    <ng-template [ngIf]='activeDropdown'>
-        <div class='dropdown'>
+
+    <ng-template [ngIf]="activeDropdown">
+        <div class="dropdown">
             <ul>
                 <li>
-                    <h1 class='close' (click)='closeDropdown()'>X</h1>
+                    <h1 class="close" (click)="closeDropdown()">X</h1>
                 </li>
                 <li>
-                    <button routerLink='/dashboard' class='dropdown-button' (click)='closeDropdown()'>
+                    <button routerLink="/dashboard" class="dropdown-button" (click)="closeDropdown()">
                         Home
                     </button>
                 </li>
                 <li>
-                    <button routerLink='/heroes' class='dropdown-button' (click)='closeDropdown()'>
-                        Heroes
+                    <button routerLink="/button1" class="dropdown-button" (click)="closeDropdown()">
+                        Button 1
                     </button>
                 </li>
                 <li>
-                    <button routerLink='/battle' class='dropdown-button' (click)='closeDropdown()'>
-                        Battle
+                    <button routerLink="/userSettings" class="dropdown-button" (click)="closeDropdown()">
+                        Settings
                     </button>
                 </li>
             </ul>
@@ -47,47 +47,47 @@
     </ng-template>
 </ng-template>
 
-<ng-template [ngIf]='!token'>
-    <div class='container'>
-        <div class='hamburger-div'>
-            <img class='hamburger-icon' src='../../assets/images/hamburger_icon.png' (click)='activateDropdown()' />
+<ng-template [ngIf]="!token">
+    <div class="container">
+        <div class="hamburger-div">
+            <img class="hamburger-icon" src="../../assets/images/hamburger_icon.png" (click)="activateDropdown()" />
         </div>
-    
-        <div class='logo'>
-            <p>{{title}}</p>
+
+        <div class="logo">
+            <p>{{ title }}</p>
         </div>
-    
+
         <nav>
-            <button class='nav-button' routerLink='/welcome' >
+            <button class="nav-button" routerLink="/welcome">
                 Home
             </button>
-            <button class='nav-button' routerLink='/login' >
+            <button class="nav-button" routerLink="/login">
                 Login
             </button>
-            <button class='nav-button' routerLink='/register'>
+            <button class="nav-button" routerLink="/register">
                 Register
             </button>
         </nav>
     </div>
-    
-    <ng-template [ngIf]='activeDropdown'>
-        <div class='dropdown'>
+
+    <ng-template [ngIf]="activeDropdown">
+        <div class="dropdown">
             <ul>
                 <li>
-                    <h1 class='close' (click)='closeDropdown()'>X</h1>
+                    <h1 class="close" (click)="closeDropdown()">X</h1>
                 </li>
                 <li>
-                    <button routerLink='/welcome' class='dropdown-button' (click)='closeDropdown()'>
+                    <button routerLink="/welcome" class="dropdown-button" (click)="closeDropdown()">
                         Home
                     </button>
                 </li>
                 <li>
-                    <button routerLink='/login' class='dropdown-button' (click)='closeDropdown()'>
+                    <button routerLink="/login" class="dropdown-button" (click)="closeDropdown()">
                         Login
                     </button>
                 </li>
                 <li>
-                    <button routerLink='/register' class='dropdown-button' (click)='closeDropdown()'>
+                    <button routerLink="/register" class="dropdown-button" (click)="closeDropdown()">
                         Register
                     </button>
                 </li>
