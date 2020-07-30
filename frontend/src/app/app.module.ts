@@ -14,6 +14,8 @@ import { AuthorizeComponent } from './authorize/authorize.component';
 import { SideBarComponent } from './side-bar/side-bar.component';
 import { UserSettingsComponent } from './user-settings/user-settings.component';
 import { SeasonDetailsComponent } from './season-details/season-details.component';
+import { CreateSeasonComponent } from './create-season/create-season.component';
+import { SeasonSidebarComponent } from './season-sidebar/season-sidebar.component';
 
 @NgModule({
     declarations: [
@@ -27,6 +29,8 @@ import { SeasonDetailsComponent } from './season-details/season-details.componen
         SideBarComponent,
         UserSettingsComponent,
         SeasonDetailsComponent,
+        CreateSeasonComponent,
+        SeasonSidebarComponent,
     ],
     imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
     providers: [],

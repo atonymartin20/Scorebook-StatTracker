@@ -7,6 +7,7 @@ import { LandingPageComponent } from './landing-page/landing-page.component';
 import { AuthorizeComponent } from './authorize/authorize.component';
 import { UserSettingsComponent } from './user-settings/user-settings.component';
 import { SeasonDetailsComponent } from './season-details/season-details.component';
+import { CreateSeasonComponent } from './create-season/create-season.component';
 
 const routes: Routes = [
     { path: '', redirectTo: '/welcome', pathMatch: 'full' },
@@ -17,6 +18,7 @@ const routes: Routes = [
     { path: 'authorize', component: AuthorizeComponent },
     { path: 'userSettings', component: UserSettingsComponent },
     { path: 'season/:id', component: SeasonDetailsComponent },
+    { path: 'createSeason', component: CreateSeasonComponent },
 ];
 
 @NgModule({
