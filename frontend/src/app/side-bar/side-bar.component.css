@@ -29,3 +29,9 @@
     color: white;
     padding: 4px 4px 4px 10px;
 }
+
+@media(max-width: 600px) {
+    :host {
+        display: none;
+    }
+}

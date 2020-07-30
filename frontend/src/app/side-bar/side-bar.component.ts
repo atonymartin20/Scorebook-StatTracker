@@ -11,8 +11,10 @@ export class SideBarComponent implements OnInit {
     constructor() {}
     seasonsInfo = environment.seasonsInfo;
 
-    ngOnInit(): void {
-        console.log(environment);
-        console.log(this.seasonsInfo);
+    ngOnInit(): void {}
+
+    grabSeasonId(id) {
+        environment.activeSeason = id;
+        console.log(environment.activeSeason);
     }
 }
