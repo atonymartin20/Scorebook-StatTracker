@@ -15,7 +15,8 @@
     height: fit-content;
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
 }
 
 .create-season-div {
@@ -25,6 +26,7 @@
     flex-direction: column;
     padding: 5px;
     align-items: center;
+    margin-bottom: 25px;
 }
 
 .create-season-button {
@@ -34,7 +36,32 @@
     color: white;
     border-radius: 5px;
     height: 45px;
-    width: 200px;
+    width: 175px;
     font-size: 1.45rem;
     border: none;
+}
+
+.create-season-button-disabled {
+    margin-top: 20px;
+    margin-bottom: 5px;
+    background-color: grey;
+    color: black;
+    border-radius: 5px;
+    height: 45px;
+    width: 175px;
+    font-size: 1.45rem;
+    border: none;
+}
+
+.top-label {
+    width: 100%;
+    padding-left: 15px;
+}
+
+.spacing-div {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    margin-top: 10px;
 }

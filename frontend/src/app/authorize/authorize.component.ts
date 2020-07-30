@@ -41,6 +41,6 @@ export class AuthorizeComponent implements OnInit {
             );
         });
         let timeout: number;
-        timeout = window.setTimeout(() => {this.router.navigate(['/dashboard'])}, 500);
+        timeout = window.setTimeout(() => {this.router.navigate(['/dashboard'])}, 900);
     }
 }
