@@ -17,7 +17,7 @@ const routes: Routes = [
     { path: 'welcome', component: LandingPageComponent },
     { path: 'authorize', component: AuthorizeComponent },
     { path: 'userSettings', component: UserSettingsComponent },
-    { path: 'season/:id', component: SeasonDetailsComponent },
+    { path: 'season/details', component: SeasonDetailsComponent },
     { path: 'createSeason', component: CreateSeasonComponent },
 ];
 
