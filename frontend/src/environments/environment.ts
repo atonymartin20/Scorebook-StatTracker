@@ -8,6 +8,7 @@ export const environment = {
     userInfo: [],
     seasonsInfo: [],
     tokenData: null,
+    activeSeason: null,
 };
 
 /*
