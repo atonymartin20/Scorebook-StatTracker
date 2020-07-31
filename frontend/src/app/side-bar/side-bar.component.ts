@@ -15,6 +15,5 @@ export class SideBarComponent implements OnInit {
 
     grabSeasonId(id) {
         environment.activeSeason = id;
-        console.log(environment.activeSeason);
     }
 }
