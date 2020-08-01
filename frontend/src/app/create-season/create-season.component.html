@@ -1,1 +1,58 @@
-<p>create-season works!</p>
+<app-navbar></app-navbar>
+<div class='create-season-outside-container'>
+    <div class='create-season-inside-container'>
+        <p>Create a new season</p>
+        <ng-template [ngIf]='!step1'>
+            <ng-template [ngIf]='!step2'>
+                <ng-template [ngIf]='!step3'>
+                    <p class='help-text'>Add the name, number of teams, and number of games each team will play below</p>
+                    <input type='text' matInput [(ngModel)]='name' placeholder='Season Name' />
+                    <input type='number' matInput [(ngModel)]='teamCount' placeholder='Number of Teams' />
+                    <input type='number' matInput [(ngModel)]='gameCount' placeholder='Games per Team' />
+                    <div class='button-container-solo'>
+                        <button class='next-button' (click)='continueToStep1()'>Next</button>
+                    </div>
+                </ng-template>
+                <ng-template [ngIf]='step3'>
+                    Error
+                </ng-template>
+            </ng-template>
+            <ng-template [ngIf]='step2'>
+                Error
+            </ng-template>
+        </ng-template>
+        <ng-template [ngIf]='step1'>
+            <ng-template [ngIf]='!step2'>
+                <ng-template [ngIf]='!step3'>
+                    Step 1
+                    <div *ngFor="let element of teams">
+                        <input type="text" [(ngModel)]="element.name" (ngModelChange)='saveTeam(element)' />
+                      </div>
+                    <div class='button-container'>
+                        <button class='back-button' (click)='goBackToStep0()'>Back</button>
+                        <button class='next-button' (click)='continueToStep2()'>Next</button>
+                    </div>                
+                </ng-template>
+                <ng-template [ngIf]='step3'>
+                    Error
+                </ng-template>
+            </ng-template>
+            <ng-template [ngIf]='step2'>
+                <ng-template [ngIf]='step3'>
+                    Step 3
+                    <div class='button-container'>
+                        <button class='back-button' (click)='goBackToStep2()'>Back</button>
+                        <button class='next-button' (click)='continueToStep3()'>Next</button>
+                    </div>
+                </ng-template>
+                <ng-template [ngIf]='!step3'>
+                    Step 2
+                    <div class='button-container'>
+                        <button class='back-button' (click)='goBackToStep1()'>Back</button>
+                        <button class='next-button' (click)='continueToStep3()'>Next</button>
+                    </div>
+                </ng-template>
+            </ng-template>
+        </ng-template>
+    </div>
+</div>
