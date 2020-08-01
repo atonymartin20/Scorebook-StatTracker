@@ -24,9 +24,9 @@
         <ng-template [ngIf]='step1'>
             <ng-template [ngIf]='!step2'>
                 <ng-template [ngIf]='!step3'>
-                    Step 1
-                    <div *ngFor="let element of teams">
-                        <input type="text" [(ngModel)]="element.name" (ngModelChange)='saveTeam(element)' />
+                    <p class='help-text'>Add the names for each team below</p>
+                    <div *ngFor="let team of teams">
+                        <input type="text" [(ngModel)]="team.name" />
                       </div>
                     <div class='button-container'>
                         <button class='back-button' (click)='goBackToStep0()'>Back</button>
@@ -39,14 +39,20 @@
             </ng-template>
             <ng-template [ngIf]='step2'>
                 <ng-template [ngIf]='step3'>
-                    Step 3
+                    <p class='help-text'>Finalize season settings below</p>
+                    <p class='season-text'>Season Name: {{ name }}</p>
+                    <p class='season-text'>Number of Teams: {{ teamCount }}</p>
+                    <p class='season-text'>Games per Team: {{ gameCount }}</p>
                     <div class='button-container'>
                         <button class='back-button' (click)='goBackToStep2()'>Back</button>
-                        <button class='next-button' (click)='continueToStep3()'>Next</button>
+                        <button class='next-button' (click)='finalize()'>Next</button>
                     </div>
                 </ng-template>
                 <ng-template [ngIf]='!step3'>
-                    Step 2
+                    <p class='help-text'>Are these team names correct?</p>
+                    <div *ngFor="let team of teams">
+                        <p class='team-text'>Team  {{ team.teamNumber }}: {{ team.name }}</p>
+                    </div>
                     <div class='button-container'>
                         <button class='back-button' (click)='goBackToStep1()'>Back</button>
                         <button class='next-button' (click)='continueToStep3()'>Next</button>
