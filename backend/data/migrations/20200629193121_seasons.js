@@ -4,6 +4,7 @@ exports.up = function (knex, Promise) {
         seasons.string('name').notNullable();
         seasons.integer('adminUserId').unsigned().notNullable();
         seasons.integer('teamCount').defaultTo(0);
+        seasons.integer('gamesCount').defaultTo(0);
     })
 };
 
