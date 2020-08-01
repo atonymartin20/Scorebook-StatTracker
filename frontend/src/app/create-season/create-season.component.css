@@ -59,6 +59,7 @@ input {
     justify-content: center;
     width: 100%;
     padding: 5px;
+    margin-top: 5px;
 }
 
 .button-container {
@@ -66,8 +67,23 @@ input {
     justify-content: space-between;
     padding: 5px;
     width: 100%;
+    margin-top: 5px;
 }
 
 .help-text {
     font-weight: 300;
+}
+
+.team-text {
+    margin-top: 3px;
+    margin-bottom: 3px;
+    font-weight: 300;
+    color: #041e42;
+}
+
+.season-text {
+    margin-top: 3px;
+    margin-bottom: 3px;
+    font-weight: 300;
+    color: #041e42;
 }
