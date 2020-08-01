@@ -3,6 +3,7 @@ exports.up = function (knex, Promise) {
         seasons.increments();
         seasons.string('name').notNullable();
         seasons.integer('adminUserId').unsigned().notNullable();
+        seasons.integer('teamCount').defaultTo(0);
     })
 };
 
