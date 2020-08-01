@@ -1,0 +1,20 @@
+:host {
+    width: 100%;
+    font-size: 2.0rem;
+}
+
+.season-details-container {
+    width: 100%;
+    min-height: calc(100vh - 55px);
+    display: flex;
+}
+
+.season-details-inside-main-container {
+    padding: 5px;
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+}
