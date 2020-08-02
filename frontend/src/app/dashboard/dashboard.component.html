@@ -1,6 +1,37 @@
 <app-navbar></app-navbar>
 <div class='dashboard-outside-container'>
-    <div class='dashboard-left-sidebar'>
-
+    <app-side-bar></app-side-bar>
+    <div class='dashboard-inside-main-container'>
+        <p class='top-label'>Create your season now!</p>
+        <div class='spacing-div'>
+            <div class='create-season-div'>
+                Baseball
+                <button class='create-season-button' routerLink='/createSeason'>Begin Now</button>
+            </div>
+            <div class='create-season-div'>
+                Football
+                <button class='create-season-button-disabled' disabled>Unavailable</button>
+            </div>
+            <div class='create-season-div'>
+                Basketball
+                <button class='create-season-button-disabled' disabled>Unavailable</button>
+            </div>
+            <div class='create-season-div'>
+                Soccer
+                <button class='create-season-button-disabled' disabled>Unavailable</button>
+            </div>
+            <div class='create-season-div'>
+                Hockey
+                <button class='create-season-button-disabled' disabled>Unavailable</button>
+            </div>
+            <div class='create-season-div'>
+                Golf
+                <button class='create-season-button-disabled' disabled>Unavailable</button>
+            </div>
+            <div class='create-season-div'>
+                Racing
+                <button class='create-season-button-disabled' disabled>Unavailable</button>
+            </div>
+        </div>
     </div>
 </div>

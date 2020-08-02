@@ -25,7 +25,7 @@ router.get('/:id', (req, res) => {
         .findUserById(id)
         .then(user => {
             if(user == undefined) {
-                res.status(404).json({ message: 'No user with that id exists' });
+                res.status(404).json({ error: 'No user with that id exists' });
             }
             else {
                 res.json(user);
@@ -46,7 +46,7 @@ router.post('/username', (req, res) => {
         .findUserByUsername(user.username)
         .then(user => {
             if(user.length === 0) {
-                res.status(404).json({ message: 'No user with that username exists' });
+                res.status(404).json({ error: 'No user with that username exists' });
             }
             else {
                 res.json(user);
@@ -67,7 +67,7 @@ router.post('/email', (req, res) => {
         .findUserByEmail(user.email)
         .then(user => {
             if(user.length === 0) {
-                res.status(404).json({ message: 'No user with that email exists' });
+                res.status(404).json({ error: 'No user with that email exists' });
             }
             else {
                 res.json(user);
@@ -86,7 +86,7 @@ router.put('/:id', (req, res) => {
         .update(id, user)
         .then(updatedUser => {
             if(updatedUser === 0) {
-                res.status(404).json({ message: 'No user with that id exists' });
+                res.status(404).json({ error: 'No user with that id exists' });
             }
             else {
                 userModel

@@ -4,16 +4,25 @@ exports.seed = function (knex) {
             id: 1,
             name: 'Spring 2019 A League',
             adminUserId: 1,
+            teamCount: 4,
+            gameCount: 6,
+            sport: 'Baseball',
         },
         {
             id: 2,
             name: 'Summer 2019 B League',
             adminUserId: 1,
+            teamCount: 6,
+            gameCount: 6,
+            sport: 'Baseball',
         },
         {
             id: 3,
             name: 'Fall 2019 C League',
             adminUserId: 2,
+            teamCount: 8,
+            gameCount: 6,
+            sport: 'Baseball',
         },
     ]);
 };
