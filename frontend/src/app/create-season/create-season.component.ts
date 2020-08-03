@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from '../user.service';
 import { SeasonsService } from '../seasons.service';
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
-import { FormControl } from '@angular/forms';
 
 @Component({
     selector: 'app-create-season',
@@ -21,40 +19,60 @@ export class CreateSeasonComponent implements OnInit {
     step2:boolean = false;
     step3:boolean = false;
     teams = [];
+    nameError = false;
     
-    constructor() {}
+    constructor(private router: Router, private seasonService: SeasonsService) {}
 
     ngOnInit(): void {}
 
     finalize(): void {
         console.log('Finalize')
+        let seasonData = {
+            name: this.name,
+            adminUserId: environment.userInfo['id'],
+            teamCount: this.teamCount || 0,
+            gameCount: this.gameCount || 0,
+            sport: this.sport
+        }
+        console.log(seasonData)
+        // seeasonData needs name, adminUserId, gameCount, teamCount, sport
+        // needs name and adminUserId
+        // environment.activeSeason = ('seasonID returned from adding season')
+        // let timeout: number;
+        // timeout = window.setTimeout(() => {this.router.navigate(['/season/details'])}, 900);
     }
 
     continueToStep1(): void {
-        this.step1 = true;
-        this.step2 = false;
-        this.step3 = false;
-        if(this.addedTeams > this.teamCount) {
-            this.teams = []
-            for(let i = 1; i <= this.teamCount; i++) {
-                this.teams.push({"name": `Team ${i}`, "teamNumber": i});
-                this.addedTeams++;
-                if(this.addedTeams === this.teamCount) {
-                    break;
+        this.nameError = false;
+        if (this.name !== '') {
+            this.step1 = true;
+            this.step2 = false;
+            this.step3 = false;
+            if(this.addedTeams > this.teamCount) {
+                this.teams = []
+                for(let i = 1; i <= this.teamCount; i++) {
+                    this.teams.push({"name": `Team ${i}`, "teamNumber": i});
+                    this.addedTeams++;
+                    if(this.addedTeams === this.teamCount) {
+                        break;
+                    }
+                }
+            }
+    
+            if(this.addedTeams < this.teamCount) {
+                this.teams = []
+                this.addedTeams = 0;
+                for(let i = 1; i <= this.teamCount; i++) {
+                    this.teams.push({"name": `Team ${i}`, "teamNumber": i});
+                    this.addedTeams++;
+                    if(this.addedTeams === this.teamCount) {
+                        break;
+                    }
                 }
             }
         }
-
-        if(this.addedTeams < this.teamCount) {
-            this.teams = []
-            this.addedTeams = 0;
-            for(let i = 1; i <= this.teamCount; i++) {
-                this.teams.push({"name": `Team ${i}`, "teamNumber": i});
-                this.addedTeams++;
-                if(this.addedTeams === this.teamCount) {
-                    break;
-                }
-            }
+        else {
+            this.nameError = true;
         }
     }
 
