@@ -15,6 +15,7 @@ export class CreateSeasonComponent implements OnInit {
     teamCount = null;
     gameCount = null;
     addedTeams = 0;
+    sport = 'baseball';
     adminId = environment.userInfo['id']
     step1:boolean = false;
     step2:boolean = false;
@@ -28,7 +29,7 @@ export class CreateSeasonComponent implements OnInit {
     finalize(): void {
         console.log('Finalize')
     }
-    
+
     continueToStep1(): void {
         this.step1 = true;
         this.step2 = false;
