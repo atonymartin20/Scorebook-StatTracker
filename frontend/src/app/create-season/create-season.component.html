@@ -7,6 +7,11 @@
                 <ng-template [ngIf]='!step3'>
                     <p class='help-text'>Add the name, number of teams, and number of games each team will play below</p>
                     <input type='text' matInput [(ngModel)]='name' placeholder='Season Name' />
+                    <ng-template [ngIf]="nameError">
+                        <div>
+                            <p class="error-text">Your Season Name can not be blank!</p>
+                        </div>
+                    </ng-template>
                     <input type='number' matInput [(ngModel)]='teamCount' placeholder='Number of Teams' />
                     <input type='number' matInput [(ngModel)]='gameCount' placeholder='Games per Team' />
                     <div class='button-container-solo'>
