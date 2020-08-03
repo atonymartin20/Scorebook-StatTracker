@@ -21,6 +21,16 @@ export class SeasonsService {
         return this.httpClient.post(`${environment.apiUrl}/api/seasonRouter/seasonsByUser`, user, httpOptions).pipe(retry(0), catchError(this.handleError));
     }
 
+    public addSeason(seasonData) {
+        let httpOptions = {
+            headers: new HttpHeaders({
+                'Content-Type': 'application/json',
+                'authorization': environment.tokenData,
+            }),
+        };
+        return this.httpClient.post(`${environment.apiUrl}/api/seasonRouter/`, seasonData, httpOptions).pipe(retry(0), catchError(this.handleError));
+    }
+
     handleError(error: HttpErrorResponse) {
         let errorMessage = 'Unknown error!';
         console.log(error);
