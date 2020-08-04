@@ -32,7 +32,12 @@
                     <p class='help-text'>Add the names for each team below</p>
                     <div *ngFor="let team of teams">
                         <input type="text" [(ngModel)]="team.name" />
-                      </div>
+                    </div>
+                    <ng-template [ngIf]="teamNameError">
+                        <div>
+                            <p class="error-text">Team names can not be blank!</p>
+                        </div>
+                    </ng-template>
                     <div class='button-container'>
                         <button class='back-button' (click)='goBackToStep0()'>Back</button>
                         <button class='next-button' (click)='continueToStep2()'>Next</button>
@@ -50,7 +55,7 @@
                     <p class='season-text'>Games per Team: {{ gameCount }}</p>
                     <div class='button-container'>
                         <button class='back-button' (click)='goBackToStep2()'>Back</button>
-                        <button class='next-button' (click)='finalize()'>Next</button>
+                        <button class='next-button' (click)='finalize()'>Finalize</button>
                     </div>
                 </ng-template>
                 <ng-template [ngIf]='!step3'>
