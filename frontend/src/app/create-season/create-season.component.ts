@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SeasonsService } from '../seasons.service';
+import { TeamsService } from '../teams.service';
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
 
@@ -20,13 +21,13 @@ export class CreateSeasonComponent implements OnInit {
     step3:boolean = false;
     teams = [];
     nameError = false;
+    teamNameError = false;
     
-    constructor(private router: Router, private seasonService: SeasonsService) {}
+    constructor(private router: Router, private seasonService: SeasonsService, private teamService: TeamsService) {}
 
     ngOnInit(): void {}
 
     finalize(): void {
-        console.log('Finalize')
         let seasonData = {
             name: this.name,
             adminUserId: environment.userInfo['id'],
@@ -34,12 +35,38 @@ export class CreateSeasonComponent implements OnInit {
             gameCount: this.gameCount || 0,
             sport: this.sport
         }
-        console.log(seasonData)
-        // seeasonData needs name, adminUserId, gameCount, teamCount, sport
-        // needs name and adminUserId
-        // environment.activeSeason = ('seasonID returned from adding season')
-        // let timeout: number;
-        // timeout = window.setTimeout(() => {this.router.navigate(['/season/details'])}, 900);
+        this.seasonService.addSeason(seasonData).subscribe(
+            (seasonData: any[]) => {
+                environment.activeSeason = seasonData
+                this.seasonService.grabSeasonData(environment.userInfo, environment.tokenData).subscribe(
+                    (allSeasonData: any[]) => {
+                        environment.seasonsInfo = allSeasonData;
+                        this.teams.map((team, index) => {
+                            let teamData = {
+                                teamName: team.name,
+                                seasonId: seasonData
+                            }
+                            this.teamService.addTeam(teamData).subscribe(
+                                (individualTeamData: any[]) => {
+                                    console.log(individualTeamData)
+                                },
+                                (error) => {
+                                    console.log(error);
+                                }
+                            )
+                        })
+                    },
+                    (error) => {
+                        console.log(error);
+                    }
+                );
+                let timeout: number;
+                timeout = window.setTimeout(() => {this.router.navigate(['/season/details'])}, 900);
+            },
+            (error) => {
+                console.log(error);
+            }
+        );
     }
 
     continueToStep1(): void {
@@ -83,10 +110,19 @@ export class CreateSeasonComponent implements OnInit {
     }
 
     continueToStep2(): void {
-        console.log(this.teams)
-        this.step1 = true;
-        this.step2 = true;
-        this.step3 = false;
+        this.teamNameError = false;
+        this.teams.map((team, index) => {
+            if (team.name !== "") {}
+            else {
+                console.log('Team name can not be empty')
+                this.teamNameError = true;
+            }
+        })
+        if(this.teamNameError === false) {
+            this.step1 = true;
+            this.step2 = true;
+            this.step3 = false;
+        }
     }
 
     goBackToStep1(): void {
