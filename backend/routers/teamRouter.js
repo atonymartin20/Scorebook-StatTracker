@@ -85,7 +85,7 @@ router.post('/', (req, res) => {
         teamModel
             .insert(team)
             .then(team => {
-                res.json(team);
+                res.json(team[0]);
             })
             .catch(err => {
                 res.status(500).json({ error: 'Could not add team', err });
