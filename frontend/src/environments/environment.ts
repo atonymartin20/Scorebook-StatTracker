@@ -9,6 +9,7 @@ export const environment = {
     seasonsInfo: [],
     tokenData: null,
     activeSeason: null,
+    teamsInSeason: null,
 };
 
 /*
