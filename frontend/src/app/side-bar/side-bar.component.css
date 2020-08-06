@@ -30,7 +30,13 @@
     padding: 4px 4px 4px 10px;
 }
 
-@media(max-width: 600px) {
+@media(max-width: 850px) {
+    :host {
+        max-width: 275px;
+    }
+}
+
+@media(max-width: 650px) {
     :host {
         display: none;
     }

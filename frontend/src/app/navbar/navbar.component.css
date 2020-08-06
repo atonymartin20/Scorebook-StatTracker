@@ -96,7 +96,7 @@ li {
     height: 45px;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 650px) {
     .hamburger-div {
         display: flex;
     }
