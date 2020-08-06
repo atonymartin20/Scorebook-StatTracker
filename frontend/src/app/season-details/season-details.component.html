@@ -2,24 +2,32 @@
 <div class='season-details-container'>
     <app-season-sidebar></app-season-sidebar>
     <div class='season-details-inside-main-container'>
-        <ng-template [ngIf]="edit">
-            <div class='placement-div'><span>Season Name: &nbsp;</span> <input type='text' matInput [(ngModel)]="season['name']" placeholder='Season Name' /></div>
-            <div class='placement-div'><span>Number of Teams: &nbsp;</span> <input type='number' matInput [(ngModel)]="season['teamCount']" placeholder='Number of Teams' /></div>
-            <div class='placement-div'><span>Games per Team: &nbsp;</span><input type='number' matInput [(ngModel)]="season['gameCount']" placeholder='Games per Team' /></div>
-            <button class='edit-button' (click)='editSeason()'>Finish Edit</button>
-            <button class='delete-button' (click)='deleteSeason()'>Delete Season</button>
+        <ng-template [ngIf]="delete">
+            <p>Are you sure you want to delete this season?</p>
+            <button class='edit-button' (click)='editSeason()'>Yes</button>
+            <button class='delete-button' (click)='toggleDelete()'>No</button>
         </ng-template>
 
-        <ng-template [ngIf]="!edit">
-            <button (click)='allowEdit()'>Edit</button>
-            <p class='info-text'>Season Name: {{ season['name'] }}</p>
-            <p class='info-text'>Number of Teams: {{ season['teamCount'] }}</p>
-            <p class='info-text'>Games per Team: {{ season['gameCount'] }}</p>
-            <p class='info-text'>Teams:</p>
-            <ul>
-                <li *ngFor="let team of teamsInSeason">{{ team['teamName'] }}</li>
-            </ul>
-            <button class='delete-button' (click)='deleteSeason()'>Delete Season</button>
+        <ng-template [ngIf]="!delete">
+            <ng-template [ngIf]="edit">
+                <div class='placement-div'><span>Season Name: &nbsp;</span> <input type='text' matInput [(ngModel)]="season['name']" placeholder='Season Name' /></div>
+                <div class='placement-div'><span>Number of Teams: &nbsp;</span> <input type='number' matInput [(ngModel)]="season['teamCount']" placeholder='Number of Teams' /></div>
+                <div class='placement-div'><span>Games per Team: &nbsp;</span><input type='number' matInput [(ngModel)]="season['gameCount']" placeholder='Games per Team' /></div>
+                <button class='edit-button' (click)='editSeason()'>Finish Edit</button>
+                <button class='delete-button' (click)='toggleDelete()'>Delete Season</button>
+            </ng-template>
+    
+            <ng-template [ngIf]="!edit">
+                <button (click)='toggleEdit()'>Edit</button>
+                <p class='info-text'>Season Name: {{ season['name'] }}</p>
+                <p class='info-text'>Number of Teams: {{ season['teamCount'] }}</p>
+                <p class='info-text'>Games per Team: {{ season['gameCount'] }}</p>
+                <p class='info-text'>Teams:</p>
+                <ul>
+                    <li *ngFor="let team of teamsInSeason">{{ team['teamName'] }}</li>
+                </ul>
+                <button class='delete-button' (click)='toggleDelete()'>Delete Season</button>
+            </ng-template>
         </ng-template>
     </div>
 </div>
