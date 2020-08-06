@@ -2,6 +2,20 @@
 <div class='season-details-container'>
     <app-season-sidebar></app-season-sidebar>
     <div class='season-details-inside-main-container'>
-        <p>season-details works!</p>
+        <ng-template [ngIf]="edit">
+            <div class='placement-div'><span>Season Name: &nbsp;</span> <input type='text' matInput [(ngModel)]="season['name']" placeholder='Season Name' /></div>
+            <div class='placement-div'><span>Number of Teams: &nbsp;</span> <input type='number' matInput [(ngModel)]="season['teamCount']" placeholder='Number of Teams' /></div>
+            <div class='placement-div'><span>Games per Team: &nbsp;</span><input type='number' matInput [(ngModel)]="season['gameCount']" placeholder='Games per Team' /></div>
+        </ng-template>
+
+        <ng-template [ngIf]="!edit">
+            <button (click)='allowEdit()'>Edit</button>
+            <p class='info-text'>Season Name: {{ season['name'] }}</p>
+            <p class='info-text'>Number of Teams: {{ season['teamCount'] }}</p>
+            <p class='info-text'>Games per Team: {{ season['gameCount'] }}</p>
+            <ul>
+                <li *ngFor="let team of teamsInSeason">{{ team['teamName'] }}</li>
+            </ul>
+        </ng-template>
     </div>
 </div>

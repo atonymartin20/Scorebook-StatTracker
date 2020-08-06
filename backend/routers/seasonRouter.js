@@ -85,7 +85,7 @@ router.post('/', (req, res) => {
         seasonModel
             .insert(season)
             .then(season => {
-                res.json(season);
+                res.json(season[0]);
             })
             .catch(err => {
                 res.status(500).json({ error: 'Could not add season', err });
