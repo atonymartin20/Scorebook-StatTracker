@@ -73,23 +73,6 @@ button:hover {
     justify-content: center;
 }
 
-/* .helper {
-    width: 100%;
-    min-height: 250px;
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-    flex-wrap: wrap;
-}
-
-.steps {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    padding: 15px;
-} */
-
 .screenshot-section {
     background-color: #350442;
     width: 100%;
