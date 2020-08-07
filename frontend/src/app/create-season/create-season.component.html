@@ -55,7 +55,7 @@
                     <p class='season-text'>Games per Team: {{ gameCount }}</p>
                     <div class='button-container'>
                         <button class='back-button' (click)='goBackToStep2()'>Back</button>
-                        <button class='next-button' (click)='finalize()'>Finalize</button>
+                        <button class='next-button' (click)='finalize()'  [disabled]='disabledButton' >Finalize</button>
                     </div>
                 </ng-template>
                 <ng-template [ngIf]='!step3'>

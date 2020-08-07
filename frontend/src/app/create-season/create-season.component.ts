@@ -20,14 +20,16 @@ export class CreateSeasonComponent implements OnInit {
     step2:boolean = false;
     step3:boolean = false;
     teams = [];
-    nameError = false;
-    teamNameError = false;
+    nameError:boolean = false;
+    teamNameError:boolean = false;
+    disabledButton:boolean  = false;
     
     constructor(private router: Router, private seasonService: SeasonsService, private teamService: TeamsService) {}
 
     ngOnInit(): void {}
 
     finalize(): void {
+        this.disabledButton = true;
         let seasonData = {
             name: this.name,
             adminUserId: environment.userInfo['id'],
@@ -41,15 +43,12 @@ export class CreateSeasonComponent implements OnInit {
                 this.seasonService.grabSeasonData(environment.userInfo, environment.tokenData).subscribe(
                     (allSeasonData: any[]) => {
                         environment.seasonsInfo = allSeasonData;
-                        this.teams.map((team, index) => {
+                        this.teams.map((team) => {
                             let teamData = {
                                 teamName: team.name,
                                 seasonId: seasonData
                             }
                             this.teamService.addTeam(teamData).subscribe(
-                                (individualTeamData: any[]) => {
-                                    console.log(individualTeamData)
-                                },
                                 (error) => {
                                     console.log(error);
                                 }
