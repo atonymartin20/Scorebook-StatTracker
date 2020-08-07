@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TeamsService } from '../teams.service';
+import { SeasonsService } from '../seasons.service';
+import { Router } from '@angular/router';
 
 import { environment } from 'src/environments/environment';
 
@@ -15,7 +17,7 @@ export class SeasonDetailsComponent implements OnInit {
     edit: boolean = false;
     delete: boolean = false;
 
-    constructor(private teamService: TeamsService) {}
+    constructor(private router: Router, private teamService: TeamsService, private seasonService: SeasonsService) {}
 
     ngOnInit(): void {
         if (environment.seasonsInfo.find((x) => x.id === environment.activeSeason)) {
@@ -55,9 +57,38 @@ export class SeasonDetailsComponent implements OnInit {
 
     editSeason(): void {
         this.edit = false;
+        this.seasonService.editSeason(this.season).subscribe(
+            (error) => {
+                console.log(error['error']);
+            }
+        )    
     }
 
     deleteSeason(): void {
-
+        this.seasonService.deleteSeason(this.season['id']).subscribe(
+            () => {
+                this.seasonService.grabSeasonData(environment.userInfo, environment.tokenData).subscribe(
+                    (seasonData: any[]) => {
+                        environment.seasonsInfo = seasonData;
+                        this.teamsInSeason.map((team) => {
+                            this.teamService.deleteTeam(team['id']).subscribe(
+                                (error) => {
+                                    console.log(error['error']);
+                                }
+                            )
+                        })
+                    },
+                    (error) => {
+                        console.log(error);
+                        environment.seasonsInfo = [];
+                    }
+                );
+            let timeout: number;
+            timeout = window.setTimeout(() => {this.router.navigate(['/dashboard'])}, 400);
+            },
+            (error) => {
+                console.log(error);
+            }
+        )    
     }
 }
