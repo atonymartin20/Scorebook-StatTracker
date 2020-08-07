@@ -6,7 +6,7 @@ exports.seed = function (knex) {
             adminUserId: 1,
             teamCount: 4,
             gameCount: 6,
-            sport: 'Baseball',
+            sport: 'baseball',
         },
         {
             id: 2,
@@ -14,7 +14,7 @@ exports.seed = function (knex) {
             adminUserId: 1,
             teamCount: 6,
             gameCount: 6,
-            sport: 'Baseball',
+            sport: 'baseball',
         },
         {
             id: 3,
@@ -22,7 +22,7 @@ exports.seed = function (knex) {
             adminUserId: 2,
             teamCount: 8,
             gameCount: 6,
-            sport: 'Baseball',
+            sport: 'baseball',
         },
     ]);
 };
