@@ -31,6 +31,26 @@ export class TeamsService {
         return this.httpClient.post(`${environment.apiUrl}/api/teamRouter/season`, id, httpOptions).pipe(retry(0), catchError(this.handleError));
     }
 
+    public editTeam(teamData) {
+        let httpOptions = {
+            headers: new HttpHeaders({
+                'Content-Type': 'application/json',
+                'authorization': environment.tokenData,
+            }),
+        };
+        return this.httpClient.put(`${environment.apiUrl}/api/teamRouter/${teamData['id']}`, teamData, httpOptions).pipe(retry(0), catchError(this.handleError));
+    }
+
+    public deleteTeam(id) {
+        let httpOptions = {
+            headers: new HttpHeaders({
+                'Content-Type': 'application/json',
+                'authorization': environment.tokenData,
+            }),
+        };
+        return this.httpClient.delete(`${environment.apiUrl}/api/teamRouter/${id}`, httpOptions).pipe(retry(0), catchError(this.handleError));
+    }
+
     handleError(error: HttpErrorResponse) {
         let errorMessage = 'Unknown error!';
         console.log(error);
