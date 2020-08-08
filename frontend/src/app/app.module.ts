@@ -16,6 +16,9 @@ import { UserSettingsComponent } from './user-settings/user-settings.component';
 import { SeasonDetailsComponent } from './season-details/season-details.component';
 import { CreateSeasonComponent } from './create-season/create-season.component';
 import { SeasonSidebarComponent } from './season-sidebar/season-sidebar.component';
+import { SeasonScheduleComponent } from './season-schedule/season-schedule.component';
+import { SeasonStandingsComponent } from './season-standings/season-standings.component';
+import { SeasonTeamsComponent } from './season-teams/season-teams.component';
 
 @NgModule({
     declarations: [
@@ -31,6 +34,9 @@ import { SeasonSidebarComponent } from './season-sidebar/season-sidebar.componen
         SeasonDetailsComponent,
         CreateSeasonComponent,
         SeasonSidebarComponent,
+        SeasonScheduleComponent,
+        SeasonStandingsComponent,
+        SeasonTeamsComponent,
     ],
     imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
     providers: [],
