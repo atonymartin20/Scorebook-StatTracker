@@ -28,6 +28,7 @@
     margin-top: 2px;
     color: white;
     padding: 4px 4px 4px 10px;
+    cursor: default;
 }
 
 @media(max-width: 850px) {
