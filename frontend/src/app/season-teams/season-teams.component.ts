@@ -3,16 +3,40 @@ import { Component, OnInit } from '@angular/core';
 import { environment } from 'src/environments/environment';
 
 @Component({
-  selector: 'app-season-teams',
-  templateUrl: './season-teams.component.html',
-  styleUrls: ['./season-teams.component.css']
+    selector: 'app-season-teams',
+    templateUrl: './season-teams.component.html',
+    styleUrls: ['./season-teams.component.css'],
 })
 export class SeasonTeamsComponent implements OnInit {
-  teams = environment.teamsInSeason
-  constructor() { }
+    teams = environment.teamsInSeason;
+    season = [];
+    equalTeams: boolean = false;
+    lessTeams: boolean = false;
+    extraTeams: boolean = false;
 
-  ngOnInit(): void {
-    console.log(environment)
-  }
+    constructor() {}
 
+    ngOnInit(): void {
+        if (environment.seasonsInfo.find((x) => x.id === environment.activeSeason)) {
+            let foundIndex = environment.seasonsInfo.findIndex((x) => x.id === environment.activeSeason);
+            this.season = environment.seasonsInfo[foundIndex];
+        }
+        console.log(environment);
+        console.log(this.season['teamCount']);
+        if(this.season['teamCount'] === this.teams.length) {
+            this.equalTeams = true;
+            this.lessTeams = false;
+            this.extraTeams = false;
+        }
+        else if (this.season['teamCount'] > this.teams.length) {
+            this.equalTeams = false;
+            this.lessTeams = true;
+            this.extraTeams = false;
+        }
+        else {
+            this.equalTeams = false;
+            this.lessTeams = false;
+            this.extraTeams = true;
+        }
+    }
 }
