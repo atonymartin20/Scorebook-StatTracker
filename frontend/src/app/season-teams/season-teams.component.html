@@ -1,9 +1,15 @@
 <app-navbar></app-navbar>
-<div class='season-teams-container'>
+<div class="season-teams-container">
     <app-season-sidebar></app-season-sidebar>
-    <div class='season-teams-inside-main-container'>
+    <div class="season-teams-inside-main-container">
         <div *ngFor="let team of teams">
-            {{team['teamName']}}
+            ID: {{ team['id'] }}
+            Name: {{ team['teamName'] }}
+            Wins: {{ team['wins'] }}
+            Losses: {{ team['losses'] }}
+            Ties: {{ team['ties'] }}
+            Runs For: {{ team['pointsScored'] }}
+            Runs Against: {{ team['pointsAgainst'] }}
         </div>
         <p>season-teams works!</p>
     </div>
