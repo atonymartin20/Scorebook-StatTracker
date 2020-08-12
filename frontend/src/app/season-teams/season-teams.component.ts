@@ -13,6 +13,9 @@ export class SeasonTeamsComponent implements OnInit {
     equalTeams: boolean = false;
     lessTeams: boolean = false;
     extraTeams: boolean = false;
+    teamNameError:boolean = false;
+    difference = 0;
+    addedTeams = [];
 
     constructor() {}
 
@@ -27,16 +30,24 @@ export class SeasonTeamsComponent implements OnInit {
             this.equalTeams = true;
             this.lessTeams = false;
             this.extraTeams = false;
+            this.difference = this.season['teamCount'] - this.teams.length;
         }
+
         else if (this.season['teamCount'] > this.teams.length) {
             this.equalTeams = false;
             this.lessTeams = true;
             this.extraTeams = false;
+            this.difference = this.season['teamCount'] - this.teams.length;
+            for(let i = 1; i <= this.difference; i++) {
+                this.addedTeams.push({"name": `Team ${i}`})
+            }
         }
+
         else {
             this.equalTeams = false;
             this.lessTeams = false;
             this.extraTeams = true;
+            this.difference = this.teams.length - this.season['teamCount'];
         }
     }
 }
