@@ -3,9 +3,8 @@
     <app-season-sidebar></app-season-sidebar>
     <div class="season-teams-inside-main-container">
         <ng-template [ngIf]="lessTeams">
-            <p class='help-text'>Your season team count does not match the current amount of created teams.
-            Please add {{ difference }} more teams.</p>
-            <div *ngFor="let team of addedTeams">
+            <p class="help-text">Your season team count does not match the current amount of created teams. Please add {{ difference }} more teams.</p>
+            <div *ngFor="let team of addedTeams" class='added-teams-div'>
                 <input type="text" [(ngModel)]="team.name" />
             </div>
             <ng-template [ngIf]="teamNameError">
@@ -13,10 +12,9 @@
                     <p class="error-text">Team names can not be blank!</p>
                 </div>
             </ng-template>
-            <!-- <div class='button-container'>
-                <button class='back-button' (click)='goBackToStep0()'>Back</button>
-                <button class='next-button' (click)='continueToStep2()'>Next</button>
-            </div>     -->
+            <div class="button-container">
+                <button class="add-teams-button" (click)="addTeams()" [disabled]='disabledButton'>Add Teams</button>
+            </div>
         </ng-template>
         <ng-template [ngIf]="!lessTeams">
             <ng-template [ngIf]="extraTeams">
@@ -25,18 +23,13 @@
             <ng-template [ngIf]="!extraTeams">
                 <ng-template [ngIf]="equalTeams">
                     <div *ngFor="let team of teams" class="team-div">
-                        ID: {{ team['id'] }}
-                        Name: {{ team['teamName'] }}
-                        Wins: {{ team['wins'] }}
-                        Losses: {{ team['losses'] }}
-                        Ties: {{ team['ties'] }}
-                        Runs For: {{ team['pointsScored'] }}
-                        Runs Against: {{ team['pointsAgainst'] }}
+                        ID: {{ team['id'] }} Name: {{ team['teamName'] }} Wins: {{ team['wins'] }} Losses: {{ team['losses'] }} Ties: {{ team['ties'] }} Runs For: {{ team['pointsScored'] }} Runs
+                        Against: {{ team['pointsAgainst'] }}
                     </div>
                     <p>season-teams works!</p>
                 </ng-template>
                 <ng-template [ngIf]="!equalTeams">
-                    <p>Error</p>
+                    <p>Error.  Please try again later.</p>
                 </ng-template>
             </ng-template>
         </ng-template>
