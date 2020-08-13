@@ -91,4 +91,31 @@ export class SeasonTeamsComponent implements OnInit {
 
         timeout = window.setTimeout(() => {this.router.navigate(['/season/details'])}, 900);
     }
+
+    deleteTeam(teamId): void {
+        console.log(`Removing Team with ID: ${teamId}`)
+        this.teamService.deleteTeam(teamId).subscribe(
+            (error) => {
+                console.log(error);
+            }
+        )
+        let seasonData = {
+            seasonId: this.season['id']
+        }
+        this.teamService.findTeamsBySeasonId(seasonData).subscribe(
+            (data: any[]) => {
+                data.sort(function(a, b) {
+                    if(a.teamName < b.teamName) { return -1 }
+                    if (a.teamName > b.teamName) { return 1 }
+                    return 0
+                })
+                environment.teamsInSeason = data;
+                this.teams = data;
+                console.log(data)
+            },
+            (error) => {
+                console.log(error);
+            }
+        )
+    }
 }
