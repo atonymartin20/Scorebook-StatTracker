@@ -18,15 +18,29 @@
         </ng-template>
         <ng-template [ngIf]="!lessTeams">
             <ng-template [ngIf]="extraTeams">
-                Need to Delete Teams
+                <div class='delete-teams-div'>
+                    <p class="help-text">Your season team count does not match the current amount of created teams. Please remove {{ difference }} teams.</p>
+                    <div *ngFor="let team of teams" class="team-div">
+                        <span>ID: {{ team['id'] }}</span>
+                        <span>Name: {{ team['teamName'] }}</span>
+                        <span>Wins: {{ team['wins'] }}</span>
+                        <span>Losses: {{ team['losses'] }}</span>
+                        <span>Ties: {{ team['ties'] }}</span>
+                        <button class='delete-team-button' (click)="deleteTeam(team['id'])" [disabled]='disabledButton'>Delete Team</button>
+                    </div>
+                </div>
             </ng-template>
             <ng-template [ngIf]="!extraTeams">
                 <ng-template [ngIf]="equalTeams">
-                    <div *ngFor="let team of teams" class="team-div">
-                        ID: {{ team['id'] }} Name: {{ team['teamName'] }} Wins: {{ team['wins'] }} Losses: {{ team['losses'] }} Ties: {{ team['ties'] }} Runs For: {{ team['pointsScored'] }} Runs
-                        Against: {{ team['pointsAgainst'] }}
+                    <div class='equal-teams-div'>
+                        <div *ngFor="let team of teams" class="team-div">
+                            <span>ID: {{ team['id'] }}</span>
+                            <span>Name: {{ team['teamName'] }}</span>
+                            <span>Wins: {{ team['wins'] }}</span>
+                            <span>Losses: {{ team['losses'] }}</span>
+                            <span>Ties: {{ team['ties'] }}</span>
+                        </div>
                     </div>
-                    <p>season-teams works!</p>
                 </ng-template>
                 <ng-template [ngIf]="!equalTeams">
                     <p>Error.  Please try again later.</p>
