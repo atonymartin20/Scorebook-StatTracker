@@ -3,8 +3,8 @@
     <app-season-sidebar></app-season-sidebar>
     <div class="season-teams-inside-main-container">
         <ng-template [ngIf]="lessTeams">
-            <p class="help-text">Your season team count does not match the current amount of created teams. Please add {{ difference }} more teams.</p>
-            <div *ngFor="let team of addedTeams" class='added-teams-div'>
+            <p class="help-text">Your season team count does not match the current amount of created teams. Please add {{ difference }} more team(s).</p>
+            <div *ngFor="let team of addedTeams" class="added-teams-div">
                 <input type="text" [(ngModel)]="team.name" />
             </div>
             <ng-template [ngIf]="teamNameError">
@@ -13,37 +13,45 @@
                 </div>
             </ng-template>
             <div class="button-container">
-                <button class="add-teams-button" (click)="addTeams()" [disabled]='disabledButton'>Add Teams</button>
+                <button class="add-teams-button" (click)="addTeams()" [disabled]="disabledButton">Add Teams</button>
             </div>
         </ng-template>
         <ng-template [ngIf]="!lessTeams">
             <ng-template [ngIf]="extraTeams">
-                <div class='delete-teams-div'>
-                    <p class="help-text">Your season team count does not match the current amount of created teams. Please remove {{ difference }} teams.</p>
+                <div class="delete-teams-div">
+                    <p class="help-text">Your season team count does not match the current amount of created teams. Please remove {{ difference }} team(s).</p>
                     <div *ngFor="let team of teams" class="team-div">
-                        <span>ID: {{ team['id'] }}</span>
-                        <span>Name: {{ team['teamName'] }}</span>
-                        <span>Wins: {{ team['wins'] }}</span>
-                        <span>Losses: {{ team['losses'] }}</span>
-                        <span>Ties: {{ team['ties'] }}</span>
-                        <button class='delete-team-button' (click)="deleteTeam(team['id'])" [disabled]='disabledButton'>Delete Team</button>
+                        <span class="team-name-span">{{ team['teamName'] }}</span>
+                        <button class="delete-team-button" (click)="deleteTeam(team['id'])" [disabled]="disabledButton">Delete Team</button>
                     </div>
                 </div>
             </ng-template>
             <ng-template [ngIf]="!extraTeams">
                 <ng-template [ngIf]="equalTeams">
-                    <div class='equal-teams-div'>
-                        <div *ngFor="let team of teams" class="team-div">
-                            <span>ID: {{ team['id'] }}</span>
-                            <span>Name: {{ team['teamName'] }}</span>
-                            <span>Wins: {{ team['wins'] }}</span>
-                            <span>Losses: {{ team['losses'] }}</span>
-                            <span>Ties: {{ team['ties'] }}</span>
+                    <ng-template [ngIf]="edit">
+                        <div class="equal-teams-div">
+                            <div *ngFor="let team of teams" class="team-div">
+                                <span class="team-name-span">{{ team['teamName'] }}</span>
+                                <span>Wins: {{ team['wins'] }}</span>
+                                <span>Losses: {{ team['losses'] }}</span>
+                                <span>Ties: {{ team['ties'] }}</span>
+                            </div>
                         </div>
-                    </div>
+                    </ng-template>
+                    <ng-template [ngIf]="!edit">
+                        <button (click)='toggleEdit()'>Edit</button>
+                        <div class="equal-teams-div">
+                            <div *ngFor="let team of teams" class="team-div">
+                                <span class="team-name-span">{{ team['teamName'] }}</span>
+                                <span>Wins: {{ team['wins'] }}</span>
+                                <span>Losses: {{ team['losses'] }}</span>
+                                <span>Ties: {{ team['ties'] }}</span>
+                            </div>
+                        </div>
+                    </ng-template>
                 </ng-template>
                 <ng-template [ngIf]="!equalTeams">
-                    <p>Error.  Please try again later.</p>
+                    <p>Error. Please try again later.</p>
                 </ng-template>
             </ng-template>
         </ng-template>
