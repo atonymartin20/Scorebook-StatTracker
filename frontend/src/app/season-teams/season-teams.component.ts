@@ -19,6 +19,8 @@ export class SeasonTeamsComponent implements OnInit {
     difference = 0;
     addedTeams = [];
     disabledButton:boolean  = false;
+    edit: boolean = false;
+    seasonContainsTies: boolean = false;
 
     constructor(private router: Router, private teamService: TeamsService) {}
 
@@ -28,6 +30,20 @@ export class SeasonTeamsComponent implements OnInit {
             this.season = environment.seasonsInfo[foundIndex];
         }
         this.teamCheck();
+        this.seasonContainsTiesCheck();
+    }
+
+    toggleEdit(): void {
+        this.edit = true;
+    }
+
+    seasonContainsTiesCheck(): void {
+        this.seasonContainsTies = false;
+        this.teams.map((team) => {
+            if(team.ties > 0) {
+                this.seasonContainsTies = true;
+            }
+        })
     }
 
     teamCheck(): void {
@@ -111,7 +127,6 @@ export class SeasonTeamsComponent implements OnInit {
                 })
                 environment.teamsInSeason = data;
                 this.teams = data;
-                console.log(data)
             },
             (error) => {
                 console.log(error);
