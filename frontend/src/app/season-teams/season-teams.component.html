@@ -31,7 +31,7 @@
                     <ng-template [ngIf]="edit">
                         <div class="equal-teams-div">
                             <div *ngFor="let team of teams" class="team-div">
-                                <span class="team-name-span">Name: <input type="text" [(ngModel)]="team.teamName" class="edit-input" /></span>
+                                <span>Name: <input type="text" [(ngModel)]="team.teamName" class="edit-input" /></span>
                                 <span>Wins: <input type="number" [(ngModel)]="team.wins" class="edit-input" /></span>
                                 <span>Losses: <input type="number" [(ngModel)]="team.losses" class="edit-input" /></span>
                                 <span>Ties: <input type="number" [(ngModel)]="team.ties" class="edit-input" /></span>
