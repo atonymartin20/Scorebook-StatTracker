@@ -23,4 +23,3 @@ This is a project that i built for a few reasons.  First, I wanted to build a la
  - [ ] Add Dashboard Sidebar into navbar for mobile design
  - [ ] Add Ability to Add Schedule
  - [ ] Add Ability to Add Players
- - [ ] Add ability to add, edit, and delete teams in a Season
