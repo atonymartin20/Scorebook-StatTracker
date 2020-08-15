@@ -108,6 +108,18 @@ export class SeasonTeamsComponent implements OnInit {
         timeout = window.setTimeout(() => {this.router.navigate(['/season/details'])}, 900);
     }
 
+    editTeams(): void {
+        this.teams.map((team) => {
+            this.teamService.editTeam(team).subscribe(
+                (error) => {
+                    console.log(error);
+                }
+            )
+            console.log(team)
+        })
+        this.edit = false;
+    }
+
     deleteTeam(teamId): void {
         console.log(`Removing Team with ID: ${teamId}`)
         this.teamService.deleteTeam(teamId).subscribe(
