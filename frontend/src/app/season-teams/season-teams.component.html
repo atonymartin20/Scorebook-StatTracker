@@ -29,8 +29,9 @@
             <ng-template [ngIf]="!extraTeams">
                 <ng-template [ngIf]="equalTeams">
                     <ng-template [ngIf]="edit">
+                        <button (click)='editTeams()'>Finish Edit</button>
                         <div class="equal-teams-div">
-                            <div *ngFor="let team of teams" class="team-div">
+                            <div *ngFor="let team of teams" class="edit-team-div">
                                 <span>Name: <input type="text" [(ngModel)]="team.teamName" class="edit-input" /></span>
                                 <span>Wins: <input type="number" [(ngModel)]="team.wins" class="edit-input" /></span>
                                 <span>Losses: <input type="number" [(ngModel)]="team.losses" class="edit-input" /></span>
@@ -44,7 +45,7 @@
                             <div *ngFor="let team of teams" class="team-div">
                                 <ng-template [ngIf]="seasonContainsTies">
                                     <span class="team-name-span">{{ team['teamName'] }}</span>
-                                    <span>Record:</span>
+                                    <span class='center-span'>Record</span>
                                     <span class='center-span'>{{ team['wins'] }} - {{ team['losses'] }} - {{ team['ties'] }}</span>
                                 </ng-template>
                                 <ng-template [ngIf]="!seasonContainsTies">
