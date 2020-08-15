@@ -1,10 +1,65 @@
 <app-navbar></app-navbar>
-<div class='season-teams-container'>
+<div class="season-teams-container">
     <app-season-sidebar></app-season-sidebar>
-    <div class='season-teams-inside-main-container'>
-        <div *ngFor="let team of teams">
-            {{team['teamName']}}
-        </div>
-        <p>season-teams works!</p>
+    <div class="season-teams-inside-main-container">
+        <ng-template [ngIf]="lessTeams">
+            <p class="help-text">Your season team count does not match the current amount of created teams. Please add {{ difference }} more team(s).</p>
+            <div *ngFor="let team of addedTeams" class="added-teams-div">
+                <input type="text" [(ngModel)]="team.name" />
+            </div>
+            <ng-template [ngIf]="teamNameError">
+                <div>
+                    <p class="error-text">Team names can not be blank!</p>
+                </div>
+            </ng-template>
+            <div class="button-container">
+                <button class="add-teams-button" (click)="addTeams()" [disabled]="disabledButton">Add Teams</button>
+            </div>
+        </ng-template>
+        <ng-template [ngIf]="!lessTeams">
+            <ng-template [ngIf]="extraTeams">
+                <div class="delete-teams-div">
+                    <p class="help-text">Your season team count does not match the current amount of created teams. Please remove {{ difference }} team(s).</p>
+                    <div *ngFor="let team of teams" class="team-div">
+                        <span class="team-name-span">{{ team['teamName'] }}</span>
+                        <button class="delete-team-button" (click)="deleteTeam(team['id'])" [disabled]="disabledButton">Delete Team</button>
+                    </div>
+                </div>
+            </ng-template>
+            <ng-template [ngIf]="!extraTeams">
+                <ng-template [ngIf]="equalTeams">
+                    <ng-template [ngIf]="edit">
+                        <div class="equal-teams-div">
+                            <div *ngFor="let team of teams" class="team-div">
+                                <span>Name: <input type="text" [(ngModel)]="team.teamName" class="edit-input" /></span>
+                                <span>Wins: <input type="number" [(ngModel)]="team.wins" class="edit-input" /></span>
+                                <span>Losses: <input type="number" [(ngModel)]="team.losses" class="edit-input" /></span>
+                                <span>Ties: <input type="number" [(ngModel)]="team.ties" class="edit-input" /></span>
+                            </div>
+                        </div>
+                    </ng-template>
+                    <ng-template [ngIf]="!edit">
+                        <button (click)='toggleEdit()'>Edit</button>
+                        <div class="equal-teams-div">
+                            <div *ngFor="let team of teams" class="team-div">
+                                <ng-template [ngIf]="seasonContainsTies">
+                                    <span class="team-name-span">{{ team['teamName'] }}</span>
+                                    <span>Record:</span>
+                                    <span class='center-span'>{{ team['wins'] }} - {{ team['losses'] }} - {{ team['ties'] }}</span>
+                                </ng-template>
+                                <ng-template [ngIf]="!seasonContainsTies">
+                                    <span class="team-name-span">{{ team['teamName'] }}</span>
+                                    <span class='center-span'>Record</span>
+                                    <span class='center-span'>{{ team['wins'] }} - {{ team['losses'] }}</span>
+                                </ng-template>
+                            </div>
+                        </div>
+                    </ng-template>
+                </ng-template>
+                <ng-template [ngIf]="!equalTeams">
+                    <p>Error. Please try again later.</p>
+                </ng-template>
+            </ng-template>
+        </ng-template>
     </div>
 </div>
