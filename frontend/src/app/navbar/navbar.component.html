@@ -12,11 +12,11 @@
             <button class="nav-button" routerLink="/dashboard">
                 Home
             </button>
-            <button class="nav-button" routerLink="/button1">
-                Button 1
-            </button>
             <button class="nav-button" routerLink="/userSettings">
                 Settings
+            </button>
+            <button class="nav-button" (click)='logoutUser()'>
+                Logout
             </button>
         </nav>
     </div>
@@ -33,13 +33,13 @@
                     </button>
                 </li>
                 <li>
-                    <button routerLink="/button1" class="dropdown-button" (click)="closeDropdown()">
-                        Button 1
+                    <button routerLink="/userSettings" class="dropdown-button" (click)="closeDropdown()">
+                        Settings
                     </button>
                 </li>
                 <li>
-                    <button routerLink="/userSettings" class="dropdown-button" (click)="closeDropdown()">
-                        Settings
+                    <button routerLink="/welcome" class="dropdown-button" (click)="logoutUser()">
+                        Logout
                     </button>
                 </li>
             </ul>
