@@ -42,6 +42,30 @@
                         Logout
                     </button>
                 </li>
+                <ng-template [ngIf]="dashboard">
+                    <li class='title-li'>Your Seasons</li>
+                    <div *ngFor="let season of seasonsInfo">
+                        <li>
+                            <button routerLink='/season/details' class="dropdown-button" (click)=grabSeasonId(season.id)>
+                                {{ season.name }}
+                            </button>
+                        </li>
+                    </div>
+                </ng-template>
+                <ng-template [ngIf]="seasonMode">
+                    <!-- <li>
+                        <button routerLink="/welcome" class="dropdown-button" (click)="logoutUser()">
+                            Logout
+                        </button>
+                    </li> -->
+                </ng-template>
+                <ng-template [ngIf]="teamMode">
+                    <!-- <li>
+                        <button routerLink="/welcome" class="dropdown-button" (click)="logoutUser()">
+                            Logout
+                        </button>
+                    </li> -->
+                </ng-template>
             </ul>
         </div>
     </ng-template>
