@@ -74,7 +74,6 @@ export class SeasonTeamsComponent implements OnInit {
 
     addTeams(): void {
         this.disabledButton = true;
-        console.log(this.addedTeams, this.season['id'])
         this.addedTeams.map((team) => {
             let teamData = {
                 teamName: team.name,
@@ -115,7 +114,6 @@ export class SeasonTeamsComponent implements OnInit {
                     console.log(error);
                 }
             )
-            console.log(team)
         })
         this.edit = false;
     }
