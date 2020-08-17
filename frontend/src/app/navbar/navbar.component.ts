@@ -12,10 +12,24 @@ export class NavbarComponent implements OnInit {
     title = 'Stat Tracker';
     activeDropdown = false;
     token = environment.tokenData;
+    seasonMode: boolean = false;
+    teamMode: boolean = false;
+    dashboard: boolean = false;
+    seasonsInfo = environment.seasonsInfo
 
     constructor(private router: Router) {}
 
-    ngOnInit(): void {}
+    ngOnInit(): void {
+        if(window.location.pathname === '/dashboard') {
+            this.dashboard = true;
+        }
+        if(window.location.pathname === '/season') {
+            this.seasonMode = true;
+        }
+        if(window.location.pathname === '/team') {
+            this.teamMode = true;
+        }
+    }
 
     activateDropdown(): void {
         this.activeDropdown = true;
@@ -32,5 +46,10 @@ export class NavbarComponent implements OnInit {
         environment.userInfo = null;
         let timeout: number;
         timeout = window.setTimeout(() => {this.router.navigate(['/welcome'])}, 300);
+    }
+
+    grabSeasonId(id) {
+        environment.activeSeason = id;
+        this.activeDropdown = false;
     }
 }
