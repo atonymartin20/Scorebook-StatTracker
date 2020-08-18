@@ -53,18 +53,22 @@
                     </div>
                 </ng-template>
                 <ng-template [ngIf]="seasonMode">
-                    <!-- <li>
-                        <button routerLink="/welcome" class="dropdown-button" (click)="logoutUser()">
-                            Logout
-                        </button>
-                    </li> -->
+                    <li class='title-li'>{{ season['name'] }}</li>
+                    <li>
+                        <button class="dropdown-button" routerLink="/season/details" >Details</button>
+                    </li>
+                    <li>
+                        <button class="dropdown-button" routerLink="/season/teams">Teams</button>
+                    </li>
+                    <li>
+                        <button class="dropdown-button" routerLink="/season/standings" >Standings</button>
+                    </li>
+                    <li>
+                        <button class="dropdown-button" routerLink="/season/schedule">Schedule</button>
+                    </li>
                 </ng-template>
                 <ng-template [ngIf]="teamMode">
-                    <!-- <li>
-                        <button routerLink="/welcome" class="dropdown-button" (click)="logoutUser()">
-                            Logout
-                        </button>
-                    </li> -->
+                    <!-- Insert Team Sidebar options here -->
                 </ng-template>
             </ul>
         </div>
