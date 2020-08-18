@@ -18,8 +18,5 @@ This is a project that i built for a few reasons.  First, I wanted to build a la
  
  # Future Updates
  - [ ] Add User Settings
- - [ ] Figure out hovers
- - [ ] Add Seasons Sidebar into navbar for mobile design
- - [ ] Add Dashboard Sidebar into navbar for mobile design
  - [ ] Add Ability to Add Schedule
  - [ ] Add Ability to Add Players
