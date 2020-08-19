@@ -17,8 +17,8 @@ This is a project that i built for a few reasons.  First, I wanted to build a la
 * [Back End Site - Hosted on Heroku](https://scorebook-adm.herokuapp.com/)
  
  # Future Updates
- - [ ] Add User Settings
  - [ ] Add Ability to Add Schedule
  - [ ] Add Ability to Add Players
  - [ ] Add Team Sidebar
  - [ ] Add Team Sidebar to Navbar
+ - [ ] Add User Settings
