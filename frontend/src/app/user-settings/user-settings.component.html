@@ -2,8 +2,8 @@
 <div class='user-settings-container'>
     <div class='user-settings-inside-main-container'>
         <ng-template [ngIf]="delete">
-            <p>Are you sure you want to delete this season?</p>
-            <button class='edit-button' (click)='deleteSeason()'>Yes</button>
+            <p>Are you sure you want to delete your account?  This action can not be undone!</p>
+            <button class='edit-button' (click)='deleteAccount()'>Yes</button>
             <button class='delete-button' (click)='toggleDelete()'>No</button>
         </ng-template>
 
@@ -18,13 +18,10 @@
     
             <ng-template [ngIf]="!edit">
                 <button (click)='toggleEdit()'>Edit</button>
-                <p class='info-text'>Season Name: {{ season['name'] }}</p>
-                <p class='info-text'>Number of Teams: {{ season['teamCount'] }}</p>
-                <p class='info-text'>Games per Team: {{ season['gameCount'] }}</p>
+                <p class='info-text'>Season Name: 0</p>
+                <p class='info-text'>Number of Teams: 0</p>
+                <p class='info-text'>Games per Team: 0</p>
                 <p class='info-text'>Teams:</p>
-                <ul>
-                    <li *ngFor="let team of teamsInSeason">{{ team['teamName'] }}</li>
-                </ul>
                 <button class='delete-button' (click)='toggleDelete()'>Delete Season</button>
             </ng-template>
         </ng-template>
