@@ -31,6 +31,10 @@ export class UserService {
         return this.httpClient.post(`${environment.apiUrl}/api/authenticationRouter/username`, credentials).pipe(retry(0), catchError(this.handleError));
     }
 
+    public deleteUser(credentials) {
+        return this.httpClient.delete(`${environment.apiUrl}/api/userRouter/${credentials}`).pipe(retry(0), catchError(this.handleError));
+    }
+
     public grabUserData(token) {
         let userInfo = environment.userInfo;
         let httpOptions = {
