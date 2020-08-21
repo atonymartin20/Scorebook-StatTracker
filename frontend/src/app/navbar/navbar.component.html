@@ -47,7 +47,7 @@
                     <div *ngFor="let season of seasonsInfo">
                         <li>
                             <button routerLink='/season/details' class="dropdown-button" (click)=grabSeasonId(season.id)>
-                                {{ season.name }}
+                                {{ season['name'] }}
                             </button>
                         </li>
                     </div>
