@@ -32,7 +32,13 @@ export class UserService {
     }
 
     public deleteUser(credentials) {
-        return this.httpClient.delete(`${environment.apiUrl}/api/userRouter/${credentials}`).pipe(retry(0), catchError(this.handleError));
+        let httpOptions = {
+            headers: new HttpHeaders({
+                'Content-Type': 'application/json',
+                'authorization': environment.tokenData,
+            }),
+        };
+        return this.httpClient.delete(`${environment.apiUrl}/api/userRouter/${credentials}`, httpOptions).pipe(retry(0), catchError(this.handleError));
     }
 
     public grabUserData(token) {
