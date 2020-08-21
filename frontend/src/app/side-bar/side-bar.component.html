@@ -1,6 +1,6 @@
 <div class="side-bar-outside-container">
     <h4 class="seasons-bar">Your Seasons</h4>
     <li *ngFor="let season of seasonsInfo" routerLink="/season/details" class="list-item" (click)=grabSeasonId(season.id)>
-        {{ season.name }}
+        {{ season['name'] }}
     </li>
 </div>
