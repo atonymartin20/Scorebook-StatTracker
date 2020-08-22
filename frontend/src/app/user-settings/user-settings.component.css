@@ -25,3 +25,17 @@
     padding: 20px;
     margin: 25px auto 0px auto;
 }
+
+button {
+    min-width: 150px;
+    height: 46px;
+    font-size: 1.3rem;
+    color: white;
+    background-color: #041e42;
+    border-radius: 5px;
+    border: none;
+    padding: 3px 3px;
+    margin-left: auto;
+    margin-bottom: 10px;
+}
+
