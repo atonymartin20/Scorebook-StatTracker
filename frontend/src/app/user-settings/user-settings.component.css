@@ -39,3 +39,8 @@ button {
     margin-bottom: 10px;
 }
 
+.delete-button {
+    margin-right: auto;
+    max-width: 800px;
+    width: 100%;
+}
