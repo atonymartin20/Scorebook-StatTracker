@@ -18,13 +18,13 @@
     
             <ng-template [ngIf]="!edit">
                 <button (click)='toggleEdit()'>Edit</button>
-                <p class='info-text'>Season Name: 0</p>
-                <p class='info-text'>Number of Teams: 0</p>
-                <p class='info-text'>eam: 0</p>
-                <p class='info-text'>t:</p>
+                <p class='info-text'>Email: {{ userInfo['email'] }}</p>
+                <p class='info-text'>Username: {{ userInfo['username'] }}</p>
+                <p class='info-text'>First Name: {{ userInfo['firstName'] }}</p>
+                <p class='info-text'>Last Name: {{ userInfo['lastName'] }}</p>
+                <p class='info-text'>Phone: {{ userInfo['phone'] }}</p>
                 <button class='delete-button' (click)='toggleDelete()'>Delete User</button>
             </ng-template>
         </ng-template>
-        <p>user-settings works!</p>
     </div>
 </div>
