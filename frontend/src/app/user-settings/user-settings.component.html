@@ -18,6 +18,9 @@
                     <div class='placement-div'><span>New Password: &nbsp;</span><input type='text' matInput [(ngModel)]="newPassword" placeholder='New Password' /></div>
                     <div class='placement-div'><span>Confirm Password: &nbsp;</span><input type='text' matInput [(ngModel)]="confirmPassword" placeholder='Confirm Password' /></div>
                 </ng-template>
+                <ng-template [ngIf]="passwordError">
+                    <p class="error-text">Your passwords do not match!</p>
+                </ng-template>
                 <button class='change-password-button' (click)='toggleChangePassword()'>Change Password</button>
                 <button class='edit-button' (click)='editUser()'>Finish Edit</button>
                 <button class='delete-button' (click)='toggleDelete()'>Delete User</button>
