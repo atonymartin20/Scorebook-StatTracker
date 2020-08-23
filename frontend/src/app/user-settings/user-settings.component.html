@@ -14,9 +14,13 @@
                 <div class='placement-div'><span>First Name: &nbsp;</span><input type='text' matInput [(ngModel)]="userInfo['firstName']" placeholder='First Name' /></div>
                 <div class='placement-div'><span>Last Name: &nbsp;</span><input type='text' matInput [(ngModel)]="userInfo['lastName']" placeholder='Last Name' /></div>
                 <div class='placement-div'><span>Phone: &nbsp;</span><input type='number' matInput [(ngModel)]="userInfo['phone']" placeholder='Phone' /></div>
-
+                <ng-template [ngIf]="changePassword">
+                    <div class='placement-div'><span>New Password: &nbsp;</span><input type='text' matInput [(ngModel)]="newPassword" placeholder='New Password' /></div>
+                    <div class='placement-div'><span>Confirm Password: &nbsp;</span><input type='text' matInput [(ngModel)]="confirmPassword" placeholder='Confirm Password' /></div>
+                </ng-template>
+                <button class='change-password-button' (click)='toggleChangePassword()'>Change Password</button>
                 <button class='edit-button' (click)='editUser()'>Finish Edit</button>
-                <button class='delete-button' (click)='toggleDelete()'>Delete Season</button>
+                <button class='delete-button' (click)='toggleDelete()'>Delete User</button>
             </ng-template>
     
             <ng-template [ngIf]="!edit">
