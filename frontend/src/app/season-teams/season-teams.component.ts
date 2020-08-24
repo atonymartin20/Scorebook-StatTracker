@@ -21,6 +21,7 @@ export class SeasonTeamsComponent implements OnInit {
     disabledButton:boolean  = false;
     edit: boolean = false;
     seasonContainsTies: boolean = false;
+    noTeams: boolean = true;
 
     constructor(private router: Router, private teamService: TeamsService) {}
 
@@ -47,14 +48,11 @@ export class SeasonTeamsComponent implements OnInit {
     }
 
     teamCheck(): void {
-        if(this.season['teamCount'] === this.teams.length) {
-            this.equalTeams = true;
-            this.lessTeams = false;
-            this.extraTeams = false;
-            this.difference = this.season['teamCount'] - this.teams.length;
+        if(this.teams === []) {
+            this.noTeams = true;
         }
-
-        else if (this.season['teamCount'] > this.teams.length) {
+        
+        if(this.teams.length === null && this.season['teamCount'] > 0) {
             this.equalTeams = false;
             this.lessTeams = true;
             this.extraTeams = false;
@@ -64,11 +62,36 @@ export class SeasonTeamsComponent implements OnInit {
             }
         }
 
-        else {
-            this.equalTeams = false;
+        else if(this.teams.length === null && this.season['teamCount'] === 0) {
+            this.equalTeams = true;
             this.lessTeams = false;
-            this.extraTeams = true;
-            this.difference = this.teams.length - this.season['teamCount'];
+            this.extraTeams = false;
+            this.difference = this.season['teamCount'] - this.teams.length;
+        }
+        else {
+            if(this.season['teamCount'] === this.teams.length) {
+                this.equalTeams = true;
+                this.lessTeams = false;
+                this.extraTeams = false;
+                this.difference = this.season['teamCount'] - this.teams.length;
+            }
+    
+            else if (this.season['teamCount'] > this.teams.length) {
+                this.equalTeams = false;
+                this.lessTeams = true;
+                this.extraTeams = false;
+                this.difference = this.season['teamCount'] - this.teams.length;
+                for(let i = 1; i <= this.difference; i++) {
+                    this.addedTeams.push({"name": `Team ${i}`})
+                }
+            }
+    
+            else {
+                this.equalTeams = false;
+                this.lessTeams = false;
+                this.extraTeams = true;
+                this.difference = this.teams.length - this.season['teamCount'];
+            }
         }
     }
 
