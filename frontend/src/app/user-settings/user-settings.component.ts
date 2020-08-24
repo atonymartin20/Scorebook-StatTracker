@@ -24,42 +24,34 @@ export class UserSettingsComponent implements OnInit {
 
     ngOnInit(): void {
         console.log(environment);
-        // email: 'testemail1@email.com';
-        // firstName: 'tester';
-        // googleId: '';
-        // id: 1;
-        // lastName: 'one';
-        // password: '$2a$04';
-        // phone: '1234567890';
-        // username: 'test1';
-        // seasonsInfo: (5) [{…}, {…}, {…}, {…}, {…}]
         this.seasonsInfo.map((season) => {
             console.log(season);
         });
     }
 
     deleteAccount(): void {
-        this.userService.deleteUser(this.userInfo['id']).subscribe(
-            () => {
-                this.seasonsInfo.map((season) => {
-                    console.log(season);
-                    this.seasonService.deleteSeason(season['id']).subscribe(() => {
-                        this.teamService.findTeamsBySeasonId(season['id']).subscribe((teamsInSeason: any[]) => {
-                            console.log(teamsInSeason);
-                            teamsInSeason.map((team) => {
-                                console.log(team);
-                                this.teamService.deleteTeam(team['id']).subscribe((error) => {
-                                    console.log(error['error']);
-                                });
-                            });
-                        });
+        this.seasonsInfo.map((season) => {
+            let seasonData = {
+                seasonId: season['id']
+            }
+            this.teamService.findTeamsBySeasonId(seasonData).subscribe((teamsInSeason: any[]) => {
+                teamsInSeason.map((team) => {
+                    console.log(team);
+                    this.teamService.deleteTeam(team['id']).subscribe((error) => {
+                        console.log(error['error']);
                     });
                 });
-            },
-            (error) => {
-                console.log(error);
-            }
-        );
+            });
+        //     this.seasonService.deleteSeason(season['id']).subscribe(() => {
+        //     });
+        });
+        // this.userService.deleteUser(this.userInfo['id']).subscribe(
+        //     (error) => {
+        //         console.log(error);
+        //     }
+        // );
+        // let timeout: number;
+        // timeout = window.setTimeout(() => {this.router.navigate(['/welcome'])}, 300);
     }
 
     toggleEdit(): void {
@@ -76,26 +68,37 @@ export class UserSettingsComponent implements OnInit {
 
     editUser(): void {
         this.passwordError = false;
-        console.log(this.newPassword, this.confirmPassword, this.userInfo['password']);
         if (this.changePassword) {
-            if (this.newPassword === this.confirmPassword && this.newPassword !== '') {
-                this.userInfo['password'] = this.newPassword;
-                console.log(this.userInfo['password']);
+            if (this.newPassword === this.confirmPassword && this.newPassword != '') {
+                let updatedUserInfo = {
+                    id: this.userInfo['id'],
+                    email: this.userInfo['email'],
+                    username: this.userInfo['username'],
+                    firstName: this.userInfo['firstName'], 
+                    lastName: this.userInfo['lastName'],
+                    phone: this.userInfo['phone'],
+                    password: this.newPassword
+                }
                 this.edit = !this.edit;
-                console.log(this.userInfo);
-                this.userService.editUser(this.userInfo).subscribe();
+                this.userService.editUser(updatedUserInfo).subscribe();
                 (error) => {
                     console.log(error);
                 };
             } else {
                 this.passwordError = true;
-                console.log('Failure');
             }
         }
         else {
             this.edit = !this.edit;
-            console.log(this.userInfo);
-            this.userService.editUser(this.userInfo).subscribe();
+            let updatedUserInfo = {
+                id: this.userInfo['id'],
+                email: this.userInfo['email'],
+                username: this.userInfo['username'],
+                firstName: this.userInfo['firstName'], 
+                lastName: this.userInfo['lastName'],
+                phone: this.userInfo['phone'],
+            }
+            this.userService.editUser(updatedUserInfo).subscribe();
             (error) => {
                 console.log(error);
             };
