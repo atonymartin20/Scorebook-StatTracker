@@ -83,7 +83,9 @@ router.post('/email', (req, res) => {
 router.put('/:id', (req, res) => {
     const { id } = req.params; 
     const user = req.body;
-    user.password = bcrypt.hashSync(user.password, 4);
+    if (user.password) {
+        user.password = bcrypt.hashSync(user.password, 4);
+    }
 
     userModel
         .update(id, user)
