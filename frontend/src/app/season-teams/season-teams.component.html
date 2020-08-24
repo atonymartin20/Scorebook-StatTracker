@@ -29,7 +29,7 @@
             <ng-template [ngIf]="!extraTeams">
                 <ng-template [ngIf]="equalTeams">
                     <ng-template [ngIf]="edit">
-                        <button (click)='editTeams()'>Finish Edit</button>
+                        <button (click)="editTeams()">Finish Edit</button>
                         <div class="equal-teams-div">
                             <div *ngFor="let team of teams" class="edit-team-div">
                                 <span>Name: <input type="text" [(ngModel)]="team.teamName" class="edit-input" /></span>
@@ -40,18 +40,21 @@
                         </div>
                     </ng-template>
                     <ng-template [ngIf]="!edit">
-                        <button (click)='toggleEdit()'>Edit</button>
+                        <button (click)="toggleEdit()">Edit</button>
                         <div class="equal-teams-div">
+                            <ng-template [ngIf]="noTeams">
+                                <span class="center-span">You have 0 teams selected in your season details. If this is an error, please edit your season details to increase the amount of teams.</span>
+                            </ng-template>
                             <div *ngFor="let team of teams" class="team-div">
                                 <ng-template [ngIf]="seasonContainsTies">
                                     <span class="team-name-span">{{ team['teamName'] }}</span>
-                                    <span class='center-span'>Record</span>
-                                    <span class='center-span'>{{ team['wins'] }} - {{ team['losses'] }} - {{ team['ties'] }}</span>
+                                    <span class="center-span">Record</span>
+                                    <span class="center-span">{{ team['wins'] }} - {{ team['losses'] }} - {{ team['ties'] }}</span>
                                 </ng-template>
                                 <ng-template [ngIf]="!seasonContainsTies">
                                     <span class="team-name-span">{{ team['teamName'] }}</span>
-                                    <span class='center-span'>Record</span>
-                                    <span class='center-span'>{{ team['wins'] }} - {{ team['losses'] }}</span>
+                                    <span class="center-span">Record</span>
+                                    <span class="center-span">{{ team['wins'] }} - {{ team['losses'] }}</span>
                                 </ng-template>
                             </div>
                         </div>
