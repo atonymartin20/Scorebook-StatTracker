@@ -16,7 +16,11 @@ export class UserSettingsComponent implements OnInit {
     userInfo = environment.userInfo;
     delete: boolean = false;
     edit: boolean = false;
+    changePassword: boolean = false;
+    passwordError: boolean = false;
     seasonsInfo = environment.seasonsInfo;
+    newPassword = '';
+    confirmPassword = '';
 
     ngOnInit(): void {
         console.log(environment);
@@ -64,5 +68,37 @@ export class UserSettingsComponent implements OnInit {
 
     toggleDelete(): void {
         this.delete = !this.delete;
+    }
+
+    toggleChangePassword(): void {
+        this.changePassword = !this.changePassword;
+    }
+
+    editUser(): void {
+        this.passwordError = false;
+        console.log(this.newPassword, this.confirmPassword, this.userInfo['password']);
+        if (this.changePassword) {
+            if (this.newPassword === this.confirmPassword && this.newPassword !== '') {
+                this.userInfo['password'] = this.newPassword;
+                console.log(this.userInfo['password']);
+                this.edit = !this.edit;
+                console.log(this.userInfo);
+                this.userService.editUser(this.userInfo).subscribe();
+                (error) => {
+                    console.log(error);
+                };
+            } else {
+                this.passwordError = true;
+                console.log('Failure');
+            }
+        }
+        else {
+            this.edit = !this.edit;
+            console.log(this.userInfo);
+            this.userService.editUser(this.userInfo).subscribe();
+            (error) => {
+                console.log(error);
+            };
+        }
     }
 }
