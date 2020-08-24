@@ -42,16 +42,16 @@ export class UserSettingsComponent implements OnInit {
                     });
                 });
             });
-        //     this.seasonService.deleteSeason(season['id']).subscribe(() => {
-        //     });
+            this.seasonService.deleteSeason(season['id']).subscribe(() => {
+            });
         });
-        // this.userService.deleteUser(this.userInfo['id']).subscribe(
-        //     (error) => {
-        //         console.log(error);
-        //     }
-        // );
-        // let timeout: number;
-        // timeout = window.setTimeout(() => {this.router.navigate(['/welcome'])}, 300);
+        this.userService.deleteUser(this.userInfo['id']).subscribe(
+            (error) => {
+                console.log(error);
+            }
+        );
+        let timeout: number;
+        timeout = window.setTimeout(() => {this.router.navigate(['/welcome'])}, 300);
     }
 
     toggleEdit(): void {
