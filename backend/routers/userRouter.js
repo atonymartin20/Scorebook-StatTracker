@@ -1,4 +1,5 @@
 const express = require('express');
+const bcrypt = require('bcryptjs');
 
 const userModel = require('../data/models/userModel.js');
 const authentication = require('../middleware/authentication.js');
@@ -82,6 +83,8 @@ router.post('/email', (req, res) => {
 router.put('/:id', (req, res) => {
     const { id } = req.params; 
     const user = req.body;
+    user.password = bcrypt.hashSync(user.password, 4);
+
     userModel
         .update(id, user)
         .then(updatedUser => {
