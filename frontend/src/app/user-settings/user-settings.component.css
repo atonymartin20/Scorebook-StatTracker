@@ -39,8 +39,46 @@ button {
     margin-bottom: 10px;
 }
 
+.edit-button {
+    margin-right: auto;
+    max-width: 800px;
+    width: 100%;
+    background-color: #422804;
+    margin-top: 20px;
+    margin-bottom: 0px;
+}
+
 .delete-button {
     margin-right: auto;
     max-width: 800px;
     width: 100%;
+    background-color: #350442;
+    margin-top: 20px;
+}
+
+.change-password-button {
+    margin-right: auto;
+    max-width: 800px;
+    width: 100%;
+    background-color: #041e42;
+    margin-top: 20px;
+}
+
+.info-text {
+    margin-bottom: 8px;
+}
+
+input {
+    font-size: 1.3rem;
+    margin-bottom: 15px;
+    padding: 8px;
+    border: 1px solid #041e42;
+    border-radius: 5px;
+    color: #041e42;
+}
+
+.error-text {
+    color: red;
+    margin: 0px 0px 10px 0px;
+    font-size: 1.4rem;
 }
