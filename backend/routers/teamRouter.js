@@ -43,7 +43,7 @@ router.post('/season', (req, res) => {
         .findTeamsBySeason(team.seasonId)
         .then(teams => {
             if(teams.length === 0) {
-                res.status(404).json({ error: 'No team with that seasonId exists' });
+                res.json([]);
             }
             else {
                 res.json(teams);
