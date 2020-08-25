@@ -11,6 +11,7 @@ import { CreateSeasonComponent } from './create-season/create-season.component';
 import { SeasonTeamsComponent } from './season-teams/season-teams.component';
 import { SeasonStandingsComponent } from './season-standings/season-standings.component';
 import { SeasonScheduleComponent } from './season-schedule/season-schedule.component';
+import { TeamDetailsComponent } from './team-details/team-details.component';
 
 const routes: Routes = [
     { path: '', redirectTo: '/welcome', pathMatch: 'full' },
@@ -25,6 +26,7 @@ const routes: Routes = [
     { path: 'season/standings', component: SeasonStandingsComponent },
     { path: 'season/schedule', component: SeasonScheduleComponent },
     { path: 'createSeason', component: CreateSeasonComponent },
+    { path: 'team/details', component: TeamDetailsComponent },
 ];
 
 @NgModule({

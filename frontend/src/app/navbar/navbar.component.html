@@ -12,11 +12,11 @@
             <button class="nav-button" routerLink="/dashboard">
                 Home
             </button>
-            <button class="nav-button" routerLink="/button1">
-                Button 1
-            </button>
             <button class="nav-button" routerLink="/userSettings">
                 Settings
+            </button>
+            <button class="nav-button" (click)='logoutUser()'>
+                Logout
             </button>
         </nav>
     </div>
@@ -33,15 +33,43 @@
                     </button>
                 </li>
                 <li>
-                    <button routerLink="/button1" class="dropdown-button" (click)="closeDropdown()">
-                        Button 1
-                    </button>
-                </li>
-                <li>
                     <button routerLink="/userSettings" class="dropdown-button" (click)="closeDropdown()">
                         Settings
                     </button>
                 </li>
+                <li>
+                    <button routerLink="/welcome" class="dropdown-button" (click)="logoutUser()">
+                        Logout
+                    </button>
+                </li>
+                <ng-template [ngIf]="dashboard">
+                    <li class='title-li'>Your Seasons</li>
+                    <div *ngFor="let season of seasonsInfo">
+                        <li>
+                            <button routerLink='/season/details' class="dropdown-button" (click)=grabSeasonId(season.id)>
+                                {{ season['name'] }}
+                            </button>
+                        </li>
+                    </div>
+                </ng-template>
+                <ng-template [ngIf]="seasonMode">
+                    <li class='title-li'>{{ season['name'] }}</li>
+                    <li>
+                        <button class="dropdown-button" routerLink="/season/details" >Details</button>
+                    </li>
+                    <li>
+                        <button class="dropdown-button" routerLink="/season/teams">Teams</button>
+                    </li>
+                    <li>
+                        <button class="dropdown-button" routerLink="/season/standings" >Standings</button>
+                    </li>
+                    <li>
+                        <button class="dropdown-button" routerLink="/season/schedule">Schedule</button>
+                    </li>
+                </ng-template>
+                <ng-template [ngIf]="teamMode">
+                    <!-- Insert Team Sidebar options here -->
+                </ng-template>
             </ul>
         </div>
     </ng-template>

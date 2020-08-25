@@ -1,4 +1,5 @@
 const express = require('express');
+const bcrypt = require('bcryptjs');
 
 const userModel = require('../data/models/userModel.js');
 const authentication = require('../middleware/authentication.js');
@@ -82,6 +83,10 @@ router.post('/email', (req, res) => {
 router.put('/:id', (req, res) => {
     const { id } = req.params; 
     const user = req.body;
+    if (user.password) {
+        user.password = bcrypt.hashSync(user.password, 4);
+    }
+
     userModel
         .update(id, user)
         .then(updatedUser => {
@@ -101,6 +106,24 @@ router.put('/:id', (req, res) => {
         })
         .catch(err => {
             res.status(500).json({ error: 'User cannot be modified', err });
+        });
+})
+
+// Delete
+router.delete('/:id', (req, res) => {
+    const { id } = req.params;
+    userModel
+        .remove(id)
+        .then(removedUser => {
+            if(removedUser === 0) {
+                res.status(404).json({ error: 'No user with that id exists' });
+            }
+            else {
+                res.json({ error: 'User has been deleted' });
+            };
+        })
+        .catch(err => {
+            res.status(500).json({ error: 'User cannot be removed', err });
         });
 })
 

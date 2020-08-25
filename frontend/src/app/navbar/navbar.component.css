@@ -96,6 +96,16 @@ li {
     height: 45px;
 }
 
+.title-li {
+    font-size: 1.65rem;
+    text-align: center;
+    color: white;
+    background-color: #350442;
+    margin: 0px;
+    padding: 5px;
+    border-radius: 5px;
+}
+
 @media (max-width: 650px) {
     .hamburger-div {
         display: flex;

@@ -31,6 +31,26 @@ export class UserService {
         return this.httpClient.post(`${environment.apiUrl}/api/authenticationRouter/username`, credentials).pipe(retry(0), catchError(this.handleError));
     }
 
+    public editUser(credentials) {
+        let httpOptions = {
+            headers: new HttpHeaders({
+                'Content-Type': 'application/json',
+                'authorization': environment.tokenData,
+            }),
+        };
+        return this.httpClient.put(`${environment.apiUrl}/api/userRouter/${credentials['id']}`, credentials, httpOptions).pipe(retry(0), catchError(this.handleError));
+    }
+
+    public deleteUser(credentials) {
+        let httpOptions = {
+            headers: new HttpHeaders({
+                'Content-Type': 'application/json',
+                'authorization': environment.tokenData,
+            }),
+        };
+        return this.httpClient.delete(`${environment.apiUrl}/api/userRouter/${credentials}`, httpOptions).pipe(retry(0), catchError(this.handleError));
+    }
+
     public grabUserData(token) {
         let userInfo = environment.userInfo;
         let httpOptions = {

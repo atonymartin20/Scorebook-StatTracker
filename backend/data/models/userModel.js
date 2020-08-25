@@ -24,4 +24,7 @@ module.exports = {
     update: (uid, changes) => {
         return db('users').where('id', uid).update(changes);
     },
+    remove: (id) => {
+        return db('users').where('id', id).del();
+    },
 };
