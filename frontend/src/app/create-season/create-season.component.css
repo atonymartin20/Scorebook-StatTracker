@@ -54,6 +54,16 @@ input {
     padding: 3px 3px;
 }
 
+.back-button {
+    min-width: 150px;
+    height: 46px;
+    font-size: 1.3rem;
+    color: black;
+    background-color: #c9c7c6;
+    border-radius: 5px;
+    border: none;
+    padding: 3px 3px;
+}
 .button-container-solo {
     display: flex;
     justify-content: center;
@@ -92,4 +102,19 @@ input {
     color: red;
     margin: 0px 0px 10px 0px;
     font-size: 1.2rem;
+}
+
+@media (max-width: 600px) {
+    .button-container {
+        flex-direction: column;
+    }
+
+    .next-button {
+        width: 100%;
+    }
+
+    .back-button {
+        width: 100%;
+        margin-bottom: 10px;
+    }
 }
