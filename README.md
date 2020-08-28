@@ -21,4 +21,3 @@ This is a project that i built for a few reasons.  First, I wanted to build a la
  - [ ] Add Ability to Add Players
  - [ ] Add Team Sidebar
  - [ ] Add Team Sidebar to Navbar
- - [ ] Add User Settings
