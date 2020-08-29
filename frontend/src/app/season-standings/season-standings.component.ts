@@ -31,4 +31,8 @@ export class SeasonStandingsComponent implements OnInit {
             }
         })
     }
+
+    grabTeamId(id) {
+        environment.activeTeam = id;
+    }
 }
