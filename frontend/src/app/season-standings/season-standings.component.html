@@ -14,7 +14,7 @@
                   <th>Differential</th>
                 </tr>
                 <tr *ngFor="let team of teams">
-                    <td class='name-td'>{{ team['teamName'] }}</td>
+                    <td class='name-td' routerLink="/team/details" (click)=grabTeamId(team.id)>{{ team['teamName'] }}</td>
                     <td>{{ team['wins'] }}</td>
                     <td>{{ team['losses'] }}</td>
                     <td>{{ team['ties'] }}</td>
