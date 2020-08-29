@@ -23,4 +23,4 @@ This is a project that i built for a few reasons.  First, I wanted to build a la
  - [ ] Add Team Sidebar to Navbar
 
  # Next
- - Add links to teams details page
+ - Add links to teams details page-
