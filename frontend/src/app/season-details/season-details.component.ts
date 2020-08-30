@@ -91,4 +91,8 @@ export class SeasonDetailsComponent implements OnInit {
             }
         )    
     }
+
+    grabTeamId(id) {
+        environment.activeTeam = id;
+    }
 }
