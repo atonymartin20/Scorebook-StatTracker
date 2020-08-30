@@ -24,7 +24,7 @@
                 <p class='info-text'>Games per Team: {{ season['gameCount'] }}</p>
                 <p class='info-text'>Teams:</p>
                 <ul>
-                    <li *ngFor="let team of teamsInSeason">{{ team['teamName'] }}</li>
+                    <li *ngFor="let team of teamsInSeason" routerLink="/team/details" (click)="grabTeamId(team.id)">{{ team['teamName'] }}</li>
                 </ul>
                 <button class='delete-button' (click)='toggleDelete()'>Delete Season</button>
             </ng-template>
