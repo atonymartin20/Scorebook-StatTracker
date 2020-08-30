@@ -1,20 +1,20 @@
 <app-navbar></app-navbar>
-<div class='season-standings-container'>
+<div class="season-standings-container">
     <app-season-sidebar></app-season-sidebar>
-    <div class='season-standings-inside-main-container'>
-        <ng-template [ngIf]='seasonContainsTies'>
+    <div class="season-standings-inside-main-container">
+        <ng-template [ngIf]="seasonContainsTies">
             <table>
                 <tr>
-                  <th>Team</th>
-                  <th>Wins</th>
-                  <th>Losses</th>
-                  <th>Ties</th>
-                  <th>Runs For</th>
-                  <th>Runs Against</th>
-                  <th>Differential</th>
+                    <th>Team</th>
+                    <th>Wins</th>
+                    <th>Losses</th>
+                    <th>Ties</th>
+                    <th>Runs For</th>
+                    <th>Runs Against</th>
+                    <th>Differential</th>
                 </tr>
                 <tr *ngFor="let team of teams">
-                    <td class='name-td' routerLink="/team/details" (click)=grabTeamId(team.id)>{{ team['teamName'] }}</td>
+                    <td class="name-td" routerLink="/team/details" (click)="grabTeamId(team.id)">{{ team['teamName'] }}</td>
                     <td>{{ team['wins'] }}</td>
                     <td>{{ team['losses'] }}</td>
                     <td>{{ team['ties'] }}</td>
@@ -22,27 +22,27 @@
                     <td>{{ team['pointsAgainst'] }}</td>
                     <td>{{ team['pointsScored'] - team['pointsAgainst'] }}</td>
                 </tr>
-              </table>
+            </table>
         </ng-template>
-        <ng-template [ngIf]='!seasonContainsTies'>
+        <ng-template [ngIf]="!seasonContainsTies">
             <table>
                 <tr>
-                  <th>Team</th>
-                  <th>Wins</th>
-                  <th>Losses</th>
-                  <th>Runs For</th>
-                  <th>Runs Against</th>
-                  <th>Differential</th>
+                    <th>Team</th>
+                    <th>Wins</th>
+                    <th>Losses</th>
+                    <th>Runs For</th>
+                    <th>Runs Against</th>
+                    <th>Differential</th>
                 </tr>
                 <tr *ngFor="let team of teams">
-                    <td class='name-td'>{{ team['teamName'] }}</td>
+                    <td class="name-td" routerLink="/team/details" (click)="grabTeamId(team.id)">{{ team['teamName'] }}</td>
                     <td>{{ team['wins'] }}</td>
                     <td>{{ team['losses'] }}</td>
                     <td>{{ team['pointsScored'] }}</td>
                     <td>{{ team['pointsAgainst'] }}</td>
                     <td>{{ team['pointsScored'] - team['pointsAgainst'] }}</td>
                 </tr>
-              </table>
+            </table>
         </ng-template>
     </div>
 </div>
