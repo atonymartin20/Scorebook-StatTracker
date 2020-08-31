@@ -1,4 +1,45 @@
 :host {
+    max-width: 350px;
     width: 100%;
-    font-size: 1.65rem;
+}
+
+.team-sidebar-outside-container {
+    background-color: #fcf4ff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-wrap: wrap;
+    min-height: calc(100vh - 55px);
+}
+
+.teams-bar {
+    background-color: #350442;
+    color: white;
+    width: 100%;
+    max-width: 100%;
+    text-align: center;
+    font-size: 1.7rem;
+}
+
+.list-item {
+    list-style-type: none;
+    background-color: #422804;
+    font-size: 1.45rem;
+    width: 100%;
+    margin-top: 2px;
+    color: white;
+    padding: 4px 4px 4px 10px;
+    cursor: default;
+}
+
+@media(max-width: 850px) {
+    :host {
+        max-width: 275px;
+    }
+}
+
+@media(max-width: 650px) {
+    :host {
+        display: none;
+    }
 }
