@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
+import { environment } from 'src/environments/environment';
+
+
 @Component({
     selector: 'app-team-sidebar',
     templateUrl: './team-sidebar.component.html',
@@ -7,6 +10,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TeamSidebarComponent implements OnInit {
     constructor() {}
+    team = environment.activeTeam;
 
-    ngOnInit(): void {}
+    ngOnInit(): void {
+        console.log(environment)
+    }
 }
