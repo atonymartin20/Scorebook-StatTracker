@@ -5,7 +5,9 @@ exports.up = function (knex, Promise) {
         seasons.integer('adminUserId').unsigned().notNullable();
         seasons.integer('teamCount').unsigned().defaultTo(0);
         seasons.integer('gameCount').unsigned().defaultTo(0);
-        seasons.string('sport');
+        seasons.string('sport').defaultTo('baseball');
+        seasons.integer('year').unsigned().defaultTo(2020);
+        seasons.string('timeOfYear').defaultTo('spring');
     })
 };
 
