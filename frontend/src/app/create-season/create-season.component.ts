@@ -15,10 +15,13 @@ export class CreateSeasonComponent implements OnInit {
     gameCount = null;
     addedTeams = 0;
     sport = 'baseball';
+    year = 2020;
+    timeOfYear = 'spring';
     adminId = environment.userInfo['id']
     step1:boolean = false;
     step2:boolean = false;
     step3:boolean = false;
+    step4:boolean = false;
     teams = [];
     nameError:boolean = false;
     teamNameError:boolean = false;
@@ -35,7 +38,9 @@ export class CreateSeasonComponent implements OnInit {
             adminUserId: environment.userInfo['id'],
             teamCount: this.teamCount || 0,
             gameCount: this.gameCount || 0,
-            sport: this.sport
+            sport: this.sport,
+            year: this.year,
+            timeOfYear: this.timeOfYear
         }
         this.seasonService.addSeason(seasonData).subscribe(
             (seasonData: any[]) => {
@@ -74,6 +79,7 @@ export class CreateSeasonComponent implements OnInit {
             this.step1 = true;
             this.step2 = false;
             this.step3 = false;
+            this.step4 = false;
             if(this.addedTeams > this.teamCount) {
                 this.teams = []
                 for(let i = 1; i <= this.teamCount; i++) {
@@ -106,9 +112,25 @@ export class CreateSeasonComponent implements OnInit {
         this.step1 = false;
         this.step2 = false;
         this.step3 = false;
+        this.step4 = false;
     }
 
     continueToStep2(): void {
+        console.log(this.sport, this.year, this.timeOfYear)
+        this.step1 = true;
+        this.step2 = true;
+        this.step3 = false;
+        this.step4 = false;
+    }
+
+    goBackToStep1(): void {
+        this.step1 = true;
+        this.step2 = false;
+        this.step3 = false;
+        this.step4 = false;
+    }
+
+    continueToStep3(): void {
         this.teamNameError = false;
         this.teams.map((team, index) => {
             if (team.name !== "") {}
@@ -120,25 +142,29 @@ export class CreateSeasonComponent implements OnInit {
         if(this.teamNameError === false) {
             this.step1 = true;
             this.step2 = true;
-            this.step3 = false;
+            this.step3 = true;
+            this.step4 = false;
         }
     }
 
-    goBackToStep1(): void {
-        this.step1 = true;
-        this.step2 = false;
-        this.step3 = false;
-    }
-
-    continueToStep3(): void {
+    continueToStep4(): void {
         this.step1 = true;
         this.step2 = true;
         this.step3 = true;
+        this.step4 = true;
+    }
+
+    goBackToStep3(): void {
+        this.step1 = true;
+        this.step2 = true;
+        this.step3 = true;
+        this.step4 = false;
     }
 
     goBackToStep2(): void {
         this.step1 = true;
         this.step2 = true;
         this.step3 = false;
+        this.step4 = false;
     }
 }
