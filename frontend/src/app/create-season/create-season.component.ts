@@ -17,6 +17,7 @@ export class CreateSeasonComponent implements OnInit {
     sport = 'baseball';
     year = 2020;
     timeOfYear = 'spring';
+    differentSports = ['baseball', 'football', 'basketball', 'soccer', 'hockey', 'golf', 'racing'];
     adminId = environment.userInfo['id']
     step1:boolean = false;
     step2:boolean = false;
@@ -50,7 +51,7 @@ export class CreateSeasonComponent implements OnInit {
                         environment.seasonsInfo = allSeasonData;
                         this.teams.map((team) => {
                             let teamData = {
-                                teamName: team.name,
+                                teamName: team['name'],
                                 seasonId: seasonData
                             }
                             this.teamService.addTeam(teamData).subscribe(
@@ -133,7 +134,7 @@ export class CreateSeasonComponent implements OnInit {
     continueToStep3(): void {
         this.teamNameError = false;
         this.teams.map((team, index) => {
-            if (team.name !== "") {}
+            if (team['name'] !== "") {}
             else {
                 console.log('Team name can not be empty')
                 this.teamNameError = true;
