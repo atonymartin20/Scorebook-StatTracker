@@ -7,6 +7,8 @@ exports.seed = function (knex) {
             teamCount: 4,
             gameCount: 6,
             sport: 'baseball',
+            year: 2019,
+            timeOfYear: 'spring'
         },
         {
             id: 2,
@@ -15,6 +17,8 @@ exports.seed = function (knex) {
             teamCount: 6,
             gameCount: 6,
             sport: 'baseball',
+            year: 2019,
+            timeOfYear: 'summer'
         },
         {
             id: 3,
@@ -23,6 +27,8 @@ exports.seed = function (knex) {
             teamCount: 8,
             gameCount: 6,
             sport: 'baseball',
+            year: 2019,
+            timeOfYear: 'fall'
         },
     ]);
 };
