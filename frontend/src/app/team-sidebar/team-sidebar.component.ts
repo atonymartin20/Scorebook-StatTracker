@@ -14,10 +14,8 @@ export class TeamSidebarComponent implements OnInit {
     team = [];
 
     ngOnInit(): void {
-        console.log(environment)
         this.teamService.findTeamById(environment.activeTeam).subscribe((team: any[]) => {
             this.team = team;    
-            console.log(team);
         });
     }
 }
