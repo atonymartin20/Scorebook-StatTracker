@@ -1,5 +1,3 @@
-const { permittedCrossDomainPolicies } = require('helmet');
-
 exports.up = function (knex, Promise) {
     return knex.schema.createTable('racing-drivers', players => {  
         players.increments();
