@@ -5,6 +5,7 @@ exports.up = function (knex, Promise) {
         players.string('lastName', 50).defaultTo('');
         players.integer('TournamentsEntered2019').unsigned().defaultTo(0);
         players.integer('Rounds2019').unsigned().defaultTo(0);
+        players.integer('Holes2019').unsigned().defaultTo(0);
         players.integer('Eagles2019').unsigned().defaultTo(0);
         players.integer('Birdies2019').unsigned().defaultTo(0);
         players.integer('Pars2019').unsigned().defaultTo(0);
@@ -18,6 +19,7 @@ exports.up = function (knex, Promise) {
         players.integer('Top10Finishes2019').unsigned().defaultTo(0);
         players.integer('TournamentsEntered2020').unsigned().defaultTo(0);
         players.integer('Rounds2020').unsigned().defaultTo(0);
+        players.integer('Holes2020').unsigned().defaultTo(0);
         players.integer('Eagles2020').unsigned().defaultTo(0);
         players.integer('Birdies2020').unsigned().defaultTo(0);
         players.integer('Pars2020').unsigned().defaultTo(0);
