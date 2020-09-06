@@ -8,7 +8,7 @@ exports.up = function (knex, Promise) {
         players.integer('SeriesOne2019Races').unsigned().defaultTo(0);
         players.integer('SeriesOne2019RacesFinished').unsigned().defaultTo(0);
         players.integer('SeriesOne2019Points').unsigned().defaultTo(0);
-        players.integer('SeriesOne2019LapsLed').unsigned().defaultTo(0);
+        players.string('SeriesOne2019LapsLed').defaultTo('');
         players.integer('SeriesOne2019StartingPosition').unsigned().defaultTo(0);
         players.integer('SeriesOne2019FinishingPosition').unsigned().defaultTo(0);
         players.integer('SeriesOne2019Poles').unsigned().defaultTo(0);
@@ -21,7 +21,7 @@ exports.up = function (knex, Promise) {
         players.integer('SeriesTwo2019Races').unsigned().defaultTo(0);
         players.integer('SeriesTwo2019RacesFinished').unsigned().defaultTo(0);
         players.integer('SeriesTwo2019Points').unsigned().defaultTo(0);
-        players.integer('SeriesTwo2019LapsLed').unsigned().defaultTo(0);
+        players.string('SeriesTwo2019LapsLed').defaultTo('');
         players.integer('SeriesTwo2019StartingPosition').unsigned().defaultTo(0);
         players.integer('SeriesTwo2019FinishingPosition').unsigned().defaultTo(0);
         players.integer('SeriesTwo2019Poles').unsigned().defaultTo(0);
@@ -34,7 +34,7 @@ exports.up = function (knex, Promise) {
         players.integer('SeriesThree2019Races').unsigned().defaultTo(0);
         players.integer('SeriesThree2019RacesFinished').unsigned().defaultTo(0);
         players.integer('SeriesThree2019Points').unsigned().defaultTo(0);
-        players.integer('SeriesThree2019LapsLed').unsigned().defaultTo(0);
+        players.string('SeriesThree2019LapsLed').defaultTo('');
         players.integer('SeriesThree2019StartingPosition').unsigned().defaultTo(0);
         players.integer('SeriesThree2019FinishingPosition').unsigned().defaultTo(0);
         players.integer('SeriesThree2019Poles').unsigned().defaultTo(0);
@@ -47,7 +47,7 @@ exports.up = function (knex, Promise) {
         players.integer('SeriesFour2019Races').unsigned().defaultTo(0);
         players.integer('SeriesFour2019RacesFinished').unsigned().defaultTo(0);
         players.integer('SeriesFour2019Points').unsigned().defaultTo(0);
-        players.integer('SeriesFour2019LapsLed').unsigned().defaultTo(0);
+        players.string('SeriesFour2019LapsLed').defaultTo('');
         players.integer('SeriesFour2019StartingPosition').unsigned().defaultTo(0);
         players.integer('SeriesFour2019FinishingPosition').unsigned().defaultTo(0);
         players.integer('SeriesFour2019Poles').unsigned().defaultTo(0);
@@ -60,7 +60,7 @@ exports.up = function (knex, Promise) {
         players.integer('SeriesFive2019Races').unsigned().defaultTo(0);
         players.integer('SeriesFive2019RacesFinished').unsigned().defaultTo(0);
         players.integer('SeriesFive2019Points').unsigned().defaultTo(0);
-        players.integer('SeriesFive2019LapsLed').unsigned().defaultTo(0);
+        players.string('SeriesFive2019LapsLed').defaultTo('');
         players.integer('SeriesFive2019StartingPosition').unsigned().defaultTo(0);
         players.integer('SeriesFive2019FinishingPosition').unsigned().defaultTo(0);
         players.integer('SeriesFive2019Poles').unsigned().defaultTo(0);
@@ -73,7 +73,7 @@ exports.up = function (knex, Promise) {
         players.integer('SeriesOne2020Races').unsigned().defaultTo(0);
         players.integer('SeriesOne2020RacesFinished').unsigned().defaultTo(0);
         players.integer('SeriesOne2020Points').unsigned().defaultTo(0);
-        players.integer('SeriesOne2020LapsLed').unsigned().defaultTo(0);
+        players.string('SeriesOne2020LapsLed').defaultTo('');
         players.integer('SeriesOne2020StartingPosition').unsigned().defaultTo(0);
         players.integer('SeriesOne2020FinishingPosition').unsigned().defaultTo(0);
         players.integer('SeriesOne2020Poles').unsigned().defaultTo(0);
@@ -86,7 +86,7 @@ exports.up = function (knex, Promise) {
         players.integer('SeriesTwo2020Races').unsigned().defaultTo(0);
         players.integer('SeriesTwo2020RacesFinished').unsigned().defaultTo(0);
         players.integer('SeriesTwo2020Points').unsigned().defaultTo(0);
-        players.integer('SeriesTwo2020LapsLed').unsigned().defaultTo(0);
+        players.string('SeriesTwo2020LapsLed').defaultTo('');
         players.integer('SeriesTwo2020StartingPosition').unsigned().defaultTo(0);
         players.integer('SeriesTwo2020FinishingPosition').unsigned().defaultTo(0);
         players.integer('SeriesTwo2020Poles').unsigned().defaultTo(0);
@@ -99,7 +99,7 @@ exports.up = function (knex, Promise) {
         players.integer('SeriesThree2020Races').unsigned().defaultTo(0);
         players.integer('SeriesThree2020RacesFinished').unsigned().defaultTo(0);
         players.integer('SeriesThree2020Points').unsigned().defaultTo(0);
-        players.integer('SeriesThree2020LapsLed').unsigned().defaultTo(0);
+        players.string('SeriesThree2020LapsLed').defaultTo('');
         players.integer('SeriesThree2020StartingPosition').unsigned().defaultTo(0);
         players.integer('SeriesThree2020FinishingPosition').unsigned().defaultTo(0);
         players.integer('SeriesThree2020Poles').unsigned().defaultTo(0);
@@ -112,7 +112,7 @@ exports.up = function (knex, Promise) {
         players.integer('SeriesFour2020Races').unsigned().defaultTo(0);
         players.integer('SeriesFour2020RacesFinished').unsigned().defaultTo(0);
         players.integer('SeriesFour2020Points').unsigned().defaultTo(0);
-        players.integer('SeriesFour2020LapsLed').unsigned().defaultTo(0);
+        players.string('SeriesFour2020LapsLed').defaultTo('');
         players.integer('SeriesFour2020StartingPosition').unsigned().defaultTo(0);
         players.integer('SeriesFour2020FinishingPosition').unsigned().defaultTo(0);
         players.integer('SeriesFour2020Poles').unsigned().defaultTo(0);
@@ -125,7 +125,7 @@ exports.up = function (knex, Promise) {
         players.integer('SeriesFive2020Races').unsigned().defaultTo(0);
         players.integer('SeriesFive2020RacesFinished').unsigned().defaultTo(0);
         players.integer('SeriesFive2020Points').unsigned().defaultTo(0);
-        players.integer('SeriesFive2020LapsLed').unsigned().defaultTo(0);
+        players.string('SeriesFive2020LapsLed').defaultTo('');
         players.integer('SeriesFive2020StartingPosition').unsigned().defaultTo(0);
         players.integer('SeriesFive2020FinishingPosition').unsigned().defaultTo(0);
         players.integer('SeriesFive2020Poles').unsigned().defaultTo(0);
