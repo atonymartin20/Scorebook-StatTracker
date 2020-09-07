@@ -7,4 +7,5 @@ export const environment = {
     activeSeason: null,
     teamsInSeason: null,
     activeTeam: null,
+    createSport: null,
 };
