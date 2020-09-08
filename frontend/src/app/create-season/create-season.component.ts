@@ -14,10 +14,12 @@ export class CreateSeasonComponent implements OnInit {
     teamCount = null;
     gameCount = null;
     addedTeams = 0;
-    sport = 'baseball';
+    sport = environment.createSport;
     year = 2020;
     timeOfYear = 'spring';
-    differentSports = ['baseball', 'football', 'basketball', 'soccer', 'hockey', 'golf', 'racing'];
+    differentSports = [];
+    yearOptions = [2020, 2017, 2018, 2019, 2021, 2022];
+    timeOfYearOptions = ['spring', 'summer', 'fall'];
     adminId = environment.userInfo['id']
     step1:boolean = false;
     step2:boolean = false;
@@ -30,7 +32,32 @@ export class CreateSeasonComponent implements OnInit {
     
     constructor(private router: Router, private seasonService: SeasonsService, private teamService: TeamsService) {}
 
-    ngOnInit(): void {}
+    ngOnInit(): void {
+        if (this.sport === 'baseball') {
+            this.differentSports = ['baseball', 'football', 'basketball', 'soccer', 'hockey', 'golf', 'racing'];
+        }
+        else if (this.sport === 'football') {
+            this.differentSports = ['football', 'baseball', 'basketball', 'soccer', 'hockey', 'golf', 'racing'];
+        }
+        else if (this.sport === 'basketball') {
+            this.differentSports = ['basketball', 'baseball', 'football', 'soccer', 'hockey', 'golf', 'racing'];
+        }
+        else if (this.sport === 'soccer') {
+            this.differentSports = ['soccer', 'baseball', 'football', 'basketball', 'hockey', 'golf', 'racing'];
+        }
+        else if (this.sport === 'hockey') {
+            this.differentSports = ['hockey', 'baseball', 'football', 'basketball', 'soccer', 'golf', 'racing'];
+        }
+        else if (this.sport === 'golf') {
+            this.differentSports = ['golf', 'baseball', 'football', 'basketball', 'soccer', 'hockey', 'racing'];
+        }
+        else if (this.sport === 'racing') {
+            this.differentSports = ['racing', 'baseball', 'football', 'basketball', 'soccer', 'hockey', 'golf'];
+        }
+        else {
+            this.differentSports = ['baseball', 'football', 'basketball', 'soccer', 'hockey', 'golf', 'racing'];
+        }
+    }
 
     finalize(): void {
         this.disabledButton = true;
