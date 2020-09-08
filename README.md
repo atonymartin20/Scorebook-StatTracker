@@ -21,6 +21,8 @@ This is a project that i built for a few reasons.  First, I wanted to build a la
  - [ ] Add Ability to Add Players
  - [ ] Add Team Sidebar
  - [ ] Add Team Sidebar to Navbar
+ - [ ] Craete Year Select in HTML
+ - [ ] Create Time of Year Select in HTML 
 
  # Next
  - Add links to teams details page-
