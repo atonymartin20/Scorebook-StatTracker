@@ -3,6 +3,7 @@ exports.seed = function (knex) {
         {
             id: 1,
             teamName: 'Fighting Toads',
+            sport: 'baseball',
             seasonId: 1,
             wins: 0,
             losses: 0,
@@ -11,6 +12,7 @@ exports.seed = function (knex) {
         {
             id: 2,
             teamName: 'Fighting Toads 2',
+            sport: 'baseball',
             seasonId: 2,
             wins: 1,
             losses: 1,
@@ -19,6 +21,7 @@ exports.seed = function (knex) {
         {
             id: 3,
             teamName: 'Fighting Toads 3',
+            sport: 'baseball',
             seasonId: 3,
             wins: 2,
             losses: 2,
