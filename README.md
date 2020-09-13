@@ -27,3 +27,4 @@ This is a project that i built for a few reasons.  First, I wanted to build a la
  # Next
  - Add links to teams details page-
  * Step 1: Season Name and Season Type
+ * Step 2: Year and Time of Year
