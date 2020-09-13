@@ -25,6 +25,7 @@ export class CreateSeasonComponent implements OnInit {
     step2:boolean = false;
     step3:boolean = false;
     step4:boolean = false;
+    step5:boolean = false;
     teams = [];
     nameError:boolean = false;
     teamNameError:boolean = false;
@@ -108,6 +109,7 @@ export class CreateSeasonComponent implements OnInit {
             this.step2 = false;
             this.step3 = false;
             this.step4 = false;
+            this.step5 = false;
             if(this.addedTeams > this.teamCount) {
                 this.teams = []
                 for(let i = 1; i <= this.teamCount; i++) {
@@ -141,6 +143,7 @@ export class CreateSeasonComponent implements OnInit {
         this.step2 = false;
         this.step3 = false;
         this.step4 = false;
+        this.step5 = false;
     }
 
     continueToStep2(): void {
@@ -149,6 +152,7 @@ export class CreateSeasonComponent implements OnInit {
         this.step2 = true;
         this.step3 = false;
         this.step4 = false;
+        this.step5 = false;
     }
 
     goBackToStep1(): void {
@@ -156,6 +160,7 @@ export class CreateSeasonComponent implements OnInit {
         this.step2 = false;
         this.step3 = false;
         this.step4 = false;
+        this.step5 = false;
     }
 
     continueToStep3(): void {
@@ -172,7 +177,16 @@ export class CreateSeasonComponent implements OnInit {
             this.step2 = true;
             this.step3 = true;
             this.step4 = false;
+            this.step5 = false;
         }
+    }
+
+    continueToStep5(): void {
+        this.step1 = true;
+        this.step2 = true;
+        this.step3 = true;
+        this.step4 = true;
+        this.step5 = true;
     }
 
     continueToStep4(): void {
@@ -180,6 +194,7 @@ export class CreateSeasonComponent implements OnInit {
         this.step2 = true;
         this.step3 = true;
         this.step4 = true;
+        this.step5 = false;
     }
 
     goBackToStep3(): void {
@@ -187,6 +202,7 @@ export class CreateSeasonComponent implements OnInit {
         this.step2 = true;
         this.step3 = true;
         this.step4 = false;
+        this.step5 = false;
     }
 
     goBackToStep2(): void {
@@ -194,5 +210,6 @@ export class CreateSeasonComponent implements OnInit {
         this.step2 = true;
         this.step3 = false;
         this.step4 = false;
+        this.step5 = false;
     }
 }
