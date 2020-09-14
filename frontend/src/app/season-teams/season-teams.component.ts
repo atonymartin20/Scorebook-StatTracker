@@ -21,7 +21,7 @@ export class SeasonTeamsComponent implements OnInit {
     disabledButton:boolean  = false;
     edit: boolean = false;
     seasonContainsTies: boolean = false;
-    noTeams: boolean = true;
+    noTeams: boolean = false;
 
     constructor(private router: Router, private teamService: TeamsService) {}
 
@@ -165,5 +165,9 @@ export class SeasonTeamsComponent implements OnInit {
                 console.log(error);
             }
         )
+    }
+
+    grabTeamId(id) {
+        environment.activeTeam = id;
     }
 }

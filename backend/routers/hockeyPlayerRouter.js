@@ -1,6 +1,6 @@
 const express = require('express');
 
-const playerModel = require('../data/models/playerModel.js');
+const hockeyPlayerModel = require('../data/models/hockeyPlayerModel.js');
 const authentication = require('../middleware/authentication.js');
 const router = express.Router();
 
@@ -8,7 +8,7 @@ router.use(authentication);
 
 // Find All Players
 router.get('/', (req, res) => {
-    playerModel
+    hockeyPlayerModel
         .findAllPlayers()
         .then(players => {
             res.json(players)
@@ -21,7 +21,7 @@ router.get('/', (req, res) => {
 // Find Player By Id
 router.get('/:id', (req, res) => {
     const { id } = req.params;
-    playerModel
+    hockeyPlayerModel
         .findPlayerById(id)
         .then(player => {
             if(player == undefined) {
@@ -45,7 +45,7 @@ router.post('/name', (req, res) => {
     if(!player.lastName) {
         res.status(400).json({ error: 'Player does not have a lastName' });
     }
-    playerModel
+    hockeyPlayerModel
         .findPlayerByName(player)
         .then(player => {
             if(player.length === 0) {
@@ -70,7 +70,7 @@ router.post('/', (req, res) => {
         res.status(400).json({ error: 'Player does not have a lastName' });
     }
     else {
-        playerModel
+        hockeyPlayerModel
             .insert(player)
             .then(player => {
                 res.json(player);
@@ -85,14 +85,14 @@ router.post('/', (req, res) => {
 router.put('/:id', (req, res) => {
     const { id } = req.params; 
     const player = req.body;
-    playerModel
+    hockeyPlayerModel
         .update(id, player)
         .then(updatedPlayer => {
             if(updatedPlayer === 0) {
                 res.status(404).json({ error: 'No player with that id exists' });
             }
             else {
-                playerModel
+                hockeyPlayerModel
                     .findPlayerById(id)
                     .then(player => {
                         res.json(player)
@@ -110,7 +110,7 @@ router.put('/:id', (req, res) => {
 // Delete
 router.delete('/:id', (req, res) => {
     const { id } = req.params;
-    playerModel
+    hockeyPlayerModel
         .remove(id)
         .then(removedPlayer => {
             if(removedPlayer === 0) {

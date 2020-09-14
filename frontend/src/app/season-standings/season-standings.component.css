@@ -12,7 +12,7 @@
 .season-standings-inside-main-container {
     padding: 5px;
     width: 100%;
-    max-width: 600px;
+    max-width: 1300px;
     height: fit-content;
     display: flex;
     flex-direction: column;
@@ -23,4 +23,51 @@
     border-radius: 5px;
     padding: 20px;
     margin: 25px auto 0px auto;
+    overflow-x: auto;
+}
+
+table, th, td {
+    border: 1px solid black;
+    cursor: pointer;
+}
+
+td {
+    text-align: center;
+    padding: 5px;
+}
+
+th {
+    height: 40px;
+    background-color: #041e42;
+    color: white;
+    font-weight: normal;
+    border-left-color: white;
+    border-right-color: white;
+}
+
+th:first-child {
+    border-left-color: black;
+}
+
+th:last-child {
+    border-right-color: black;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    font-size: 1.5rem;
+}
+
+
+tr:hover {
+    background-color: #f5f5f5;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.name-td {
+    text-align: left;
 }

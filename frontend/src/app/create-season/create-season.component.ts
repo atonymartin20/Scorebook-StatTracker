@@ -14,11 +14,18 @@ export class CreateSeasonComponent implements OnInit {
     teamCount = null;
     gameCount = null;
     addedTeams = 0;
-    sport = 'baseball';
+    sport = environment.createSport;
+    year = 2020;
+    timeOfYear = 'spring';
+    differentSports = [];
+    yearOptions = [2020, 2017, 2018, 2019, 2021, 2022];
+    timeOfYearOptions = ['spring', 'summer', 'fall'];
     adminId = environment.userInfo['id']
     step1:boolean = false;
     step2:boolean = false;
     step3:boolean = false;
+    step4:boolean = false;
+    step5:boolean = false;
     teams = [];
     nameError:boolean = false;
     teamNameError:boolean = false;
@@ -26,7 +33,32 @@ export class CreateSeasonComponent implements OnInit {
     
     constructor(private router: Router, private seasonService: SeasonsService, private teamService: TeamsService) {}
 
-    ngOnInit(): void {}
+    ngOnInit(): void {
+        if (this.sport === 'baseball') {
+            this.differentSports = ['baseball', 'football', 'basketball', 'soccer', 'hockey', 'golf', 'racing'];
+        }
+        else if (this.sport === 'football') {
+            this.differentSports = ['football', 'baseball', 'basketball', 'soccer', 'hockey', 'golf', 'racing'];
+        }
+        else if (this.sport === 'basketball') {
+            this.differentSports = ['basketball', 'baseball', 'football', 'soccer', 'hockey', 'golf', 'racing'];
+        }
+        else if (this.sport === 'soccer') {
+            this.differentSports = ['soccer', 'baseball', 'football', 'basketball', 'hockey', 'golf', 'racing'];
+        }
+        else if (this.sport === 'hockey') {
+            this.differentSports = ['hockey', 'baseball', 'football', 'basketball', 'soccer', 'golf', 'racing'];
+        }
+        else if (this.sport === 'golf') {
+            this.differentSports = ['golf', 'baseball', 'football', 'basketball', 'soccer', 'hockey', 'racing'];
+        }
+        else if (this.sport === 'racing') {
+            this.differentSports = ['racing', 'baseball', 'football', 'basketball', 'soccer', 'hockey', 'golf'];
+        }
+        else {
+            this.differentSports = ['baseball', 'football', 'basketball', 'soccer', 'hockey', 'golf', 'racing'];
+        }
+    }
 
     finalize(): void {
         this.disabledButton = true;
@@ -35,7 +67,9 @@ export class CreateSeasonComponent implements OnInit {
             adminUserId: environment.userInfo['id'],
             teamCount: this.teamCount || 0,
             gameCount: this.gameCount || 0,
-            sport: this.sport
+            sport: this.sport,
+            year: this.year,
+            timeOfYear: this.timeOfYear
         }
         this.seasonService.addSeason(seasonData).subscribe(
             (seasonData: any[]) => {
@@ -45,7 +79,7 @@ export class CreateSeasonComponent implements OnInit {
                         environment.seasonsInfo = allSeasonData;
                         this.teams.map((team) => {
                             let teamData = {
-                                teamName: team.name,
+                                teamName: team['name'],
                                 seasonId: seasonData
                             }
                             this.teamService.addTeam(teamData).subscribe(
@@ -74,6 +108,8 @@ export class CreateSeasonComponent implements OnInit {
             this.step1 = true;
             this.step2 = false;
             this.step3 = false;
+            this.step4 = false;
+            this.step5 = false;
             if(this.addedTeams > this.teamCount) {
                 this.teams = []
                 for(let i = 1; i <= this.teamCount; i++) {
@@ -106,12 +142,31 @@ export class CreateSeasonComponent implements OnInit {
         this.step1 = false;
         this.step2 = false;
         this.step3 = false;
+        this.step4 = false;
+        this.step5 = false;
     }
 
     continueToStep2(): void {
+        console.log(this.sport, this.year, this.timeOfYear)
+        this.step1 = true;
+        this.step2 = true;
+        this.step3 = false;
+        this.step4 = false;
+        this.step5 = false;
+    }
+
+    goBackToStep1(): void {
+        this.step1 = true;
+        this.step2 = false;
+        this.step3 = false;
+        this.step4 = false;
+        this.step5 = false;
+    }
+
+    continueToStep3(): void {
         this.teamNameError = false;
         this.teams.map((team, index) => {
-            if (team.name !== "") {}
+            if (team['name'] !== "") {}
             else {
                 console.log('Team name can not be empty')
                 this.teamNameError = true;
@@ -120,25 +175,41 @@ export class CreateSeasonComponent implements OnInit {
         if(this.teamNameError === false) {
             this.step1 = true;
             this.step2 = true;
-            this.step3 = false;
+            this.step3 = true;
+            this.step4 = false;
+            this.step5 = false;
         }
     }
 
-    goBackToStep1(): void {
-        this.step1 = true;
-        this.step2 = false;
-        this.step3 = false;
-    }
-
-    continueToStep3(): void {
+    continueToStep5(): void {
         this.step1 = true;
         this.step2 = true;
         this.step3 = true;
+        this.step4 = true;
+        this.step5 = true;
+    }
+
+    continueToStep4(): void {
+        this.step1 = true;
+        this.step2 = true;
+        this.step3 = true;
+        this.step4 = true;
+        this.step5 = false;
+    }
+
+    goBackToStep3(): void {
+        this.step1 = true;
+        this.step2 = true;
+        this.step3 = true;
+        this.step4 = false;
+        this.step5 = false;
     }
 
     goBackToStep2(): void {
         this.step1 = true;
         this.step2 = true;
         this.step3 = false;
+        this.step4 = false;
+        this.step5 = false;
     }
 }

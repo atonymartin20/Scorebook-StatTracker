@@ -31,6 +31,16 @@ export class TeamsService {
         return this.httpClient.post(`${environment.apiUrl}/api/teamRouter/season`, id, httpOptions).pipe(retry(0), catchError(this.handleError));
     }
 
+    public findTeamById(id) {
+        let httpOptions = {
+            headers: new HttpHeaders({
+                'Content-Type': 'application/json',
+                'authorization': environment.tokenData,
+            }),
+        };
+        return this.httpClient.get(`${environment.apiUrl}/api/teamRouter/${id}`, httpOptions).pipe(retry(0), catchError(this.handleError));
+    }
+
     public editTeam(teamData) {
         let httpOptions = {
             headers: new HttpHeaders({

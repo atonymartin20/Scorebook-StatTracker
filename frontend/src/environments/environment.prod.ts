@@ -6,4 +6,6 @@ export const environment = {
     tokenData: null,
     activeSeason: null,
     teamsInSeason: null,
+    activeTeam: null,
+    createSport: null,
 };
