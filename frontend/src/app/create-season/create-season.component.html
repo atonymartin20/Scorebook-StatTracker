@@ -14,8 +14,11 @@
                                     <p class="error-text">Your Season Name can not be blank!</p>
                                 </div>
                             </ng-template>
-                            <input type="number" matInput [(ngModel)]="teamCount" placeholder="Number of Teams" />
-                            <input type="number" matInput [(ngModel)]="gameCount" placeholder="Games per Team" />
+                            <select class="form-control" id="differentSports" [(ngModel)]="sport">
+                                <option *ngFor="let sport of differentSports" [value]="sport">{{ sport }}</option>
+                            </select>
+                            <!-- <input type="number" matInput [(ngModel)]="teamCount" placeholder="Number of Teams" />
+                            <input type="number" matInput [(ngModel)]="gameCount" placeholder="Games per Team" /> -->
     
                             <div class="button-container-solo">
                                 <button class="next-button" (click)="continueToStep1()">Next</button>
@@ -34,8 +37,11 @@
                 <ng-template [ngIf]="!step3">
                     <ng-template [ngIf]="!step4">
                         <ng-template [ngIf]="!step5">
-                            <select class="form-control" id="differentSports" [(ngModel)]="sport">
-                                <option *ngFor="let sport of differentSports" [value]="sport">{{ sport }}</option>
+                            <select class="form-control" id="year" [(ngModel)]="year">
+                                <option *ngFor="let year of yearOptions" [value]="year">{{ year }}</option>
+                            </select>
+                            <select class="form-control" id="timeOfYear" [(ngModel)]="timeOfYear">
+                                <option *ngFor="let time of timeOfYearOptions" [value]="timeOfYear">{{ time }}</option>
                             </select>
                             <div class="button-container">
                                 <button class="back-button" (click)="goBackToStep0()">Back</button>
