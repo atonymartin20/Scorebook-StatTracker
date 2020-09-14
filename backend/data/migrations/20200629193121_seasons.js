@@ -7,7 +7,6 @@ exports.up = function (knex, Promise) {
         seasons.integer('gameCount').unsigned().defaultTo(0);
         seasons.string('sport').defaultTo('');
         seasons.integer('year').unsigned().defaultTo(2020);
-        seasons.string('timeOfYear').defaultTo('');
     })
 };
 
