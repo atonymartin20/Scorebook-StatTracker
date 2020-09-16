@@ -27,6 +27,7 @@ export class CreateSeasonComponent implements OnInit {
     nameError:boolean = false;
     teamNameError:boolean = false;
     disabledButton:boolean  = false;
+    sportIsNotGolf: boolean = false;
     
     constructor(private router: Router, private seasonService: SeasonsService, private teamService: TeamsService) {}
 
@@ -99,6 +100,7 @@ export class CreateSeasonComponent implements OnInit {
     }
 
     continueToStep1(): void {
+        this.sportIsNotGolf = true;
         this.nameError = false;
         if (this.name !== '') {
             this.step1 = true;
@@ -108,6 +110,9 @@ export class CreateSeasonComponent implements OnInit {
         }
         else {
             this.nameError = true;
+        }
+        if(this.sport === 'golf') {
+            this.sportIsNotGolf = false;
         }
     }
 
@@ -119,6 +124,28 @@ export class CreateSeasonComponent implements OnInit {
     }
 
     continueToStep2(): void {
+        if(this.addedTeams > this.teamCount) {
+            this.teams = []
+            for(let i = 1; i <= this.teamCount; i++) {
+                this.teams.push({"name": `Team ${i}`, "teamNumber": i});
+                this.addedTeams++;
+                if(this.addedTeams === this.teamCount) {
+                    break;
+                }
+            }
+        }
+
+        if(this.addedTeams < this.teamCount) {
+            this.teams = []
+            this.addedTeams = 0;
+            for(let i = 1; i <= this.teamCount; i++) {
+                this.teams.push({"name": `Team ${i}`, "teamNumber": i});
+                this.addedTeams++;
+                if(this.addedTeams === this.teamCount) {
+                    break;
+                }
+            }
+        }
         this.step1 = true;
         this.step2 = true;
         this.step3 = false;
