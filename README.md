@@ -27,8 +27,7 @@ This is a project that i built for a few reasons.  First, I wanted to build a la
  # Next
  - Add links to teams details page-
  * Step 1: Season Name and Season Type
- * Step 2: Year and Time of Year
- * Step 3: Number of Teams and Number of Games per Team 
- * Step 4: Team Names
- * Step 5: Team Name Check
- * Step 6: Finalize
+ * Step 2: Year and (If not Golf)Number of Teams and Number of Games per Team 
+ * Step 3: Team Names
+ * Step 4: Team Name Check
+ * Step 5: Finalize
