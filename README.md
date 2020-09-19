@@ -21,13 +21,6 @@ This is a project that i built for a few reasons.  First, I wanted to build a la
  - [ ] Add Ability to Add Players
  - [ ] Add Team Sidebar
  - [ ] Add Team Sidebar to Navbar
- - [ ] Craete Year Select in HTML
- - [ ] Create Time of Year Select in HTML 
 
  # Next
- - Add links to teams details page-
- * Step 1: Season Name and Season Type
- * Step 2: Year and (If not Golf)Number of Teams and Number of Games per Team 
- * Step 3: Team Names
- * Step 4: Team Name Check
- * Step 5: Finalize
+ - Add links to teams details page
