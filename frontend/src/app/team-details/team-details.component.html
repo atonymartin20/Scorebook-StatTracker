@@ -2,5 +2,14 @@
 <div class='team-details-container'>
     <app-team-sidebar></app-team-sidebar>
     <div class='team-details-inside-main-container'>
+        <ng-template [ngIf]="delete">
+            <p>Are you sure you want to delete this team?</p>
+            <button class='edit-button' (click)='deleteTeam()'>Yes</button>
+            <button class='delete-button' (click)='toggleDelete()'>No</button>
+        </ng-template>
+
+
+
+
     </div>
 </div>
