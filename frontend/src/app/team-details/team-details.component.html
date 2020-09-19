@@ -25,7 +25,24 @@
                 <button class='delete-button' (click)='toggleDelete()'>Delete Team</button>
             </ng-template>
 
-
+            <ng-template [ngIf]="!edit">
+                <button (click)='toggleEdit()'>Edit</button>
+                <p class='info-text'>Team Name: {{ team['name'] }}</p>
+                <ng-template [ngIf]="teamContainsTie">
+                    <span class="center-span">Record</span>
+                    <span class="center-span">{{ team['wins'] }} - {{ team['losses'] }} - {{ team['ties'] }}</span>
+                </ng-template>
+                <ng-template [ngIf]="!teamContainsTie">
+                    <span class="center-span">Record</span>
+                    <span class="center-span">{{ team['wins'] }} - {{ team['losses'] }}</span>
+                </ng-template>
+                <!-- <p class='info-text'>Team Record: {{ team['teamCount'] }}</p> -->
+                <p class='info-text'>Players:</p>
+                <ul>
+                    <li *ngFor="let player of playersInSeason" routerLink="/player/details" (click)="grabPlayerId(player.id)">{{ player['id'] }}</li>
+                </ul>
+                <button class='delete-button' (click)='toggleDelete()'>Delete Team</button>
+            </ng-template>
         </ng-template>
     </div>
 </div>
