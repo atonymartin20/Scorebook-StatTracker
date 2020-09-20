@@ -10,7 +10,6 @@
 
         <ng-template [ngIf]="!delete">
             <ng-template [ngIf]="edit">
-                <!-- teamName, sport, wins, losses, ties, pointsScored, pointsAgainst, podiums, top5Finishes, top10Finishes -->
                 <div class='placement-div'><span>Team Name: &nbsp;</span> <input type='text' matInput [(ngModel)]="team['teamName']" placeholder='Team Name' /></div>
                 <div class='placement-div'><span>Sport: &nbsp;</span> <input type='text' matInput [(ngModel)]="team['sport']" placeholder='Sport' /></div>
                 <div class='placement-div'><span>Wins: &nbsp;</span> <input type='number' matInput [(ngModel)]="team['wins']" placeholder='Wins' /></div>
