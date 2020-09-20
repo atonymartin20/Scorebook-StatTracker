@@ -14,6 +14,8 @@ export class TeamDetailsComponent implements OnInit {
     team = [];
     edit: boolean = false;
     delete: boolean = false;
+    teamContainsTie: boolean = false;
+    playersInSeason = [];
 
     constructor(private router: Router, private teamService: TeamsService, private playerService: PlayersService) {}
 
