@@ -36,7 +36,6 @@
                     <span class="center-span">Record</span>
                     <span class="center-span">{{ team['wins'] }} - {{ team['losses'] }}</span>
                 </ng-template>
-                <!-- <p class='info-text'>Team Record: {{ team['teamCount'] }}</p> -->
                 <p class='info-text'>Players:</p>
                 <ul>
                     <li *ngFor="let player of playersInSeason" routerLink="/player/details" (click)="grabPlayerId(player.id)">{{ player['id'] }}</li>
