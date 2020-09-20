@@ -43,6 +43,17 @@ export class TeamDetailsComponent implements OnInit {
         this.teamContainsTie = !this.teamContainsTie;
     }
 
+    editTeam(): void {
+        this.edit = false;
+        console.log(this.team)
+        this.teamService.editTeam(this.team).subscribe(
+            (error) => {
+                console.log(error['error']);
+            }
+        )
+    }
+
+
     findPlayersForTeam(): void {
         // this.playerService.findTeamsBySeasonId(seasonData).subscribe(
         //     (data: any[]) => {
