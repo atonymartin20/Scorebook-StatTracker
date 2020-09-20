@@ -53,6 +53,9 @@ export class TeamDetailsComponent implements OnInit {
         )
     }
 
+    deleteTeam(): void {
+        console.log('Need to delete Team')
+    }
 
     findPlayersForTeam(): void {
         // this.playerService.findTeamsBySeasonId(seasonData).subscribe(
