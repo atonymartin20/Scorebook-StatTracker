@@ -12,6 +12,7 @@ export const environment = {
     teamsInSeason: null,
     activeTeam: null,
     createSport: null,
+    activePlayer: null,
 };
 
 /*
