@@ -21,17 +21,23 @@ export class TeamDetailsComponent implements OnInit {
 
     ngOnInit(): void {
         this.teamService.findTeamById(environment.activeTeam).subscribe((team: any[]) => {
-            this.team = team;    
+            this.team = team;   
+            console.log(this.team)
+            console.log(this.team['ties'] < 0) 
         });
         this.findPlayersForTeam();
     }
 
     toggleEdit(): void {
-        this.edit = true;
+        this.edit = !this.edit;
     }
 
     toggleDelete(): void {
         this.delete = !this.delete;
+    }
+
+    toggleTeamContainsTie(): void {
+        this.teamContainsTie = !this.teamContainsTie;
     }
 
     findPlayersForTeam(): void {
