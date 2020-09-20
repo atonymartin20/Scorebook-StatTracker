@@ -24,6 +24,9 @@ export class TeamDetailsComponent implements OnInit {
             this.team = team;   
             console.log(this.team)
             console.log(this.team['ties'] < 0) 
+            if(this.team['ties'] < 0) {
+                this.toggleTeamContainsTie();
+            }
         });
         this.findPlayersForTeam();
     }
@@ -55,5 +58,9 @@ export class TeamDetailsComponent implements OnInit {
         //         console.log(error);
         //     }
         // )
+    }
+
+    grabPlayerId(id): void {
+        environment.activePlayer = id;
     }
 }
