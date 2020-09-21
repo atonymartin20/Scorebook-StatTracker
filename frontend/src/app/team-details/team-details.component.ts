@@ -16,19 +16,31 @@ export class TeamDetailsComponent implements OnInit {
     delete: boolean = false;
     teamContainsTie: boolean = false;
     playersInSeason = [];
+    sportIsRacing: boolean = false;
 
     constructor(private router: Router, private teamService: TeamsService, private playerService: PlayersService) {}
 
     ngOnInit(): void {
         this.teamService.findTeamById(environment.activeTeam).subscribe((team: any[]) => {
             this.team = team;   
-            console.log(this.team)
-            console.log(this.team['ties'] < 0) 
-            if(this.team['ties'] < 0) {
+            console.log(team)
+            console.log(team['ties'] < 0) 
+            if(team['ties'] > 0) {
                 this.toggleTeamContainsTie();
             }
         });
         this.findPlayersForTeam();
+        this.checkSport();
+    }
+
+    checkSport(): void {
+        console.log(this.team['sport'])
+        if (this.team['sport'] === 'racing') {
+            this.sportIsRacing = true;
+        }
+        else {
+            this.sportIsRacing = false;
+        }
     }
 
     toggleEdit(): void {
@@ -51,6 +63,7 @@ export class TeamDetailsComponent implements OnInit {
                 console.log(error['error']);
             }
         )
+        this.checkSport();
     }
 
     deleteTeam(): void {
