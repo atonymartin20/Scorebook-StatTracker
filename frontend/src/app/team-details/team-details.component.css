@@ -24,3 +24,62 @@
     padding: 20px;
     margin: 25px auto 0px auto;
 }
+
+button {
+    min-width: 150px;
+    height: 46px;
+    font-size: 1.3rem;
+    color: white;
+    background-color: #041e42;
+    border-radius: 5px;
+    border: none;
+    padding: 3px 3px;
+    margin-left: auto;
+    margin-bottom: 10px;
+}
+
+.info-text {
+    margin-bottom: 8px;
+}
+
+.placement-div {
+    display: flex;
+}
+
+input {
+    font-size: 1.3rem;
+    margin-bottom: 15px;
+    padding: 8px;
+    border: 1px solid #041e42;
+    border-radius: 5px;
+    color: #041e42;
+}
+
+li {
+    list-style-type: none;
+}
+
+.edit-button {
+    width: 100%;
+    background-color: #422804;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.delete-button {
+    width: 100%;
+    background-color: #350442;
+    margin-top: 10px;
+}
+
+@media(max-width: 900px) {
+    .placement-div {
+        flex-direction: column;
+        align-items: center;
+        margin: 0 auto;
+    }
+
+    span {
+        margin-bottom: 8px;
+    }
+}
