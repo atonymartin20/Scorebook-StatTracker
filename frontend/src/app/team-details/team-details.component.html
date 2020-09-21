@@ -26,7 +26,7 @@
 
             <ng-template [ngIf]="!edit">
                 <button (click)='toggleEdit()'>Edit</button>
-                <p class='info-text'>Team Name: {{ team['name'] }}</p>
+                <p class='info-text'>Team Name: {{ team['teamName'] }}</p>
                 <ng-template [ngIf]="teamContainsTie">
                     <span class="center-span">Record</span>
                     <span class="center-span">{{ team['wins'] }} - {{ team['losses'] }} - {{ team['ties'] }}</span>
