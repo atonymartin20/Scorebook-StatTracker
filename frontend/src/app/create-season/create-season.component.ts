@@ -28,6 +28,7 @@ export class CreateSeasonComponent implements OnInit {
     teamNameError:boolean = false;
     disabledButton:boolean  = false;
     sportIsNotGolf: boolean = false;
+    sportIsNotRacing: boolean = false;
     
     constructor(private router: Router, private seasonService: SeasonsService, private teamService: TeamsService) {}
 
@@ -101,6 +102,7 @@ export class CreateSeasonComponent implements OnInit {
 
     continueToStep1(): void {
         this.sportIsNotGolf = true;
+        this.sportIsNotRacing = true;
         this.nameError = false;
         if (this.name !== '') {
             this.step1 = true;
@@ -114,6 +116,10 @@ export class CreateSeasonComponent implements OnInit {
         if(this.sport === 'golf') {
             this.sportIsNotGolf = false;
         }
+        if(this.sport === 'racing') {
+            this.sportIsNotRacing = false;
+        }
+        console.log(this.sport, this.sportIsNotRacing)
     }
 
     goBackToStep0(): void {
