@@ -28,7 +28,7 @@ export class SeasonDetailsComponent implements OnInit {
     }
 
     toggleEdit(): void {
-        this.edit = true;
+        this.edit = !this.edit;
     }
 
     toggleDelete(): void {

@@ -2,6 +2,73 @@
 <div class='team-details-container'>
     <app-team-sidebar></app-team-sidebar>
     <div class='team-details-inside-main-container'>
-        <p>team-details works!</p>
+        <ng-template [ngIf]="delete">
+            <p>Are you sure you want to delete this team?</p>
+            <button class='edit-button' (click)='deleteTeam()'>Yes</button>
+            <button class='delete-button' (click)='toggleDelete()'>No</button>
+        </ng-template>
+
+        <ng-template [ngIf]="!delete">
+            <ng-template [ngIf]="edit">
+                <ng-template [ngIf]="!sportIsRacing">
+                    <div class='placement-div'><span>Team Name: &nbsp;</span> <input type='text' matInput [(ngModel)]="team['teamName']" placeholder='Team Name' /></div>
+                    <div class='placement-div'><span>Sport: &nbsp;</span> <input type='text' matInput [(ngModel)]="team['sport']" placeholder='Sport' /></div>
+                    <div class='placement-div'><span>Wins: &nbsp;</span> <input type='number' matInput [(ngModel)]="team['wins']" placeholder='Wins' /></div>
+                    <div class='placement-div'><span>Losses: &nbsp;</span><input type='number' matInput [(ngModel)]="team['losses']" placeholder='Losses' /></div>
+                    <div class='placement-div'><span>Ties: &nbsp;</span> <input type='number' matInput [(ngModel)]="team['ties']" placeholder='Ties' /></div>
+                    <div class='placement-div'><span>Points Scored: &nbsp;</span><input type='number' matInput [(ngModel)]="team['pointsScored']" placeholder='Points Scored' /></div>
+                    <div class='placement-div'><span>Points Against: &nbsp;</span> <input type='number' matInput [(ngModel)]="team['pointsAgainst']" placeholder='Points Against' /></div>
+                    <button class='edit-button' (click)='editTeam()'>Finish Edit</button>
+                    <button class='delete-button' (click)='toggleDelete()'>Delete Team</button>
+                </ng-template>
+
+                <ng-template [ngIf]="sportIsRacing">
+                    <div class='placement-div'><span>Team Name: &nbsp;</span> <input type='text' matInput [(ngModel)]="team['teamName']" placeholder='Team Name' /></div>
+                    <div class='placement-div'><span>Sport: &nbsp;</span> <input type='text' matInput [(ngModel)]="team['sport']" placeholder='Sport' /></div>
+                    <div class='placement-div'><span>Points: &nbsp;</span><input type='number' matInput [(ngModel)]="team['pointsScored']" placeholder='Points' /></div>
+                    <div class='placement-div'><span>Wins: &nbsp;</span> <input type='number' matInput [(ngModel)]="team['wins']" placeholder='Wins' /></div>
+                    <div class='placement-div'><span>Podiums: &nbsp;</span><input type='number' matInput [(ngModel)]="team['podiums']" placeholder='Podiums' /></div>
+                    <div class='placement-div'><span>Top 5 Finishes: &nbsp;</span><input type='number' matInput [(ngModel)]="team['top5Finishes']" placeholder='Top 5 Finishes' /></div>
+                    <div class='placement-div'><span>Top 10 Finishes: &nbsp;</span><input type='number' matInput [(ngModel)]="team['top10Finishes']" placeholder='Top 10 Finishes' /></div>
+                    <button class='edit-button' (click)='editTeam()'>Finish Edit</button>
+                    <button class='delete-button' (click)='toggleDelete()'>Delete Team</button>
+                </ng-template>
+
+            </ng-template>
+
+            <ng-template [ngIf]="!edit">
+                <ng-template [ngIf]="!sportIsRacing">
+                    <button (click)='toggleEdit()'>Edit</button>
+                    <p class='info-text'>Team Name: {{ team['teamName'] }}</p>
+                    <ng-template [ngIf]="teamContainsTie">
+                        <p class='info-text'>Record: {{ team['wins'] }} - {{ team['losses'] }} - {{ team['ties'] }}</p>
+                    </ng-template>
+                    <ng-template [ngIf]="!teamContainsTie">
+                        <p class='info-text'>Record: {{ team['wins'] }} - {{ team['losses'] }}</p>
+                    </ng-template>
+                    <p class='info-text'>Players:</p>
+                    <ul>
+                        <li *ngFor="let player of playersInSeason" routerLink="/player/details" (click)="grabPlayerId(player.id)">{{ player['id'] }}</li>
+                    </ul>
+                    <button class='delete-button' (click)='toggleDelete()'>Delete Team</button>
+                </ng-template>
+
+                <ng-template [ngIf]="sportIsRacing">
+                    <button (click)='toggleEdit()'>Edit</button>
+                    <p class='info-text'>Team Name: {{ team['teamName'] }}</p>
+                    <p class='info-text'>Points: {{ team['pointsScored'] }}</p>
+                    <p class='info-text'>Wins: {{ team['wins'] }}</p>
+                    <p class='info-text'>Podiums: {{ team['podiums'] }}</p>
+                    <p class='info-text'>Top 5 Finishes: {{ team['top5Finishes'] }}</p>
+                    <p class='info-text'>Top 10 Finishes: {{ team['top10Finishes'] }}</p>
+
+                    <p class='info-text'>Drivers:</p>
+                    <ul>
+                        <li *ngFor="let player of playersInSeason" routerLink="/player/details" (click)="grabPlayerId(player.id)">{{ player['id'] }}</li>
+                    </ul>
+                    <button class='delete-button' (click)='toggleDelete()'>Delete Team</button>
+                </ng-template>
+            </ng-template>
+        </ng-template>
     </div>
 </div>

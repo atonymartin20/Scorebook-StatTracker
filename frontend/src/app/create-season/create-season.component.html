@@ -6,25 +6,22 @@
             <ng-template [ngIf]="!step2">
                 <ng-template [ngIf]="!step3">
                     <ng-template [ngIf]="!step4">
-                        <ng-template [ngIf]="!step5">
-                            <p class="help-text">Add the season name, number of teams, and number of games each team will play below</p>
-                            <input type="text" matInput [(ngModel)]="name" placeholder="Season Name" />
-                            <ng-template [ngIf]="nameError">
-                                <div>
-                                    <p class="error-text">Your Season Name can not be blank!</p>
-                                </div>
-                            </ng-template>
+                        <p class="help-text">Add the season name, number of teams, and number of games each team will play below</p>
+                        <input type="text" matInput [(ngModel)]="name" placeholder="Season Name" />
+                        <ng-template [ngIf]="nameError">
+                            <div>
+                                <p class="error-text">Your Season Name can not be blank!</p>
+                            </div>
+                        </ng-template>
+                        <div class="select-div">
+                            <label>Sport: </label>
                             <select class="form-control" id="differentSports" [(ngModel)]="sport">
                                 <option *ngFor="let sport of differentSports" [value]="sport">{{ sport }}</option>
                             </select>
-                            <!-- <input type="number" matInput [(ngModel)]="teamCount" placeholder="Number of Teams" />
-                            <input type="number" matInput [(ngModel)]="gameCount" placeholder="Games per Team" /> -->
-    
-                            <div class="button-container-solo">
-                                <button class="next-button" (click)="continueToStep1()">Next</button>
-                            </div>
-                        </ng-template>
-                        <ng-template [ngIf]="step5"> Error </ng-template>
+                        </div>
+                        <div class="button-container-solo">
+                            <button class="next-button" (click)="continueToStep1()">Next</button>
+                        </div>
                     </ng-template>
                     <ng-template [ngIf]="step4"> Error </ng-template>
                 </ng-template>
@@ -36,19 +33,29 @@
             <ng-template [ngIf]="!step2">
                 <ng-template [ngIf]="!step3">
                     <ng-template [ngIf]="!step4">
-                        <ng-template [ngIf]="!step5">
+                        <div class="select-div">
+                            <label>Year: </label>
                             <select class="form-control" id="year" [(ngModel)]="year">
                                 <option *ngFor="let year of yearOptions" [value]="year">{{ year }}</option>
                             </select>
-                            <select class="form-control" id="timeOfYear" [(ngModel)]="timeOfYear">
-                                <option *ngFor="let time of timeOfYearOptions" [value]="timeOfYear">{{ time }}</option>
-                            </select>
-                            <div class="button-container">
-                                <button class="back-button" (click)="goBackToStep0()">Back</button>
-                                <button class="next-button" (click)="continueToStep2()">Next</button>
-                            </div>
+                        </div>
+                        <ng-template [ngIf]="sportIsNotGolf">
+                            <ng-template [ngIf] ="sportIsNotRacing">
+                                <input type="number" matInput [(ngModel)]="teamCount" placeholder="Number of Teams" />
+                                <input type="number" matInput [(ngModel)]="gameCount" placeholder="Games per Team" />
+                            </ng-template>
+                            <ng-template [ngIf]="!sportIsNotRacing">
+                                <input type="number" matInput [(ngModel)]="teamCount" placeholder="Number of Teams" />
+                                <input type="number" matInput [(ngModel)]="gameCount" placeholder="Races" />
+                            </ng-template>
                         </ng-template>
-                        <ng-template [ngIf]="step5"> Error </ng-template>
+                        <ng-template [ngIf]="!sportIsNotGolf">
+                            <input type="number" matInput [(ngModel)]="gameCount" placeholder="Number of Tournaments" />
+                        </ng-template>
+                        <div class="button-container">
+                            <button class="back-button" (click)="goBackToStep0()">Back</button>
+                            <button class="next-button" (click)="continueToStep2()">Next</button>
+                        </div>
                     </ng-template>
                     <ng-template [ngIf]="step4"> Error </ng-template>
                 </ng-template>
@@ -57,30 +64,38 @@
             <ng-template [ngIf]="step2">
                 <ng-template [ngIf]="step3">
                     <ng-template [ngIf]="!step4">
-                        <ng-template [ngIf]="!step5">
-                            <p class="help-text">Are these team names correct?</p>
-                            <div *ngFor="let team of teams">
-                                <p class="team-text">Team {{ team.teamNumber }}: {{ team.name }}</p>
-                            </div>
-                            <div class="button-container">
-                                <button class="back-button" (click)="goBackToStep2()">Back</button>
-                                <button class="next-button" (click)="continueToStep4()">Next</button>
-                            </div>
-                        </ng-template>
-                        <ng-template [ngIf]="step5"> Error </ng-template>
+                        <p class="help-text">Are these team names correct?</p>
+                        <div *ngFor="let team of teams">
+                            <p class="team-text">Team {{ team.teamNumber }}: {{ team.name }}</p>
+                        </div>
+                        <div class="button-container">
+                            <button class="back-button" (click)="goBackToStep2()">Back</button>
+                            <button class="next-button" (click)="continueToStep4()">Next</button>
+                        </div>
                     </ng-template>
                     <ng-template [ngIf]="step4">
-                        <ng-template [ngIf]="!step5">
-                            <p class="help-text">Finalize season settings below</p>
-                            <p class="season-text">Season Name: {{ name }}</p>
-                            <p class="season-text">Number of Teams: {{ teamCount }}</p>
-                            <p class="season-text">Games per Team: {{ gameCount }}</p>
-                            <div class="button-container">
-                                <button class="back-button" (click)="goBackToStep3()">Back</button>
-                                <button class="next-button" (click)="finalize()" [disabled]="disabledButton">Finalize</button>
-                            </div>
+                        <p class="help-text">Finalize season settings below</p>
+                        <p class="season-text">Season Name: {{ name }}</p>
+                        <p class="season-text">Sport: {{ sport }}</p>
+                        <p class="season-text">Year: {{ year }}</p>
+                        <ng-template [ngIf]="sportIsNotGolf">
+                            <ng-template [ngIf] ="sportIsNotRacing">
+                                <p class="season-text">Number of Teams: {{ teamCount }}</p>
+                                <p class="season-text">Games per Team: {{ gameCount }}</p>
+                            </ng-template>
+                            <ng-template [ngIf]="!sportIsNotRacing">
+                                <p class="season-text">Number of Teams: {{ teamCount }}</p>
+                                <p class="season-text">Races: {{ gameCount }}</p>
+                            </ng-template>
                         </ng-template>
-                        <ng-template [ngIf]="step5"> Error </ng-template>
+                        <ng-template [ngIf]="!sportIsNotGolf">
+                            <p class="season-text">Number of Tournaments: {{ gameCount }}</p>
+                        </ng-template>
+
+                        <div class="button-container">
+                            <button class="back-button" (click)="goBackToStep3()">Back</button>
+                            <button class="next-button" (click)="finalize()" [disabled]="disabledButton">Finalize</button>
+                        </div>
                     </ng-template>
                 </ng-template>
                 <ng-template [ngIf]="!step3">

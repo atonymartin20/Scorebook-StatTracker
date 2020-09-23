@@ -104,6 +104,29 @@ input {
     font-size: 1.2rem;
 }
 
+.select-div {
+    width: 100%;
+    display: flex;
+    margin-bottom: 15px;
+    /* align-items: center; */
+}
+
+select {
+    width: 100%;
+    font-size: 1.3rem;
+    padding: 8px;
+    border: 1px solid #041e42;
+    border-radius: 5px;
+    color: #041e42;
+}
+
+label {
+    display: flex;
+    align-self: center;
+    margin-right: 8px;
+    height: 100%;
+}
+
 @media (max-width: 600px) {
     .button-container {
         flex-direction: column;

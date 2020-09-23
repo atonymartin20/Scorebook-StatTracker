@@ -16,20 +16,19 @@ export class CreateSeasonComponent implements OnInit {
     addedTeams = 0;
     sport = environment.createSport;
     year = 2020;
-    timeOfYear = 'spring';
     differentSports = [];
     yearOptions = [2020, 2017, 2018, 2019, 2021, 2022];
-    timeOfYearOptions = ['spring', 'summer', 'fall'];
     adminId = environment.userInfo['id']
     step1:boolean = false;
     step2:boolean = false;
     step3:boolean = false;
     step4:boolean = false;
-    step5:boolean = false;
     teams = [];
     nameError:boolean = false;
     teamNameError:boolean = false;
     disabledButton:boolean  = false;
+    sportIsNotGolf: boolean = false;
+    sportIsNotRacing: boolean = false;
     
     constructor(private router: Router, private seasonService: SeasonsService, private teamService: TeamsService) {}
 
@@ -69,7 +68,6 @@ export class CreateSeasonComponent implements OnInit {
             gameCount: this.gameCount || 0,
             sport: this.sport,
             year: this.year,
-            timeOfYear: this.timeOfYear
         }
         this.seasonService.addSeason(seasonData).subscribe(
             (seasonData: any[]) => {
@@ -103,39 +101,25 @@ export class CreateSeasonComponent implements OnInit {
     }
 
     continueToStep1(): void {
+        this.sportIsNotGolf = true;
+        this.sportIsNotRacing = true;
         this.nameError = false;
         if (this.name !== '') {
             this.step1 = true;
             this.step2 = false;
             this.step3 = false;
             this.step4 = false;
-            this.step5 = false;
-            if(this.addedTeams > this.teamCount) {
-                this.teams = []
-                for(let i = 1; i <= this.teamCount; i++) {
-                    this.teams.push({"name": `Team ${i}`, "teamNumber": i});
-                    this.addedTeams++;
-                    if(this.addedTeams === this.teamCount) {
-                        break;
-                    }
-                }
-            }
-    
-            if(this.addedTeams < this.teamCount) {
-                this.teams = []
-                this.addedTeams = 0;
-                for(let i = 1; i <= this.teamCount; i++) {
-                    this.teams.push({"name": `Team ${i}`, "teamNumber": i});
-                    this.addedTeams++;
-                    if(this.addedTeams === this.teamCount) {
-                        break;
-                    }
-                }
-            }
         }
         else {
             this.nameError = true;
         }
+        if(this.sport === 'golf') {
+            this.sportIsNotGolf = false;
+        }
+        if(this.sport === 'racing') {
+            this.sportIsNotRacing = false;
+        }
+        console.log(this.sport, this.sportIsNotRacing)
     }
 
     goBackToStep0(): void {
@@ -143,16 +127,35 @@ export class CreateSeasonComponent implements OnInit {
         this.step2 = false;
         this.step3 = false;
         this.step4 = false;
-        this.step5 = false;
     }
 
     continueToStep2(): void {
-        console.log(this.sport, this.year, this.timeOfYear)
+        if(this.addedTeams > this.teamCount) {
+            this.teams = []
+            for(let i = 1; i <= this.teamCount; i++) {
+                this.teams.push({"name": `Team ${i}`, "teamNumber": i});
+                this.addedTeams++;
+                if(this.addedTeams === this.teamCount) {
+                    break;
+                }
+            }
+        }
+
+        if(this.addedTeams < this.teamCount) {
+            this.teams = []
+            this.addedTeams = 0;
+            for(let i = 1; i <= this.teamCount; i++) {
+                this.teams.push({"name": `Team ${i}`, "teamNumber": i});
+                this.addedTeams++;
+                if(this.addedTeams === this.teamCount) {
+                    break;
+                }
+            }
+        }
         this.step1 = true;
         this.step2 = true;
         this.step3 = false;
         this.step4 = false;
-        this.step5 = false;
     }
 
     goBackToStep1(): void {
@@ -160,7 +163,6 @@ export class CreateSeasonComponent implements OnInit {
         this.step2 = false;
         this.step3 = false;
         this.step4 = false;
-        this.step5 = false;
     }
 
     continueToStep3(): void {
@@ -177,16 +179,7 @@ export class CreateSeasonComponent implements OnInit {
             this.step2 = true;
             this.step3 = true;
             this.step4 = false;
-            this.step5 = false;
         }
-    }
-
-    continueToStep5(): void {
-        this.step1 = true;
-        this.step2 = true;
-        this.step3 = true;
-        this.step4 = true;
-        this.step5 = true;
     }
 
     continueToStep4(): void {
@@ -194,7 +187,6 @@ export class CreateSeasonComponent implements OnInit {
         this.step2 = true;
         this.step3 = true;
         this.step4 = true;
-        this.step5 = false;
     }
 
     goBackToStep3(): void {
@@ -202,7 +194,6 @@ export class CreateSeasonComponent implements OnInit {
         this.step2 = true;
         this.step3 = true;
         this.step4 = false;
-        this.step5 = false;
     }
 
     goBackToStep2(): void {
@@ -210,6 +201,5 @@ export class CreateSeasonComponent implements OnInit {
         this.step2 = true;
         this.step3 = false;
         this.step4 = false;
-        this.step5 = false;
     }
 }
